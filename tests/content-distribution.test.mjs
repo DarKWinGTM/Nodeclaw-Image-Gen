@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { mkdtemp, mkdir, writeFile, readFile, rm, symlink } from 'node:fs/promises';
+import { mkdtemp, mkdir, writeFile, readFile, rm, symlink, realpath } from 'node:fs/promises';
 import path from 'node:path';
 import os from 'node:os';
 import { createHash } from 'node:crypto';
@@ -13,7 +13,7 @@ import { resolveContext } from '../skills/nodeclaw-image-gen/scripts/config.mjs'
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const hash = value => createHash('sha256').update(value).digest('hex');
 async function workspace(t) {
-  const dir = await mkdtemp(path.join(os.tmpdir(), 'image-distribution-'));
+  const dir = await mkdtemp(path.join(await realpath(os.tmpdir()), 'image-distribution-'));
   t.after(() => rm(dir, { recursive: true, force: true }));
   const context = await resolveContext({ cli: {}, env: {}, cwd: dir, homeDir: dir });
   return { dir, context };

@@ -2,7 +2,7 @@
 
 Skill + CLI เล็กสำหรับให้ text model เดิมช่วยสร้าง/แก้ภาพผ่าน NodeClaw หรือ custom OpenAI-compatible Images API พร้อมบันทึกผลเป็นไฟล์ ไม่ต้องมี Python, npm runtime dependencies, server, daemon หรือ MCP server
 
-**Source/local verified:** Linux, Node.js 22.9.0. รองรับรูปแบบแพ็กเกจที่พกไป Windows/macOS ได้ แต่ยังไม่อ้างว่าทดสอบสอง OS นั้นแล้ว
+**Local verification:** Linux, Node.js 22.9.0. ผล Windows/macOS/Linux บน Node.js 22/24 ดูจาก [CI matrix ของ revision ที่เลือก](https://github.com/DarKWinGTM/Nodeclaw-Image-Gen/actions/workflows/verify.yml); ผล local ไม่แทน CI หรือ native harness integration
 
 Distribution: [GitHub repository](https://github.com/DarKWinGTM/Nodeclaw-Image-Gen) · [Releases / ดาวน์โหลด](https://github.com/DarKWinGTM/Nodeclaw-Image-Gen/releases). ใช้เฉพาะ release ที่เผยแพร่แล้ว; ไม่ต้องมี npm package
 
