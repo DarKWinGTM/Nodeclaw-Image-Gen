@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "pixel-art-detail",
+  "version": "0.1.0",
+  "name": "Tiled Pixel Art detail refinement",
+  "description": "รักษาภาพต้นฉบับแล้ว Edit รายละเอียดทีละชิ้น คืนสีเดิม และต่อเป็นภาพใหญ่พร้อมสำเนาขนาดเดิม",
+  "requires": ["api.image_edit", "local.raster", "human.visual_acceptance"],
+  "parameters": {
+    "scale": { "type": "integer", "default": 3, "minimum": 2, "maximum": 3 },
+    "overlap": { "type": "number", "default": 0.25, "minimum": 0.1, "maximum": 0.4 },
+    "backgroundMask": { "type": ["string", "null"], "default": null },
+    "preserveAlpha": { "type": "boolean", "default": true }
+  },
+  "workflow": "WORKFLOW.md"
+}

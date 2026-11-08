@@ -1,0 +1,13 @@
+{
+  "name": "nodeclaw-image-gen",
+  "owner": { "name": "DarKWinGTM" },
+  "metadata": { "description": "Portable NodeClaw image generation, editing and extensible technique workflows" },
+  "plugins": [
+    {
+      "name": "nodeclaw-image-gen",
+      "source": "./",
+      "description": "NodeClaw image generation/editing skill and portable Node.js CLI",
+      "version": "0.1.0"
+    }
+  ]
+}

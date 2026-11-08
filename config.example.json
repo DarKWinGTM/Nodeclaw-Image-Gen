@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "provider": "auto",
+  "model": "gpt-image-2",
+  "method": "task",
+  "timeouts": { "requestMs": 300000, "waitMs": 900000, "pollIntervalMs": 2000 },
+  "apiBaseUrl": null,
+  "catalogUrl": null,
+  "apiDocsUrl": null,
+  "apiKeyEnv": "NODECLAW_API_KEY",
+  "fallback": { "enabled": true, "onTerminalFailure": false },
+  "outputDir": "./generated-images",
+  "image": { "count": 1, "size": "auto", "quality": "auto", "format": "auto" },
+  "wizard": { "mode": "compact", "confirmBeforeGenerate": true },
+  "styles": { "suggest": true, "search": "on_request" },
+  "updates": { "channel": "stable", "applyAutomatically": false },
+  "allowLocalHttp": false,
+  "maxResponseBytes": 67108864
+}

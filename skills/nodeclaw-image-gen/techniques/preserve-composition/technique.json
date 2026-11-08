@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "id": "preserve-composition",
+  "version": "0.1.0",
+  "name": "Preserve composition during an edit",
+  "description": "แก้เฉพาะสิ่งที่เลือกและรักษาตำแหน่ง กล้อง รูปร่าง และสิ่งสำคัญในภาพเดิม",
+  "requires": ["api.image_edit"],
+  "parameters": { "change": { "type": "string" }, "preserve": { "type": "array", "default": [] } },
+  "workflow": "WORKFLOW.md"
+}

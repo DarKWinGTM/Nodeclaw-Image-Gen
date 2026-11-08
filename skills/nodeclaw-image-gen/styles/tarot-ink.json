@@ -1,0 +1,9 @@
+{
+  "id": "tarot-ink",
+  "name": "Tarot ink",
+  "description": "ไพ่ทาโรต์ลายเส้นหมึก สีแบน และผิวกระดาษพิมพ์",
+  "tags": ["illustration", "tarot", "print"],
+  "promptTemplate": "Create a tarot card depicting {{subject}} in the classic Rider-Waite style. Use bold imperfect black ink linework, flat colors without shading, subtle symbolic elements, paper texture and a printed feel.",
+  "defaults": { "aspectRatio": "auto" },
+  "referenceImage": "optional"
+}

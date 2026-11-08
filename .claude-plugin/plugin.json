@@ -1,0 +1,8 @@
+{
+  "name": "nodeclaw-image-gen",
+  "version": "0.1.0",
+  "description": "Task-first image generation/editing with configurable providers, independent styles and extensible technique workflows",
+  "author": { "name": "DarKWinGTM" },
+  "repository": "https://github.com/DarKWinGTM/Nodeclaw-Image-Gen",
+  "keywords": ["images", "image-edit", "nodeclaw", "techniques"]
+}

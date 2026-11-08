@@ -1,0 +1,8 @@
+{
+  "id": "clean-product",
+  "name": "Clean product illustration",
+  "description": "ภาพผลิตภัณฑ์ที่อ่านรูปทรงชัด พื้นหลังเรียบ และมีพื้นที่สำหรับงานออกแบบ",
+  "tags": ["product", "illustration"],
+  "promptTemplate": "Show {{subject}} as a clean product illustration with clear material, readable form, intentional lighting and a simple background suited to the stated purpose. Preserve any user-specified branding and composition.",
+  "referenceImage": "optional"
+}

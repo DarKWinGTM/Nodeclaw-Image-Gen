@@ -1,0 +1,8 @@
+{
+  "id": "pixel-art",
+  "name": "Pixel art",
+  "description": "กริดพิกเซลคม จานสีชัดเจน และหลีกเลี่ยงการเกลี่ยสีแบบภาพวาด",
+  "tags": ["pixel", "game", "sprite"],
+  "promptTemplate": "Depict {{subject}} as deliberate pixel art with crisp pixel clusters, a consistent pixel grid, a restrained palette and readable silhouettes. Avoid blur and unintended antialiasing.",
+  "referenceImage": "optional"
+}
