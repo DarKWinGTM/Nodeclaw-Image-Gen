@@ -1,8 +1,8 @@
 # Nodeclaw-Image-Gen: Skill Experience and Distribution
 
-> **Current Version:** 0.1.2
-> **Status:** v0.1.2 private setup/native bridge, additional styles and two-option Docs source/local verified; 37 package tests passed. Git push/release selected, actual native harness/keychain acceptance remains outside scope
-> **Session:** 30328a2c-b111-4518-970b-7cf10fc0832a
+> **Current Version:** 0.1.3
+> **Status:** v0.1.3 native load/reload bridge source/local verified: 41 package tests, 4 native sandbox tests and hook validation passed. Publication, native update and current-session adoption remain separately checked outcomes
+> **Session:** b3b4111c-5f9a-4ec7-8bcf-fd76bb593619
 > **Parent Design:** [nodeclaw-image-gen.design.md](nodeclaw-image-gen.design.md)
 > **Full history:** [Design history](../changelog/nodeclaw-image-gen.changelog.md)
 > **Scope:** Wizard, styles/techniques, optional API docs, file/privacy boundary, CLI, distribution and downstream docs. Section numbers continue the parent map
@@ -114,6 +114,8 @@ Nodeclaw-Image-Gen/
   script/install.mjs
   .claude-plugin/plugin.json
   .claude-plugin/marketplace.json
+  hooks/hooks.json
+  hooks/register.mjs
   skills/nodeclaw-image-gen/SKILL.md
   skills/nodeclaw-image-gen/scripts/image-gen.mjs
   skills/nodeclaw-image-gen/references/api-contract.md
@@ -141,11 +143,11 @@ Standalone installerใช้Node scriptเดียวข้ามOS: ตรว
 
 ### Native configuration bridge
 
-เลือก manifest `userConfig.api_base_url` (native address default) และ `api_key` (`sensitive:true`); hook/CLIยังใช้config/authownerเดิม. Official [manifest contract](https://code.claude.com/docs/en/plugins/manifest-reference#user-configuration) ให้ `CLAUDE_PLUGIN_OPTION_API_BASE_URL` / `CLAUDE_PLUGIN_OPTION_API_KEY` เฉพาะ hook process ไม่ใช่ Bash tool. Inline manifest `SessionStart` ใช้ exec-form `node` + existing `image-gen.mjs plugin-env`; ไม่ส่ง key ใน argv หรือแทนค่าใน skill text. Internal entrypointใน`config.mjs`ตรวจเฉพาะสองoption/selectedfileและappend quoted exports ของ `NODECLAW_IMAGE_GEN_API`, `NODECLAW_IMAGE_GEN_API_KEY`, `NODECLAW_IMAGE_GEN_ENDPOINT_MODE=configured` ไป supported `CLAUDE_ENV_FILE` ตาม [hooks contract](https://code.claude.com/docs/en/hooks#persist-environment-variables). CLIถัดไปใช้exactaddress/keypairนั้นผ่านresolverเดิม. ไม่อ่านsecretstore/settings/profileเองและไม่เขียนสำเนาลงprivateuserconfig/plugincache.
+Selected replacement: manifest `userConfig.api_base_url` (production default unchanged) และ `api_key` (`sensitive:true`) ยังคง native configuration/secure-storage authority. `hooks/hooks.json` เลือก `hooks/register.mjs` เพียง module เดียว; `register(on, options)` รับ options ของ activation และ module `session.start` ส่งเฉพาะ `{apiBaseUrl:options.api_base_url,apiKey:options.api_key}` เป็น JSON ผ่านหนึ่ง literal `$.env.set("NODECLAW_IMAGE_GEN_PLUGIN_CONFIG", value)`. Native required/type admission เป็นของ host; hook เป็น transport-only ไม่ import Node, อ่าน secret stores/settings/profile หรือเขียน config/cache/file. Existing CLI `resolveContext` เป็นผู้ parse/validate/normalize และ `authorization` เป็นผู้ใช้ credential ตาม runtime §4.
 
-Native formเก็บsensitivevalueในharnesssecurestore แต่sessionbridgeเป็นplaintextexportfileและsubprocessenv: requireordinaryowner-onlyfileบนPOSIX, quotedliteralassignmentsและไม่printkey/stdout. กระบวนการshellในsessionเข้าถึงkeyได้ตามruntimecredentialcontract; ไม่อ้างว่าkeyอยู่securestoreอย่างเดียว. Hookมีค่าขาด/unsupportedenvfileให้แจ้งconfigurationrecoveryโดยไม่เดาfallbackmechanism. หลังinstall/reconfigureให้เริ่มsessionใหม่เพื่อเรียกSessionStartและไม่ใช้ค่าเก่าจากsessionเดิม.
+Native pair เป็น ephemeral session environment ไม่ใช่ secret store ใหม่. Child processes ใน session เข้าถึง credential ได้ จึงไม่อ้าง keychain-only isolation. Write ต้อง await และตรวจ returned deny/rejection โดยไม่ print options, serialized pair, raw exception หรือ policy text; application failure ใช้ static sanitized recovery. หนึ่งค่าไม่แยก address/key ระหว่าง write แต่ไม่รับรอง reload ordering หรือ successful adoption. Invalid native binding ต้อง reject ที่ consumer ก่อน auth/network ไม่ fallback ไป stale exports/saved/legacy keys. ไม่เพิ่ม transaction/rollback, retry, tool interceptor หรือ second resolver.
 
-ScopeของbridgeคือBash-compatible SessionStart/consumer. Docsระบุว่าPowerShellhookไม่มี`CLAUDE_ENV_FILE`, PowerShellconsumerบนWindowsอาจdropvalueที่มีslashและdropทั้งfileเมื่อotherhookเขียนnon-assignment. จึงไม่อ้างnativeWindowsPowerShellbridgeรองรับครบ; ใช้localprivate`setup --interactive`ของCLIเดิมเมื่อbridgeไม่พร้อม. NativeUI/keychain/reloadและOSจริงยังเป็นproofคนละlayer ไม่ใช้localfixtureแทนharnessacceptance.
+ถอด classic `SessionStart` registration และ internal `plugin-env`/`writePluginEnvironment` ใน cutover เดียว ไม่เก็บ fallback writer. Old `CLAUDE_ENV_FILE` bytes ที่ session เคยมีคง untouched แต่ native-present ingress ignore former address/key/mode variables. Module `session.start` รันเมื่อ fresh load/reload และ options เปลี่ยนให้ register ใหม่ตาม [native module contract](https://code.claude.com/docs/en/plugins/mods/reference); ใช้ supported native reload ไม่กำหนด restart เป็น normal workflow. Running engine declarations 2.1.312 และ shell validation/test CLI 2.1.318 เป็นคนละ proof layer; actual saved-config→module→ordinary Bash adoption ต้องตรวจใน installed parent session ไม่ใช้ local/native-kit tests แทน. ไม่มี Bash-specific export writer ใหม่ แต่ Windows/PowerShell native acceptance ไม่ถือว่าผ่านจาก Node CI. Unsupported/blocked host ให้แสดง blockerหรือ human-operated standalone setup เดิม ไม่สร้าง fallback bridgeอัตโนมัติ.
 
 Releaseสำหรับmanual downloadมีแพ็กเกจไฟล์ล้วนพร้อมchecksum ไม่ต้องมีOS-specificbinary. Automated installer/updaterไม่parsearchive: ใช้versioned release manifestที่แจกเป็นJSONพร้อมreleaseassetsแบบรายไฟล์. Manifestระบุpackage/versionและแต่ละrelativepath, assetname, bytes, SHA-256; resolveassetจากselectedrepo/releaseเดียวกัน ไม่รันinstallscriptจากnetworkเพื่อbootstrapความเชื่อถือ
 

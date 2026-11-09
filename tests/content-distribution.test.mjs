@@ -82,6 +82,25 @@ test('manifest validation blocks traversal, collisions and executable content pa
   assert.throws(() => validateManifest({ ...manifest, files: [row, { ...row, path: row.path.toUpperCase(), asset: 'file-1' }] }));
 });
 
+test('native plugin release includes the registered hook with canonical bytes', async t => {
+  const { dir } = await workspace(t);
+  const output = path.join(dir, 'release');
+  const run = spawnSync(process.execPath, [path.join(root, 'script/package-release.mjs'), '--out', output], {
+    cwd: dir, encoding: 'utf8', timeout: 60000,
+  });
+  assert.equal(run.status, 0, run.stdout + run.stderr);
+  const manifest = JSON.parse(await readFile(path.join(output, 'release-manifest.json'), 'utf8'));
+  for (const file of ['hooks/hooks.json', 'hooks/register.mjs']) {
+    const row = manifest.files.find(item => item.path === file);
+    assert.ok(row, `release must ship ${file}`);
+    const source = await readFile(path.join(root, file));
+    const asset = await readFile(path.join(output, row.asset));
+    assert.deepEqual(asset, source);
+    assert.equal(row.bytes, source.length);
+    assert.equal(row.sha256, hash(source));
+  }
+});
+
 test('staging verifies bytes before mutation and content sync preserves custom namespace', async t => {
   const { dir, context } = await workspace(t);
   const assets = path.join(dir, 'assets'); await mkdir(assets);

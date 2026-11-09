@@ -1,0 +1,4 @@
+{
+  "description": "Refresh the native address/key binding when the plugin loads or reloads",
+  "modules": ["./register.mjs"]
+}

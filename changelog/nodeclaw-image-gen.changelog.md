@@ -1,8 +1,8 @@
 # Nodeclaw-Image-Gen: Changelog
 
-> **Current Version:** 0.1.2
-> **Status:** v0.1.2 address/key configuration, native bridge, additional styles and prompt-first Docs source/local verified. Publication and OS/Node evidence are available through matching public release/CI; v0.1.1 evidence remains revision-scoped
-> **Session:** 30328a2c-b111-4518-970b-7cf10fc0832a
+> **Current Version:** 0.1.3
+> **Status:** v0.1.3 native configuration refresh source/local verified. Publication/OS-Node CI use the matching release revision; installed same-session adoption remains a separate acceptance gate
+> **Session:** b3b4111c-5f9a-4ec7-8bcf-fd76bb593619
 > **Target Design:** [nodeclaw-image-gen.design.md](../design/nodeclaw-image-gen.design.md)
 > **Structure:** [STRUCTURE.md](../diagram/STRUCTURE.md)
 > **Chain shape:** Single-file changelog parent; design uses mapped flat sibling shards
@@ -78,6 +78,15 @@
 - Final source/local checks: 37/37 tests, 0 fail/skip; ESM/JSON 41 scripts/68 JSON; package dry-run 123 files/62 content; exact plugin/marketplace schemas, frontend with-chat types และ EN/TH/README prompt parity ผ่าน. Directory-submission license/icon ยังเป็น unselected limit ไม่ใช่ self-hosted marketplace failure. Installed native UI/keychain, actual OS harness, real keys, paid API calls, visual quality และ website deployment ไม่อยู่ใน proof.
 - ผู้ใช้เลือก git push/release จาก canonical allowlist โดยไม่ push platform หรือแก้ published prior releases. Matching publication/CI evidence: [v0.1.2 release](https://github.com/DarKWinGTM/Nodeclaw-Image-Gen/releases/tag/v0.1.2) และ [revision workflows](https://github.com/DarKWinGTM/Nodeclaw-Image-Gen/actions/workflows/verify.yml). Git-backed marketplace เลือก repository revision; standalone/content update ใช้ release assets. ผลรุ่นก่อนเป็น history ไม่ใช่ proof ของ revision นี้.
 
+## 0.1.3: Native configuration refresh on plugin load/reload
+
+- แทน classic `SessionStart` → `plugin-env` → session export file ด้วย native `register(on, options)` → module `session.start` → one `NODECLAW_IMAGE_GEN_PLUGIN_CONFIG` JSON pair → existing `resolveContext`/`authorization`. Native sensitive configuration ยังเป็น authority เดิม; hook เป็น transport-only ไม่มี Node import, secret-store reader, credential file, extra resolver หรือ tool interceptor.
+- Existing ingress parse/validate native pair แบบ fail-closed; native-present path ignore former address/key/mode exports แม้ค่าเก่า invalid และไม่ fallback ไป saved/legacy key. Explicit CLI pin ยังมีผล แต่ native credential ใช้ได้เฉพาะ exact normalized base/proxy prefix. Context/status/dry-run/Task serialization และ persistence ไม่เพิ่ม native key.
+- ถอด old writer/import/dispatch/manifest registration ใน cutover เดียว. Old export-file bytes คง untouched ไม่ถูกอ่านเป็น native authority เมื่อ binding ใหม่ present. Denied/rejected env publication แจ้ง static sanitized diagnostic โดยไม่พิมพ์ key/raw error/policy text และไม่ retry หรือเปิด fallback writer.
+- เพิ่ม native hooks payload กับ release allowlist เดิม; regression ตรวจ source→asset bytes/size/SHA-256. Full package 41/41 tests ผ่าน, 0 fail/skip; ESM/JSON check 42 scripts/69 JSON และ package dry-run 126 files/62 content ผ่าน. Focused native-config และ packaging cases มี matching RED→GREEN; native sandbox 4/4 ผ่านและ hooks validation ไม่มี errors/warnings บน Claude Code 2.1.318. Running-engine declarations 2.1.312 เป็น API evidence ไม่ใช่ parent-session adoption.
+- README/SKILL/design/diagram และ package/skill/plugin/marketplace versions align 0.1.3. Reconfigure/update ใช้ native reload ใน session เดิม ไม่กำหนด restart เป็น normal route. Production default, standalone setup/update, Image/Task/HTTP/output owners และ original unknown Task handle bytes/mode คงเดิมใน source-local checkpoint; ไม่มี paid/API call หรือ remote replay.
+- Bounded read-only credential/architecture review ไม่พบ material finding ใน selected delta; Main ตรวจ matching anchors และ protected owners. Native kit/source tests ไม่พิสูจน์ actual Save UI, installed same-session adoption, native Windows/PowerShell, key acceptance หรือ stability. Publication/CI ดู matching [v0.1.3 release](https://github.com/DarKWinGTM/Nodeclaw-Image-Gen/releases/tag/v0.1.3)/[workflows](https://github.com/DarKWinGTM/Nodeclaw-Image-Gen/actions/workflows/verify.yml); installed update/adoption เป็น gate ถัดไป ไม่ถือว่าเสร็จจาก source checks.
+
 ## Version navigation
 
-0.1.0 เริ่มจาก design baseline → source/local implementation → public release ใน version เดียวกัน. 0.1.1เพิ่มrunnabletechniquetoolsและEnglish/Quickinstall. 0.1.2 เพิ่ม private config/native bridge/explicit Gemini, additional styles และ prompt-first Docs; source/local gates ผ่าน ส่วน public distribution/CI ดู matching references ในหัวข้อ version นั้น. Historyแต่ละช่วงคงผลที่ตรวจในเวลานั้น; current statusอยู่metadataและหัวข้อversionล่าสุด. Parentนี้ยังcompact/coherentจึงใช้single-file chain ไม่มีversionchild/inactivehistoryใหม่
+0.1.0 เริ่มจาก design baseline → source/local implementation → public release ใน version เดียวกัน. 0.1.1 เพิ่ม runnable technique tools และ English/Quick install. 0.1.2 เพิ่ม private config/native bridge/explicit Gemini, additional styles และ prompt-first Docs. 0.1.3 แทน startup-only native transport ด้วย load/reload module และ single-pair ingress. Public distribution/CI ใช้ matching references ของแต่ละ revision. History คงผลที่ตรวจในเวลานั้น; current status อยู่ metadata และหัวข้อ version ล่าสุด. Parent ยัง compact/coherent จึงใช้ single-file chain ไม่มี version child/inactive history ใหม่

@@ -3,7 +3,7 @@ import { parseArgs } from 'node:util';
 import { readFile } from 'node:fs/promises';
 import path from 'node:path';
 import { pathToFileURL } from 'node:url';
-import { resolveContext, inputError, readSetupInput, saveConfiguration, writePluginEnvironment } from './config.mjs';
+import { resolveContext, inputError, readSetupInput, saveConfiguration } from './config.mjs';
 import { authorization } from './http.mjs';
 import { discoverModels } from './models.mjs';
 
@@ -24,10 +24,6 @@ export async function main(argv = process.argv.slice(2)) {
     return;
   }
   if (Number(process.versions.node.split('.')[0]) < 22) throw inputError('Node.js 22 or newer is required');
-  if (command === 'plugin-env') {
-    await writePluginEnvironment();
-    return;
-  }
   const specInput = cli.spec ? await readJsonInput(cli.spec) : {};
   cli = { ...specInput, ...cli, yes: parsed.values.yes === true };
   if (specInput.apiKey !== undefined) throw inputError('Do not put API keys in request specs; use local setup or native plugin configuration');
@@ -101,8 +97,7 @@ async function readJsonInput(file) {
 if (process.argv[1] && import.meta.url === pathToFileURL(path.resolve(process.argv[1])).href) {
   main().catch(error => {
     const known = error.exitCode || error.code;
-    if (process.argv[2] === 'plugin-env') console.error('Nodeclaw-Image-Gen native configuration bridge unavailable; check plugin configuration and restart a supported Bash session, or use local setup --interactive. No credential was printed.');
-    else console.log(JSON.stringify({ status: 'failed', error: { code: error.code || 'client_error', message: known && !['EACCES', 'ENOENT', 'EEXIST'].includes(error.code) ? error.message : 'Client operation failed; check input, permissions and existing target files' } }));
+    console.log(JSON.stringify({ status: 'failed', error: { code: error.code || 'client_error', message: known && !['EACCES', 'ENOENT', 'EEXIST'].includes(error.code) ? error.message : 'Client operation failed; check input, permissions and existing target files' } }));
     process.exitCode = error.exitCode || 1;
   });
 }

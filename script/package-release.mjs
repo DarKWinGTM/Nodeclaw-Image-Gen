@@ -23,7 +23,7 @@ async function collect(relative) {
   } else throw new Error('Release accepts ordinary files only');
 }
 // Explicit package owners only: no platform files, user config, state or captures.
-for (const relative of ['package.json', 'skills', 'script', 'tests', 'design', 'changelog', 'docs', 'diagram', '.claude-plugin', '.github/workflows/verify.yml']) await collect(relative);
+for (const relative of ['package.json', 'skills', 'hooks', 'script', 'tests', 'design', 'changelog', 'docs', 'diagram', '.claude-plugin', '.github/workflows/verify.yml']) await collect(relative);
 for (const relative of ['README.md', 'config.example.json']) {
   try { await collect(relative); } catch (error) { if (error.code !== 'ENOENT') throw error; }
 }

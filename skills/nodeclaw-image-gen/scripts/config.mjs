@@ -1,5 +1,4 @@
 import { open, lstat } from 'node:fs/promises';
-import { constants } from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import { createInterface } from 'node:readline/promises';
@@ -103,11 +102,23 @@ export async function resolveContext({ cli = {}, env = process.env, cwd = proces
   validateApiKey(savedKey);
   if (cli.apiKey !== undefined && cli.command !== 'setup') throw inputError('API key arguments are setup-only; use private config for requests');
   validateApiKey(cli.apiKey);
+  let nativeBinding;
+  if (env.NODECLAW_IMAGE_GEN_PLUGIN_CONFIG !== undefined) {
+    try {
+      nativeBinding = JSON.parse(env.NODECLAW_IMAGE_GEN_PLUGIN_CONFIG);
+      if (!nativeBinding || Array.isArray(nativeBinding) || typeof nativeBinding !== 'object'
+        || typeof nativeBinding.apiBaseUrl !== 'string' || typeof nativeBinding.apiKey !== 'string') throw new Error();
+      validateApiKey(nativeBinding.apiKey);
+      nativeBinding = { apiBaseUrl: validateUrl(nativeBinding.apiBaseUrl), apiKey: nativeBinding.apiKey };
+    } catch { throw inputError('Native plugin configuration is invalid; check the native configuration form and reload the plugin'); }
+  }
   let config = mergeConfig(DEFAULTS, savedSettings);
   const fields = { API: 'apiBaseUrl', MODEL: 'model', METHOD: 'method', CATALOG_URL: 'catalogUrl', DOCS_URL: 'apiDocsUrl', OUTPUT_DIR: 'outputDir', API_KEY_ENV: 'apiKeyEnv', ENDPOINT_MODE: 'endpointMode', API_MODE: 'apiMode' };
   for (const [suffix, key] of Object.entries(fields)) {
+    if (nativeBinding && ['API', 'API_KEY', 'ENDPOINT_MODE'].includes(suffix)) continue;
     if (env[`NODECLAW_IMAGE_GEN_${suffix}`] !== undefined) config[key] = env[`NODECLAW_IMAGE_GEN_${suffix}`];
   }
+  if (nativeBinding) config = { ...config, apiBaseUrl: nativeBinding.apiBaseUrl, endpointMode: 'configured' };
   for (const [suffix, key] of [['FALLBACK', 'enabled'], ['FALLBACK_TERMINAL', 'onTerminalFailure']]) {
     if (env[`NODECLAW_IMAGE_GEN_${suffix}`] !== undefined) config.fallback[key] = parseBoolean(env[`NODECLAW_IMAGE_GEN_${suffix}`], `NODECLAW_IMAGE_GEN_${suffix}`);
   }
@@ -116,7 +127,7 @@ export async function resolveContext({ cli = {}, env = process.env, cwd = proces
     if (cli[key] !== undefined) overrides[key] = cli[key];
   }
   if (cli.command === 'setup' && (cli.apiBaseUrl !== undefined || cli.apiKey !== undefined || cli.apiKeyStdin || cli.interactive) && cli.endpointMode === undefined) overrides.endpointMode = 'configured';
-  config = mergeConfig(config, overrides);
+  config = mergeConfig(config, nativeBinding ? { ...overrides, endpointMode: 'configured' } : overrides);
   for (const [key, cliKey] of [['enabled', 'fallback'], ['onTerminalFailure', 'fallbackTerminal']]) {
     if (cli[cliKey] !== undefined) config.fallback[key] = parseBoolean(cli[cliKey], cliKey);
     else config.fallback[key] = parseBoolean(config.fallback[key], `fallback.${key}`);
@@ -139,7 +150,7 @@ export async function resolveContext({ cli = {}, env = process.env, cwd = proces
   const savedBase = validateUrl(savedSettings.apiBaseUrl || NATIVE_URL, config);
   const selectedBase = validateUrl(config.apiBaseUrl || NATIVE_URL, config);
   let scopedBase;
-  if (env.NODECLAW_IMAGE_GEN_API_KEY !== undefined) {
+  if (!nativeBinding && env.NODECLAW_IMAGE_GEN_API_KEY !== undefined) {
     validateApiKey(env.NODECLAW_IMAGE_GEN_API_KEY);
     if (!env.NODECLAW_IMAGE_GEN_API) throw inputError('NODECLAW_IMAGE_GEN_API_KEY requires its matching NODECLAW_IMAGE_GEN_API address');
     scopedBase = validateUrl(env.NODECLAW_IMAGE_GEN_API, config);
@@ -167,32 +178,14 @@ export async function resolveContext({ cli = {}, env = process.env, cwd = proces
       add(env.ANTHROPIC_BASE_URL, 'harness', env.ANTHROPIC_AUTH_TOKEN ? 'ANTHROPIC_AUTH_TOKEN' : 'ANTHROPIC_API_KEY', 'auto');
     }
   }
-  const selectedKey = cli.apiKey ?? (scopedBase === selectedBase ? env.NODECLAW_IMAGE_GEN_API_KEY : undefined) ?? (savedBase === selectedBase ? savedKey : undefined);
-  if (config.apiBaseUrl || explicit) add(selectedBase, explicit ? 'configured-pin' : 'configured', config.apiKeyEnv, config.provider, config, selectedKey);
+  const selectedKey = cli.apiKey ?? (nativeBinding
+    ? (nativeBinding.apiBaseUrl === selectedBase ? nativeBinding.apiKey : undefined)
+    : (scopedBase === selectedBase ? env.NODECLAW_IMAGE_GEN_API_KEY : undefined) ?? (savedBase === selectedBase ? savedKey : undefined));
+  if (config.apiBaseUrl || explicit) add(selectedBase, explicit ? 'configured-pin' : 'configured', nativeBinding ? undefined : config.apiKeyEnv, config.provider, config, selectedKey);
   if (!explicit) add(NATIVE_URL, 'native', config.apiBaseUrl ? 'NODECLAW_API_KEY' : config.apiKeyEnv, 'nodeclaw', config.apiBaseUrl ? {} : config, config.apiBaseUrl ? undefined : selectedKey);
   const context = { config, configPath, configExists, cwd, ...dirs, endpoints };
   Object.defineProperty(context, 'savedConfig', { value: saved });
   return context;
-}
-
-export async function writePluginEnvironment(env = process.env) {
-  const apiKey = env.CLAUDE_PLUGIN_OPTION_API_KEY;
-  validateApiKey(apiKey);
-  if (!apiKey) throw inputError('Configure the plugin API key with /plugin configure nodeclaw-image-gen, then start a new session');
-  const baseUrl = validateUrl(env.CLAUDE_PLUGIN_OPTION_API_BASE_URL || NATIVE_URL);
-  const destination = env.CLAUDE_ENV_FILE;
-  if (!destination || !path.isAbsolute(destination)) throw inputError('Native configuration bridge needs CLAUDE_ENV_FILE in a supported session; use local setup --interactive otherwise');
-  const prior = await lstat(destination).catch(error => { if (error.code !== 'ENOENT') throw error; return null; });
-  if (prior && !prior.isFile()) throw inputError('Session environment target must be an ordinary file');
-  const file = await open(destination, constants.O_WRONLY | constants.O_APPEND | constants.O_CREAT | (constants.O_NOFOLLOW || 0) | (constants.O_NONBLOCK || 0), 0o600);
-  try {
-    const info = await file.stat();
-    if (!info.isFile() || info.nlink !== 1 || prior && (prior.dev !== info.dev || prior.ino !== info.ino)) throw inputError('Session environment target changed or has unsafe ownership');
-    if (process.platform !== 'win32' && ((info.mode & 0o077) !== 0 || info.uid !== process.getuid())) throw inputError('Session environment file must be owner-only; permissions were not changed');
-    const quote = value => `"${value.replace(/[\\"$`]/g, '\\$&')}"`;
-    // Literal assignments only: a key cannot become shell code when Bash loads this file.
-    await file.appendFile(`\nexport NODECLAW_IMAGE_GEN_API=${quote(baseUrl)}\nexport NODECLAW_IMAGE_GEN_API_KEY=${quote(apiKey)}\nexport NODECLAW_IMAGE_GEN_ENDPOINT_MODE=configured\n`);
-  } finally { await file.close(); }
 }
 
 export async function readSetupInput(cli, { input = process.stdin, output = process.stderr } = {}) {

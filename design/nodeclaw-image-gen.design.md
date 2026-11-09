@@ -1,8 +1,8 @@
 # Nodeclaw-Image-Gen: Design
 
-> **Current Version:** 0.1.2
-> **Status:** v0.1.2 address/key setup, native plugin bridge, explicit Gemini and additional styles source/local verified. Git push/release selected; publication and OS/Node proof are checked separately against the matching public revision
-> **Session:** 30328a2c-b111-4518-970b-7cf10fc0832a
+> **Current Version:** 0.1.3
+> **Status:** v0.1.3 native module transport source/local verified: 41 package tests and 4 native sandbox tests passed. Public release/CI and installed same-session adoption are separate gates
+> **Session:** b3b4111c-5f9a-4ec7-8bcf-fd76bb593619
 > **Full history:** [../changelog/nodeclaw-image-gen.changelog.md](../changelog/nodeclaw-image-gen.changelog.md)
 > **Structure:** [../diagram/STRUCTURE.md](../diagram/STRUCTURE.md)
 > **Chain shape:** Flat sibling shards, mapped below. Parent owns scope/evidence/proof; children own runtime contract and skill/distribution contract
@@ -74,9 +74,9 @@ Parent นี้เป็น authority/entrypoint ของ design chain ไม�
 
 ## 17. Verification และ completion gates
 
-**Current slice:** `new_focused_test` สำหรับ client/content/install/update source และ local HTTP/filesystem scenarios ด้วย `node:test`. CLI→local HTTP→actual image bytes, saved Task identity/resume, content integrity และ isolated installed payload มีหลักฐาน local แล้ว ไม่ใช่ paid/live/provider/native-form proof. คำสั่งจริงและขอบเขตอยู่ [README](../README.md) กับ task evidence; ไม่สร้าง TestKit runner หรือ platform-suite assignment เพิ่ม
+**Current slice:** `new_focused_test` + `existing_test` และ native sandbox สำหรับ native configuration replacement ตาม runtime §4/experience §15. Native options → module `session.start` → one JSON environment binding → existing resolver/authorization เป็นทางเดียว; source tests ตรวจ latest pair, invalid/stale exports, exact-prefix key isolation และ packaged hook bytes. Native sandbox ตรวจสอง activations กับ sanitized denial diagnostics. ไม่สร้าง TestKit runner หรือ platform-suite assignment เพิ่ม
 
-**Implementation route:** `new_focused_test` + local HTTP scenario ที่ตรวจ request counts และ actual files ด้วย `node:test`. Test doublesอยู่ test boundary ไม่ใช่ fake mode ของ Product. Developerเป็นผู้ทดสอบเอง ไม่มอบให้ separate platform Test suite โดยอัตโนมัติ
+Existing client/content/install/update regressions ใช้ `node:test` กับ local HTTP/filesystem scenarios: CLI→local HTTP→actual image bytes, saved Task identity/resume, content integrity และ isolated installed payload. Test doubles อยู่ test boundary ไม่ใช่ fake mode ของ Product. คำสั่งและ limits อยู่ [README](../README.md); source/native-sandbox proof ไม่แทน paid/live/provider หรือ installed native-form acceptance.
 
 | กลุ่มพิสูจน์ | สิ่งที่ต้อง assert |
 |---|---|
@@ -96,6 +96,8 @@ Source/local proof ปิด implementation gate ได้เมื่อ select
 Previous v0.1.1เพิ่มshippedPNGtechniquetoolsตามexperience§11: realprepare→existingEditspecplanner→check/merge,colour/alpha/mask/overlap/twooutputsผ่านlocaltests. Existingclient/installregressionsรวม26casesผ่าน; syntax/JSON/packageและdownstreamFrontendtypecheckผ่าน. PublicationและOS/Nodeproofดูmatching[release](https://github.com/DarKWinGTM/Nodeclaw-Image-Gen/releases/tag/v0.1.1)/[CI](https://github.com/DarKWinGTM/Nodeclaw-Image-Gen/actions/workflows/verify.yml)ของrevisionที่เลือก ไม่ยืมv0.1.0six-cellCIมาอ้างกับnewhelper. No paid inference/visualquality/harnessinstallation/deploy claim
 
 v0.1.2 เพิ่ม private address/key setup, direct installer parameters, native userConfig/SessionStart bridge, explicit Gemini wire และ installed-path config/update commands. Focused local proof ครอบคลุม credential binding/serialization/masking/shell literals, actual HTTP/image files และ no-replay. ผู้ใช้เลือกแปลง supplied collections เป็น 55 additional styles ตาม entry schema เดิม รวม bundled 58 presets พร้อม sample URLs; ต้นฉบับคง bytes/modes ใน `references/style-imports/` นอก active discovery และ content-sync payload ไม่มี loader ใหม่หรือผ่อน validation. Initial collection-schema failure ถูกแก้ที่ data owner หลัง user selection; full package 37/37 tests ผ่าน, syntax/JSON 41 scripts/68 JSON, package dry-run 123 files/62 content ผ่าน. Exact plugin/marketplace schemas, EN/TH/README prompt parity และ frontend typecheck ผ่าน; directory license/icon ไม่ใช่ self-hosted marketplace gate. Git push/release เป็น selected continuation แยกจาก source proof และตรวจผลจาก matching public release/CI; actual harness/keychain, paid calls, visual acceptance และ website deploy ไม่ได้ selected.
+
+v0.1.3 แทน startup-only native bridge ตาม runtime §4 และ experience §15 ด้วย load/reload module และ one JSON pair ingress; ไม่มี credential/config authority ใหม่. Full package 41/41 tests, native sandbox 4/4 บน CLI 2.1.318, hooks validation, 42-script/69-JSON check และ 126-file/62-content packaging ผ่าน. Release ต้องรวม hook bytes ตรง source; credential/architecture review ไม่พบ material finding ใน selected scope. Running-engine types 2.1.312 ยืนยัน API shape เท่านั้น; current-session stored-config adoption ต้องพิสูจน์หลัง matching publication/native update. Source checkpoint ไม่ส่ง paid request, ไม่ replay original unknown Task และไม่เปลี่ยน HTTP/Task/image/output owners. Matching release/OS-Node CI ไม่ถูกอนุมานจากผลรุ่นก่อน.
 
 ## 18. ลำดับงานหลัง review และข้อยกเว้น
 

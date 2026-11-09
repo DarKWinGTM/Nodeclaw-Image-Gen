@@ -6,7 +6,7 @@ Generate and edit images from your existing AI coding assistant through NodeClaw
 
 [Download a release](https://github.com/DarKWinGTM/Nodeclaw-Image-Gen/releases) · [Repository](https://github.com/DarKWinGTM/Nodeclaw-Image-Gen) · [CI](https://github.com/DarKWinGTM/Nodeclaw-Image-Gen/actions/workflows/verify.yml)
 
-**v0.1.2** adds address/key setup, explicit Gemini wire support and 55 additional style presets with example image URLs. These features require v0.1.2 or newer; use the matching release and CI run above to check public availability and revision-specific verification.
+**v0.1.3** replaces the startup-only native configuration bridge with a module that refreshes the address/key pair on plugin load or reload. After saving native configuration, use `/reload-plugins` in the same session and check the effective address. Existing standalone setup, image APIs and style presets are unchanged; use the matching release and CI run above for revision-specific verification.
 
 ## Quick install
 
@@ -17,7 +17,7 @@ Choose one method; do not install both standalone and marketplace copies for the
 Copy this prompt into Claude Code or Codex to have the assistant carry out installation:
 
 ```text
-Install Nodeclaw-Image-Gen for this Claude Code or Codex environment from https://github.com/DarKWinGTM/Nodeclaw-Image-Gen. Read its README, check Node.js 22+, detect the harness and reuse an existing install manager; do not install duplicate standalone and plugin copies. For a standalone install, download and verify a published v0.1.2 or newer release and obtain the package before running its installer, preview the user-scope target, then install with --yes. If the required release is unavailable, report the blocker. A Claude Code plugin install uses the supported marketplace version instead; the Git-backed marketplace does not require a release archive. Ask only for missing prerequisites, trust/permissions or replacement approval. After standalone installation, return an exact command using the real installed path for me to run setup --interactive locally and enter the API base address and hidden key; use --replace only with my approval when updating saved config. For a plugin install, direct me to its supported native configuration form and declared sensitive key field. Never collect keys in chat, AskUserQuestion or captured tool arguments, read secret stores or print key values. Verify --help, techniques list --json and setup --status --json without API calls. Report version/path, whether credentials are configured, any restart step, and the exact commands to reconfigure and update later. Do not claim credential setup is complete before the user finishes it.
+Install Nodeclaw-Image-Gen for this Claude Code or Codex environment from https://github.com/DarKWinGTM/Nodeclaw-Image-Gen. Read its README, check Node.js 22+, detect the harness and reuse an existing install manager; do not install duplicate standalone and plugin copies. For a standalone install, download and verify a published v0.1.3 or newer release and obtain the package before running its installer, preview the user-scope target, then install with --yes. If the required release is unavailable, report the blocker. A Claude Code plugin install uses the supported marketplace version instead; the Git-backed marketplace does not require a release archive. Ask only for missing prerequisites, trust/permissions or replacement approval. After standalone installation, return an exact command using the real installed path for me to run setup --interactive locally and enter the API base address and hidden key; use --replace only with my approval when updating saved config. For a plugin install, direct me to its supported native configuration form and declared sensitive key field. Never collect keys in chat, AskUserQuestion or captured tool arguments, read secret stores or print key values. Verify --help, techniques list --json and setup --status --json without API calls. Report version/path, whether credentials are configured, any restart step, and the exact commands to reconfigure and update later. Do not claim credential setup is complete before the user finishes it.
 ```
 
 The assistant needs actual filesystem/shell access and still follows the harness's trust and installation prompts.
@@ -32,7 +32,7 @@ Run **inside Claude Code**, then complete its native install/trust dialog:
 /plugin configure nodeclaw-image-gen@nodeclaw-image-gen
 ```
 
-This source declares a native configuration form for **API base address** and a masked **API key**. Reconfigure with `/plugin configure nodeclaw-image-gen@nodeclaw-image-gen`, then start a new session. The two slash commands above install the plugin; this guide does not assume slash `/plugin install` accepts terminal `--config` flags.
+This source declares a native configuration form for **API base address** and a masked **API key**. Reconfigure with `/plugin configure nodeclaw-image-gen@nodeclaw-image-gen`, save the form, then run `/reload-plugins` in the same session if pending changes have not already loaded. A restart is not the normal reconfiguration step. Slash `/plugin install` and terminal `claude plugin install --config` are separate interfaces.
 
 For terminal installation with parameters (placeholders only; `--marketplace` requires Claude Code v2.1.292 or newer):
 
@@ -40,11 +40,13 @@ For terminal installation with parameters (placeholders only; `--marketplace` re
 claude plugin install nodeclaw-image-gen --marketplace DarKWinGTM/Nodeclaw-Image-Gen --scope user --config api_base_url=https://payg.nodenetwork.ovh --config api_key="<your-api-key>"
 ```
 
-Run real-key commands yourself in a local terminal, never through an AI tool call. Prefer the native masked form: terminal arguments can enter shell history/process listings. `api_key` is declared sensitive, so Claude Code stores it through its credential mechanism rather than ordinary settings JSON; keychain availability and credential-file fallback depend on the platform. A SessionStart hook bridges this address/key pair to the CLI using the supported session environment file, not skill text or secret-store extraction. That temporary export file is **plaintext**, and shell subprocesses in the session can access the key; it is not keychain-only isolation.
+Run real-key commands yourself in a local terminal, never through an AI tool call. Prefer the native masked form: terminal arguments can enter shell history/process listings. `api_key` is declared sensitive, so Claude Code stores it through its credential mechanism rather than ordinary settings JSON; keychain availability and credential-file fallback depend on the platform. The shipped native hooks module sends one address/key JSON pair through the session environment on load/reload. It neither reads secret stores nor writes a credential file, but child processes can access that environment value; this is not keychain-only isolation.
 
-The bridge targets supported Bash sessions. Windows PowerShell hooks/consumers have `CLAUDE_ENV_FILE` limitations; use the same CLI's private local `setup --interactive` when the bridge is unavailable. Native UI/keychain and Windows runtime behavior have not been accepted through a real harness install in this source task. See the [official userConfig](https://code.claude.com/docs/en/plugins/manifest-reference#user-configuration) and [session environment](https://code.claude.com/docs/en/hooks#persist-environment-variables) contracts.
+The CLI validates this native pair before authorization and ignores the old startup address/key/mode exports. A malformed present binding fails instead of falling back to a stale key. An explicit address pin cannot carry the native key to another origin or proxy prefix. The old session export file is not rewritten or removed, and its retired writer is not retained as fallback.
 
-The Git-backed marketplace installs the plugin from its selected repository revision (`source: "./"`); it does not need a release archive. Standalone downloads, updates and content sync use the published release assets instead. To refresh an existing managed installation, run `claude plugin marketplace update nodeclaw-image-gen`, then `claude plugin update nodeclaw-image-gen@nodeclaw-image-gen` and start a new session. This is a self-hosted marketplace, not an Anthropic-directory endorsement.
+After reload, run the installed CLI's `setup --status --json` and check `apiBaseUrl`, `endpointMode` and `credentialConfigured` together. Readiness alone does not prove the newest address or API acceptance; `status: "not_configured"` can mean no standalone config file. If the address remains stale or native application is blocked, stop and report that blocker without exposing environment values or asking for the saved key again. A separately selected standalone installation can use local `setup --interactive`; do not create a duplicate installation to bypass native failure. See the [official userConfig](https://code.claude.com/docs/en/plugins/manifest-reference#user-configuration) and [native module](https://code.claude.com/docs/en/plugins/mods/reference) contracts.
+
+The Git-backed marketplace installs the plugin from its selected repository revision (`source: "./"`); it does not need a release archive. Standalone downloads, updates and content sync use the published release assets instead. Refresh an existing user-scope managed installation with `claude plugin marketplace update nodeclaw-image-gen`, then `claude plugin update nodeclaw-image-gen@nodeclaw-image-gen --scope user`; apply pending changes with `/reload-plugins` in the current session. Do not uninstall/reinstall to refresh code. This is a self-hosted marketplace, not an Anthropic-directory endorsement.
 
 ## Manual installation reference: Claude Code or Codex
 
@@ -167,7 +169,7 @@ Ctrl-C stops local waiting, not the remote Task. A successful image does not pro
 
 ## Config and custom providers
 
-Config selection: `--config` → `NODECLAW_IMAGE_GEN_CONFIG` → OS user config. Value precedence: explicit CLI/spec → env → selected config → built-ins. See [config.example.json](config.example.json).
+Config selection: `--config` → `NODECLAW_IMAGE_GEN_CONFIG` → OS user config. Ordinary value precedence: explicit CLI/spec → env → selected config → built-ins. A valid native plugin binding selects its own configured address/key pair and overrides the former address/key/mode exports and saved credential pair. An explicit CLI address still pins the invocation, but a different address or proxy prefix receives neither the native key nor a saved/legacy fallback key. See [config.example.json](config.example.json).
 
 - Linux: `${XDG_CONFIG_HOME:-$HOME/.config}/nodeclaw-image-gen/config.json`
 - macOS: `~/Library/Application Support/Nodeclaw-Image-Gen/config.json`
@@ -194,7 +196,7 @@ node skills/nodeclaw-image-gen/scripts/image-gen.mjs setup --api-base-url "https
 
 Standalone keys are saved as **plaintext** in the selected user config outside the installed skill. New POSIX directories/files use modes 0700/0600; this is not encryption or Windows ACL enforcement. Do not commit or share that config. The example file intentionally contains no key. Installer preview never reads stdin, asks for a key, writes config or sends an API request.
 
-Optional environment overrides use the full `NODECLAW_IMAGE_GEN` prefix with `_API`, `_MODEL`, `_METHOD`, `_FALLBACK`, `_FALLBACK_TERMINAL`, `_CATALOG_URL`, `_DOCS_URL`, `_OUTPUT_DIR`, `_API_KEY_ENV`, `_ENDPOINT_MODE`, `_API_MODE`. For a key override, supply both `NODECLAW_IMAGE_GEN_API` and `NODECLAW_IMAGE_GEN_API_KEY`; the key is bound to that exact normalized address, not forwarded to another CLI pin. The address/key pair takes precedence over the saved pair. Legacy `NODECLAW_API_KEY` or `apiKeyEnv` is used when no bound pair is available. Booleans accept `true/false/1/0`; invalid values are errors.
+Optional environment overrides use the full `NODECLAW_IMAGE_GEN` prefix with `_API`, `_MODEL`, `_METHOD`, `_FALLBACK`, `_FALLBACK_TERMINAL`, `_CATALOG_URL`, `_DOCS_URL`, `_OUTPUT_DIR`, `_API_KEY_ENV`, `_ENDPOINT_MODE`, `_API_MODE`. For a key override, supply both `NODECLAW_IMAGE_GEN_API` and `NODECLAW_IMAGE_GEN_API_KEY`; the key is bound to that exact normalized address, not forwarded to another CLI pin. The address/key pair takes precedence over the saved pair. Outside the native plugin-binding path, legacy `NODECLAW_API_KEY` or `apiKeyEnv` is used when no bound pair is available. The native module owns `NODECLAW_IMAGE_GEN_PLUGIN_CONFIG`; do not print or manually copy its secret-bearing value. Booleans accept `true/false/1/0`; invalid values are errors.
 
 ### Automatic route composition
 
@@ -240,8 +242,13 @@ npm run check
 npm test
 npm run package -- --dry-run
 npm run package -- --out "<new-output-directory>"
+# Native hook validation/tests require a supporting Claude Code CLI:
+claude plugin validate . --json
+claude plugin test .
 ```
 
 Packaging uses local `tar` for the manual archive. The installer/updater needs no tar/Git/Python/archive parser. Payload files are allowlisted; user configuration, state, images and captures are excluded.
 
-Tests exercise config/discovery, Task identity/recovery, real request encoding, SSE completion, actual saved files, content/install integrity and local PNG technique processing. Local proof is not paid-provider, installed native-form, visual-quality or production-deployment proof. The CI matrix targets Windows/macOS/Linux with Node.js 22/24; use the selected revision's actual run before claiming that revision is cross-platform verified. Grok Bot integration remains unverified.
+Package tests exercise config/discovery, native-pair ingress with stale exports, exact-prefix credential isolation, Task identity/recovery, request encoding, SSE completion, actual saved files, content/install integrity and local PNG technique processing. The source-local v0.1.3 check passed 41 package tests and 4 native sandbox tests, plus hooks validation on Claude Code CLI 2.1.318. Running-session engine declarations 2.1.312 establish API shape, not that the installed plugin adopted a saved configuration. The sandbox exercises separate activations and denied writes; actual Save UI/reload→Bash adoption and native Windows/PowerShell behavior require their own observations.
+
+The CI matrix runs package check/tests/packaging on Windows/macOS/Linux with Node.js 22/24, not the native Claude test runner. Use the selected revision's actual run before claiming cross-platform package verification. Local proof is not paid-provider, API-key acceptance, visual-quality, production-deployment or stability proof. Grok Bot integration remains unverified.

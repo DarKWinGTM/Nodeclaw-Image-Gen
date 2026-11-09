@@ -1,8 +1,8 @@
 # Nodeclaw-Image-Gen: Runtime, Config and API Contract
 
-> **Current Version:** 0.1.2
-> **Status:** v0.1.2 private setup/installer, native option bridge and explicit Gemini source/local verified; complete package regression passed after selected style-data conversion. No paid/live Provider or actual harness acceptance
-> **Session:** 30328a2c-b111-4518-970b-7cf10fc0832a
+> **Current Version:** 0.1.3
+> **Status:** v0.1.3 native binding ingress source/local verified; 41 package tests and 4 native sandbox tests passed. Installed session adoption and API-key acceptance are not implied
+> **Session:** b3b4111c-5f9a-4ec7-8bcf-fd76bb593619
 > **Parent Design:** [nodeclaw-image-gen.design.md](nodeclaw-image-gen.design.md)
 > **Full history:** [Design history](../changelog/nodeclaw-image-gen.changelog.md)
 > **Scope:** Config, endpoint/catalog selection, Generate/Edit, Task lifecycle and method fallback. Section numbers continue the parent map
@@ -65,6 +65,8 @@ Installer และ `setup` เดิมรับ `--api-base-url` + `--api-key`
 `apiKey` เป็น optional private user-config field ไม่ใช่ release/example value. เก็บ plaintext ใน selected OS user config นอก skill/cache พร้อม owner-only file mode บน POSIX; ไม่อ้าง encryption หรือ Windows ACL enforcement. Settings update รักษา key เดิมเฉพาะเมื่อ normalized base URL/proxy prefix เดิม; เปลี่ยน address ต้องให้ binding ใหม่ ไม่ย้าย key ตามไป. Config write ใช้ atomic publication/no-clobber ของ existing filesystem owner. Ordinary `context.config`, endpoint serialization, dry-run/status, handles, installed files และ release payload ไม่มี key. Runtime endpoint ถือ credential แบบ non-enumerable และ shared `http.authorization` เป็นผู้ใช้เพียง boundary เดิม; discovery/resume ใช้ binding นี้ด้วย.
 
 `endpointMode=auto|configured` แยก persistent selection จาก address fallback. Existing/default `auto` รักษา harness → configured → native; installer/setup ที่ระบุ address เลือก `configured` เพื่อใช้ address นั้นและไม่ส่งต่อไป harness/native. Explicit `--api-base-url` ยัง pin ต่อ invocation. Optional `NODECLAW_IMAGE_GEN_API_KEY` ต้องมี `NODECLAW_IMAGE_GEN_API` คู่กันและผูก exact normalized base; scoped pair นี้ override saved pair ได้แต่ไม่ตาม CLI pin ไป address อื่น. Saved pair มี priority เหนือ legacy key env; legacy `apiKeyEnv` ยังใช้เมื่อ endpoint ไม่มี private pair. ไม่มี key จาก configured endpoint ไป harness/native/CDN/catalog/docs. Model/method/ordinary settings ยังใช้ CLI/spec → env → selected config → built-ins.
+
+Native plugin binding ใช้ `NODECLAW_IMAGE_GEN_PLUGIN_CONFIG` เป็น JSON object เฉพาะ `apiBaseUrl` และ `apiKey`; presence คือ `!== undefined` ไม่ใช่ truthiness. Existing `resolveContext` parse/validate/normalize ทั้งคู่ก่อน authorization/network. Present แต่ empty/malformed/non-object/missing/invalid field ต้อง generic `invalid_input` ไม่ fallback; valid binding ใช้ normalized native address และ configured mode โดย ignore former `NODECLAW_IMAGE_GEN_API`, `_API_KEY`, `_ENDPOINT_MODE` แม้ค่าพวกนั้น invalid. Ordinary model/method/timeouts/output precedence คงเดิม; native binding absent คง standalone contract ทั้งหมด. Explicit CLI endpoint pin ยังมีผล แต่ native credential ผูก exact normalized base/proxy prefix เท่านั้น ไม่ตามไป origin/prefix อื่นและไม่ใช้ saved/legacy credentialแทนใน native-present branch. Raw binding/keyไม่เข้า enumerable config, status/dry-run/results, Task handles หรือ persistence; ใช้ existing non-enumerable endpoint credential/authorization boundary. Native transport lifecycleอยู่ experience §15.
 
 `apiMode=images|gemini` เป็น explicit wire selection; default `images` รักษา Task/OpenAI image behavior. Native `gemini` เป็น finite Direct-only wire ผ่าน client เดิม ไม่เลือกจากชื่อ model หรือ `google_image_generate_content`. ทั้งสอง mode ใช้ configured customer Bearer authentication; ไม่อ้างรองรับ direct Google API-key transport โดยอัตโนมัติ.
 

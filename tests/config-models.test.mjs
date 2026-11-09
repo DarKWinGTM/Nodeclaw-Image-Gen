@@ -5,7 +5,6 @@ import os from 'node:os';
 import path from 'node:path';
 import { resolveContext, apiUrl, readSetupInput } from '../skills/nodeclaw-image-gen/scripts/config.mjs';
 import { PassThrough, Writable } from 'node:stream';
-import { createHash } from 'node:crypto';
 import { discoverModels } from '../skills/nodeclaw-image-gen/scripts/models.mjs';
 import { authorization } from '../skills/nodeclaw-image-gen/scripts/http.mjs';
 import { spawnSync } from 'node:child_process';
@@ -117,39 +116,104 @@ test('interactive setup hides key echo and cancellation never returns a credenti
   input.destroy(); cancelled.destroy();
 });
 
-test('native plugin hook binds sensitive options through a private, literal session environment', async t => {
+test('native plugin configuration publishes one pair per activation and supersedes stale exports', async t => {
   const home = await mkdtemp(path.join(os.tmpdir(), 'image-plugin-config-'));
   t.after(() => rm(home, { recursive: true, force: true }));
-  const root = fileURLToPath(new URL('../', import.meta.url));
-  const manifest = JSON.parse(await readFile(path.join(root, '.claude-plugin/plugin.json'), 'utf8'));
-  const hook = manifest.hooks?.SessionStart?.[0]?.hooks?.[0];
-  assert.ok(hook, 'native configuration needs a supported SessionStart bridge');
+  const manifest = JSON.parse(await readFile(new URL('../.claude-plugin/plugin.json', import.meta.url), 'utf8'));
+  assert.equal(manifest.hooks?.SessionStart, undefined, 'the startup-only native writer must be retired');
   assert.equal(manifest.userConfig.api_key.sensitive, true);
-  const envFile = path.join(home, 'session.env');
-  const sentinel = path.join(home, 'must-not-exist');
-  const key = "fixture-$(touch${IFS}" + sentinel + ")'\"`";
-  const env = { PATH: process.env.PATH, HOME: home, USERPROFILE: home, APPDATA: home,
-    CLAUDE_ENV_FILE: envFile, CLAUDE_PLUGIN_OPTION_API_BASE_URL: 'https://plugin.example/relay/v1', CLAUDE_PLUGIN_OPTION_API_KEY: key };
-  const args = hook.args.map(value => value.replace('${CLAUDE_PLUGIN_ROOT}', root));
-  const run = spawnSync(process.execPath, args, { env, cwd: home, encoding: 'utf8', timeout: 10000 });
-  assert.equal(run.status, 0, run.stderr + run.stdout);
-  assert.equal(run.stdout, '');
-  assert.ok(!run.stderr.includes(key));
-  if (process.platform !== 'win32') {
-    assert.equal((await stat(envFile)).mode & 0o777, 0o600);
-    const script = `import {resolveContext} from ${JSON.stringify(new URL('../skills/nodeclaw-image-gen/scripts/config.mjs', import.meta.url).href)}; import {authorization} from ${JSON.stringify(new URL('../skills/nodeclaw-image-gen/scripts/http.mjs', import.meta.url).href)}; import {createHash} from 'node:crypto'; const c=await resolveContext(); console.log(JSON.stringify({endpoint:c.endpoints[0].baseUrl,hash:createHash('sha256').update(authorization(c.endpoints[0]).Authorization).digest('hex')}));`;
-    const downstream = spawnSync('bash', ['-c', 'source "$1"; exec "$2" --input-type=module -e "$3"', 'bridge-test', envFile, process.execPath, script], { env: { PATH: process.env.PATH, HOME: home }, cwd: home, encoding: 'utf8', timeout: 10000 });
-    assert.equal(downstream.status, 0, downstream.stderr);
-    assert.deepEqual(JSON.parse(downstream.stdout), { endpoint: 'https://plugin.example/relay/v1', hash: createHash('sha256').update(`Bearer ${key}`).digest('hex') });
-    await assert.rejects(stat(sentinel), { code: 'ENOENT' });
-    const unsafe = path.join(home, 'unsafe.env'); await writeFile(unsafe, '', { mode: 0o644 });
-    const refused = spawnSync(process.execPath, args, { env: { ...env, CLAUDE_ENV_FILE: unsafe }, cwd: home, encoding: 'utf8' });
-    assert.notEqual(refused.status, 0);
-    assert.equal(await readFile(unsafe, 'utf8'), '');
+  const hooksUrl = new URL('../hooks/hooks.json', import.meta.url);
+  const hooks = JSON.parse(await readFile(hooksUrl, 'utf8'));
+  assert.equal(hooks.modules.length, 1);
+  const { register } = await import(new URL(hooks.modules[0], hooksUrl));
+  const config = path.join(home, 'config.json');
+  const saved = JSON.stringify({ apiBaseUrl: 'https://old.example', apiKey: 'fixture-saved' });
+  await writeFile(config, saved);
+  const env = { NODECLAW_IMAGE_GEN_API: 'not-a-url', NODECLAW_IMAGE_GEN_API_KEY: '\ninvalid-old-key',
+    NODECLAW_IMAGE_GEN_ENDPOINT_MODE: 'invalid-old-mode', NODECLAW_API_KEY: 'fixture-legacy',
+    CLAUDECODE: '1', ANTHROPIC_BASE_URL: 'https://harness.example', ANTHROPIC_AUTH_TOKEN: 'fixture-harness' };
+  const pairs = [
+    { api_base_url: 'https://plugin.example/first/v1/', api_key: 'fixture-first' },
+    { api_base_url: 'https://plugin.example/second/v1/', api_key: "fixture-$(literal)'\"`" },
+  ];
+  for (const options of pairs) {
+    let handler; const writes = [];
+    register((event, hook) => { assert.equal(event, 'session.start'); handler = hook; }, options);
+    const event = { cwd: home }; const continued = { cwd: home };
+    assert.equal(await handler({ env: { set: async (name, value) => { writes.push(name); env[name] = value; return {}; } } }, event,
+      async input => { assert.equal(input, event); return continued; }), continued);
+    assert.deepEqual(writes, ['NODECLAW_IMAGE_GEN_PLUGIN_CONFIG']);
+    assert.deepEqual(JSON.parse(env.NODECLAW_IMAGE_GEN_PLUGIN_CONFIG), { apiBaseUrl: options.api_base_url, apiKey: options.api_key });
+    const context = await resolveContext({ cli: { config }, env, cwd: home, homeDir: home });
+    assert.equal(context.endpoints.length, 1);
+    assert.equal(context.endpoints[0].baseUrl, options.api_base_url.replace(/\/$/, ''));
+    assert.equal(context.config.endpointMode, 'configured');
+    assert.equal(authorization(context.endpoints[0], env).Authorization, `Bearer ${options.api_key}`);
+    assert.ok(!JSON.stringify(context).includes(options.api_key));
+    assert.equal(await readFile(config, 'utf8'), saved);
   }
-  const missing = spawnSync(process.execPath, args, { env: { ...env, CLAUDE_ENV_FILE: '' }, cwd: home, encoding: 'utf8' });
-  assert.notEqual(missing.status, 0);
-  assert.ok(!(missing.stdout + missing.stderr).includes(key));
+  if (process.platform !== 'win32') {
+    const envFile = path.join(home, 'old-session.env');
+    const oldExports = 'export NODECLAW_IMAGE_GEN_API=https://old.example\nexport NODECLAW_IMAGE_GEN_API_KEY=fixture-old\nexport NODECLAW_IMAGE_GEN_ENDPOINT_MODE=configured\n';
+    await writeFile(envFile, oldExports, { mode: 0o600 });
+    const script = fileURLToPath(new URL('../skills/nodeclaw-image-gen/scripts/image-gen.mjs', import.meta.url));
+    const downstream = spawnSync('bash', ['-c', 'source "$1"; exec "$2" "$3" setup --status --json', 'bridge-test', envFile, process.execPath, script], {
+      env: { PATH: process.env.PATH, HOME: home, NODECLAW_IMAGE_GEN_PLUGIN_CONFIG: env.NODECLAW_IMAGE_GEN_PLUGIN_CONFIG }, cwd: home, encoding: 'utf8', timeout: 10000,
+    });
+    assert.equal(downstream.status, 0, downstream.stderr + downstream.stdout);
+    assert.equal(JSON.parse(downstream.stdout).apiBaseUrl, 'https://plugin.example/second/v1');
+    assert.equal(JSON.parse(downstream.stdout).credentialConfigured, true);
+    assert.ok(!downstream.stdout.includes(pairs[1].api_key));
+    assert.equal(await readFile(envFile, 'utf8'), oldExports);
+  }
+});
+
+test('native plugin configuration reports denied or rejected writes without exposing their values', async () => {
+  const { register } = await import('../hooks/register.mjs');
+  const options = { api_base_url: 'https://plugin.example', api_key: 'fixture-native-sensitive' };
+  for (const failure of ['hold', 'rejection']) {
+    let handler; const messages = []; let writes = 0;
+    register((event, hook) => { handler = hook; }, options);
+    const result = await handler({
+      env: { set: async () => { writes++; if (failure === 'hold') return { deny: options.api_key }; throw new Error(options.api_key); } },
+      ui: { log: text => messages.push(text) },
+    }, { cwd: '/fixture' }, async () => ({ cwd: '/fixture' }));
+    assert.deepEqual(result, { cwd: '/fixture' });
+    assert.equal(writes, 1);
+    assert.equal(messages.length, 1);
+    assert.match(messages[0], /could not be applied/);
+    assert.ok(!messages[0].includes(options.api_key));
+  }
+});
+
+test('native plugin configuration rejects invalid present bindings without credential fallback', async t => {
+  const home = await mkdtemp(path.join(os.tmpdir(), 'image-plugin-invalid-'));
+  t.after(() => rm(home, { recursive: true, force: true }));
+  const config = path.join(home, 'config.json');
+  await writeFile(config, JSON.stringify({ apiBaseUrl: 'https://old.example', apiKey: 'fixture-saved' }));
+  const env = { NODECLAW_IMAGE_GEN_API: 'https://old.example', NODECLAW_IMAGE_GEN_API_KEY: 'fixture-old', NODECLAW_API_KEY: 'fixture-legacy' };
+  const invalid = ['', '{', 'null', '[]', '{}', JSON.stringify({ apiBaseUrl: 'https://plugin.example' }),
+    JSON.stringify({ apiBaseUrl: 'https://plugin.example', apiKey: '' }),
+    JSON.stringify({ apiBaseUrl: 'https://plugin.example', apiKey: 1 }),
+    JSON.stringify({ apiBaseUrl: 'https://plugin.example', apiKey: 'fixture-\ninvalid' }),
+    JSON.stringify({ apiBaseUrl: 'https://user:pass@plugin.example', apiKey: 'fixture-key' }),
+    JSON.stringify({ apiBaseUrl: 1, apiKey: 'fixture-key' })];
+  for (const binding of invalid) await assert.rejects(resolveContext({ cli: { config }, env: { ...env, NODECLAW_IMAGE_GEN_PLUGIN_CONFIG: binding }, cwd: home, homeDir: home }),
+    error => error.code === 'invalid_input' && !error.message.includes('fixture-') && !error.message.includes(binding || 'never-match'));
+});
+
+test('native plugin configuration never carries its key or legacy fallback across an explicit pin', async t => {
+  const home = await mkdtemp(path.join(os.tmpdir(), 'image-plugin-pin-'));
+  t.after(() => rm(home, { recursive: true, force: true }));
+  const env = { NODECLAW_IMAGE_GEN_PLUGIN_CONFIG: JSON.stringify({ apiBaseUrl: 'https://plugin.example/relay/v1/', apiKey: 'fixture-native' }),
+    NODECLAW_API_KEY: 'fixture-legacy', NODECLAW_IMAGE_GEN_API: 'https://other.example', NODECLAW_IMAGE_GEN_API_KEY: 'fixture-old' };
+  for (const apiBaseUrl of ['https://other.example', 'https://plugin.example/other/v1']) {
+    const context = await resolveContext({ cli: { apiBaseUrl }, env, cwd: home, homeDir: home });
+    assert.equal(context.endpoints[0].baseUrl, apiBaseUrl);
+    assert.throws(() => authorization(context.endpoints[0], env), /key|config/i);
+  }
+  const context = await resolveContext({ cli: { apiBaseUrl: 'https://plugin.example/relay/v1' }, env, cwd: home, homeDir: home });
+  assert.equal(authorization(context.endpoints[0], env).Authorization, 'Bearer fixture-native');
 });
 
 // Protect explicit false, endpoint ownership and exact-ID discovery, not UI copy.
