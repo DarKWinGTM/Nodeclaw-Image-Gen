@@ -1,10 +1,12 @@
 {
   "schemaVersion": 1,
   "id": "preserve-composition",
-  "version": "0.1.0",
+  "version": "0.1.1",
+  "minClientVersion": "0.1.1",
+  "tool": "preserve-composition",
   "name": "Preserve composition during an edit",
-  "description": "แก้เฉพาะสิ่งที่เลือกและรักษาตำแหน่ง กล้อง รูปร่าง และสิ่งสำคัญในภาพเดิม",
-  "requires": ["api.image_edit"],
+  "description": "Prepare a source snapshot and constrained Edit spec, then check the returned image geometry and alpha diagnostics.",
+  "requires": ["api.image_edit", "local.raster", "human.visual_acceptance"],
   "parameters": { "change": { "type": "string" }, "preserve": { "type": "array", "default": [] } },
   "workflow": "WORKFLOW.md"
 }

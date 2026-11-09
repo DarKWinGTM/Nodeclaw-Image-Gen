@@ -11,7 +11,7 @@ async function check(directory) {
     const file = path.join(directory, entry.name);
     if (entry.isSymbolicLink()) throw new Error('Source payload cannot contain symlinks');
     if (entry.isDirectory()) await check(file);
-    else if (entry.name.endsWith('.mjs')) {
+    else if (/\.(mjs|js)$/.test(entry.name)) {
       const run = spawnSync(process.execPath, ['--check', file], { encoding: 'utf8', timeout: 10000, maxBuffer: 16384 });
       if (run.status !== 0) throw new Error(run.stderr || 'Syntax check failed');
       scripts++;

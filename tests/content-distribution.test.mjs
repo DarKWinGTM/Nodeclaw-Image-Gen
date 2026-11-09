@@ -26,11 +26,17 @@ test('bundled techniques load independently of style presets and reject executab
   assert.equal(pixel.parameters.scale.default, 3);
   assert.ok(pixel.workflowText.includes('nearest'));
   assert.ok(pixel.requires.includes('local.raster'));
+  assert.equal(pixel.tool, 'pixel-art-detail');
   const styles = await listContent('styles', context);
   assert.ok(styles.items.some(s => s.id === 'tarot-ink'));
   const custom = path.join(context.dataDir, 'custom', 'techniques', 'bad'); await mkdir(custom, { recursive: true });
   await writeFile(path.join(custom, 'technique.json'), JSON.stringify({ ...pixel, workflow: '../run.mjs', id: 'bad' }));
   await assert.rejects(loadTechnique('custom:bad', context), /workflow/i);
+  await writeFile(path.join(custom, 'technique.json'), JSON.stringify({ ...pixel, workflow: 'WORKFLOW.md', id: 'bad', minClientVersion: '99.0.0' }));
+  await writeFile(path.join(custom, 'WORKFLOW.md'), 'Example');
+  await assert.rejects(loadTechnique('custom:bad', context), /newer full skill/i);
+  await writeFile(path.join(custom, 'technique.json'), JSON.stringify({ ...pixel, workflow: 'WORKFLOW.md', id: 'bad', tool: '../run.mjs' }));
+  await assert.rejects(loadTechnique('custom:bad', context), /shipped technique tool/i);
 });
 
 test('manifest validation blocks traversal, collisions and executable content packs', () => {
@@ -66,6 +72,13 @@ test('standalone install is complete, no-clobber by default and preserves extern
   const cli = path.join(target, 'scripts/image-gen.mjs');
   const run = spawnSync(process.execPath, [cli, '--help'], { cwd: dir, encoding: 'utf8', timeout: 10000 });
   assert.equal(run.status, 0, run.stderr); assert.match(run.stdout, /Generate|generate/);
+  const { createRequire } = await import('node:module');
+  const png = createRequire(import.meta.url)('../skills/nodeclaw-image-gen/vendor/pngjs/lib/png-sync.js');
+  const image = path.join(dir, 'sample.png');
+  await writeFile(image, png.write({ width: 1, height: 1, data: Buffer.from([1, 2, 3, 255]) }));
+  const prepared = spawnSync(process.execPath, [cli, 'techniques', 'prepare', 'pixel-art-detail', '--image', image, '--work-dir', path.join(dir, 'job'), '--tile-size', '4', '--json'], { cwd: dir, encoding: 'utf8', timeout: 10000 });
+  assert.equal(prepared.status, 0, prepared.stdout + prepared.stderr);
+  assert.equal(JSON.parse(prepared.stdout).paidRequestsSent, 0);
   await assert.rejects(installSkill({ sourceDir, targetDir: target }), /replace/i);
   const userFile = path.join(dir, 'config.json'); await writeFile(userFile, 'user config');
   await installSkill({ sourceDir, targetDir: target, replaceConfirmed: true });

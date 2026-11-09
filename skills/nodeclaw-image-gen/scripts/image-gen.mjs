@@ -6,8 +6,8 @@ import { pathToFileURL } from 'node:url';
 import { DEFAULTS, resolveContext, inputError } from './config.mjs';
 import { discoverModels } from './models.mjs';
 
-const stringOptions = ['config', 'provider', 'model', 'method', 'api-base-url', 'catalog-url', 'api-docs-url', 'api-key-env', 'output-dir', 'output', 'harness', 'harness-endpoint', 'harness-api-key-env', 'harness-provider', 'fallback', 'fallback-terminal', 'request-ms', 'wait-ms', 'poll-interval-ms', 'max-response-bytes', 'prompt', 'mask', 'reference-url', 'compatibility-key', 'size', 'quality', 'format', 'response-format', 'n', 'spec', 'request-json', 'handle', 'target', 'version', 'manifest', 'assets-dir', 'repository', 'release'];
-const booleanOptions = ['json', 'yes', 'dry-run', 'allow-local-http', 'skip-discovery', 'help', 'replace'];
+const stringOptions = ['config', 'provider', 'model', 'method', 'api-base-url', 'catalog-url', 'api-docs-url', 'api-key-env', 'output-dir', 'output', 'harness', 'harness-endpoint', 'harness-api-key-env', 'harness-provider', 'fallback', 'fallback-terminal', 'request-ms', 'wait-ms', 'poll-interval-ms', 'max-response-bytes', 'prompt', 'mask', 'reference-url', 'compatibility-key', 'size', 'quality', 'format', 'response-format', 'n', 'spec', 'request-json', 'handle', 'target', 'version', 'manifest', 'assets-dir', 'repository', 'release', 'work-dir', 'job', 'scale', 'tile-size', 'overlap', 'color-sigma', 'preserve-alpha', 'change', 'preserve'];
+const booleanOptions = ['json', 'yes', 'dry-run', 'allow-local-http', 'skip-discovery', 'help', 'replace', 'allow-partial'];
 const camel = value => value.replace(/-([a-z])/g, (_, c) => c.toUpperCase());
 
 export async function main(argv = process.argv.slice(2)) {
@@ -19,7 +19,7 @@ export async function main(argv = process.argv.slice(2)) {
   const [command = 'help', subcommand, id] = parsed.positionals;
   cli.command = command;
   if (cli.help || command === 'help') {
-    console.log(`Nodeclaw-Image-Gen\n\nCommands: setup, models, generate, edit, resume, styles, techniques, docs, update\n\n  setup [--config FILE]\n  models [--api-base-url URL] [--json]\n  generate --prompt TEXT [--dry-run | --yes] [--method task|direct]\n  edit --prompt TEXT --image FILE [--image FILE] [--mask FILE] [--dry-run | --yes]\n  resume --handle FILE [--json]\n  styles|techniques list|show|sync [ID] [--manifest FILE --assets-dir DIR --yes]\n  docs fetch|sync\n  update check|apply [--manifest FILE --assets-dir DIR --target DIR --yes]\n\nCommon: --config FILE --model ID --api-base-url URL --provider nodeclaw|openai-compatible\n        --api-key-env ENV_NAME --output-dir DIR --output FILE --fallback true|false\n        --spec FILE --request-json FILE --size WxH --quality VALUE --format png|jpeg|webp\n        --json (stdout result only; progress stderr), --allow-local-http (loopback only)\n\nCredentials: set NODECLAW_API_KEY or the configured environment variable securely.\nTask-first by default. --yes explicitly authorizes the selected request; dry-run never generates.\nTechnique workflows are read by your existing text model, not executed as downloaded code.`);
+    console.log(`Nodeclaw-Image-Gen\n\nCommands: setup, models, generate, edit, resume, styles, techniques, docs, update\n\n  setup [--config FILE]\n  models [--api-base-url URL] [--json]\n  generate --prompt TEXT [--dry-run | --yes] [--method task|direct]\n  edit --prompt TEXT --image FILE [--image FILE] [--mask FILE] [--dry-run | --yes]\n  resume --handle FILE [--json]\n  styles|techniques list|show|sync [ID] [--manifest FILE --assets-dir DIR --yes]\n  techniques prepare pixel-art-detail --image PNG --work-dir NEW_DIR [--scale 3 --tile-size 1024x1024 --overlap 0.25]\n  techniques prepare preserve-composition --image PNG --work-dir NEW_DIR --change TEXT [--preserve TEXT]\n  techniques check|merge --job FILE [--output-dir DIR] [--allow-partial]\n  docs fetch|sync\n  update check|apply [--manifest FILE --assets-dir DIR --target DIR --yes]\n\nCommon: --config FILE --model ID --api-base-url URL --provider nodeclaw|openai-compatible\n        --api-key-env ENV_NAME --output-dir DIR --output FILE --fallback true|false\n        --spec FILE --request-json FILE --size WxH --quality VALUE --format png|jpeg|webp\n        --json (stdout result only; progress stderr), --allow-local-http (loopback only)\n\nCredentials: set NODECLAW_API_KEY or the configured environment variable securely.\nTask-first by default. --yes explicitly authorizes the selected request; dry-run never generates.\nTechnique tools run locally: --mask uses alpha 255 to protect, 0 to edit.\nPixel tools: --color-sigma 0..32 (source pixels; 0 disables restoration), --preserve-alpha true|false.\nShipped helpers are executable skill code; downloaded workflow content is never executed.`);
     return;
   }
   if (Number(process.versions.node.split('.')[0]) < 22) throw inputError('Node.js 22 or newer is required');
@@ -69,7 +69,7 @@ export async function main(argv = process.argv.slice(2)) {
     result = await updateCommand(subcommand || 'check', context, cli);
   } else throw inputError('Unknown command; use --help');
   console.log(JSON.stringify(result, null, cli.json ? undefined : 2));
-  process.exitCode = ({ pending: 3, outcome_unknown: 4, failed: 1, save_failed: 1 })[result?.status] || 0;
+  process.exitCode = ({ pending: 3, incomplete: 3, partial: 3, outcome_unknown: 4, failed: 1, save_failed: 1 })[result?.status] || 0;
   } finally {
     process.removeListener('SIGINT', onInterrupt);
     process.removeListener('SIGTERM', onInterrupt);

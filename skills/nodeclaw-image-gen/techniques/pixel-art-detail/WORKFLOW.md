@@ -1,59 +1,63 @@
-# Pixel Art: เพิ่มรายละเอียดเป็นชิ้นโดยรักษาภาพเดิม
+# Tiled Pixel Art refinement
 
-## ใช้เมื่อใด
+Use this technique when composition is already approved and the user wants finer synthesized detail. The shipped tools handle pixels, coordinates and files; do not invent a replacement crop/merge script. The existing text model chooses the brief/style, confirms paid requests and reviews the image.
 
-มีภาพที่องค์ประกอบถูกแล้วแต่ต้องการรายละเอียดเพิ่ม ไม่ใช้ประกอบฉากใหม่จากชิ้นที่วาดแยกกัน. Style เลือกได้อิสระ แต่ภาพที่ต้องคงกริด Pixel Art ต้องใช้ nearest-neighbor และไม่เปลี่ยนเป็น painted antialiasing โดยไม่เลือกใหม่
+## 1. Prepare locally before any paid call
 
-นี่เป็น orchestration recipe ไม่ใช่คำสั่ง cut/merge ที่ CLI แถมมา. ต้องมีเครื่องมือ raster ที่ผู้ใช้อนุมัติและทำ crop, nearest resize, Gaussian blur, signed channel arithmetic, alpha/mask และ compositing ได้จริงก่อนเริ่ม tile edits. ImageMagick 7 เป็นตัวเลือก ไม่ใช่ dependency ที่ติดตั้งให้เอง. หากไม่มีให้บอก prerequisite และหยุดเทคนิคนี้; Generate/Edit ปกติยังใช้ได้. ไม่ใช้ Python หรือเขียน codec ใหม่เพื่อข้ามข้อจำกัด
+Use the user's selected original PNG. If an initial generation is needed, obtain separate approval and let the user accept its composition first. Resolve `<skill-root>` from the actual loaded skill path.
 
-## 1. เลือกต้นฉบับและแผนค่าใช้จ่าย
+```bash
+node "<skill-root>/scripts/image-gen.mjs" techniques prepare pixel-art-detail --image "original.png" --work-dir "pixel-job" --scale 3 --tile-size 1024x1024 --overlap 0.25 --json
+```
 
-ใช้ PNG ที่ผู้ใช้เลือก ถ้ายังไม่มีจึงเสนอ Generate ภาพตั้งต้นหนึ่งครั้งและให้ตรวจ composition ก่อน. ระบุ scale (default3, รอบละ2–3), target geometry ที่ API รองรับ, alpha/background mask และ output directory. อย่าสมมุติว่า GPT ทุกรุ่นรับได้แค่1000–1500px หรือทุก API รับ1254²
+This command sends **zero API requests**. It writes a private source snapshot, `job.json`, nearest-neighbor input tiles, per-tile Edit specs and an empty `edited/` directory. Origins align to the source pixel grid; right/bottom padding is transparent and recorded by the valid region. Fully transparent or fully protected tiles are skipped. A work directory must be new; the original is never overwritten.
 
-Scale หมายถึงแต่ละด้าน เช่น1024²→scale2→2048², scale3→3072². จำนวน tiles ไม่ใช่ตัวคูณความกว้าง. กริด3×2ที่แต่ละชิ้นเป็น1024²ต่อได้3072×2048 ไม่ใช่ภาพสี่เหลี่ยมจากต้นฉบับสี่เหลี่ยม; ต้อง preserve aspect ratio/crop geometry ไม่ stretch เพื่อให้ครบหกชิ้น
+- `scale` multiplies each side: 1024² at scale 3 becomes 3072², not a six-times-wide square. Overlap determines the real tile count.
+- Choose a tile size actually supported by the selected Edit API. 1024² is a default, **not** a claim that every model/profile accepts it. Smaller source images can use a single padded tile.
+- Inputs must be single-frame, non-interlaced, 8-bit PNGs. Limits: 32 MiB/input, 16 megapixels/source and target, 2048/side per tile, 64 tiles. At the maximum target, the merge accumulator alone uses 320 MiB, plus image and blur buffers; these limits do not guarantee low memory use. Explicitly convert an approved copy if needed; do not silently re-encode an API result.
+- Optional `--mask protection.png` has the source dimensions: alpha 255 preserves original pixels, alpha 0 permits edits, intermediate alpha blends. It also creates matching API masks; never guess a pink/other colour key.
+- `--color-sigma 2` sets the low-frequency radius in source pixels; 0 disables colour restoration. `--preserve-alpha true` is the default; false uses edited alpha where edits exist.
+- `--prompt TEXT` adds the user's selected style/detail direction to the built-in preservation prompt. Styles and techniques remain independent.
 
-คำนวณ tile crops/overlap/edge padding จริงก่อนสรุปจำนวนคำขอ; เมื่อมีoverlap จำนวนชิ้นอาจมากกว่ากริดที่คิดจากภาพไม่เหลื่อม. แสดง initial generation (ถ้ามี)+tile edits+outputs ให้ผู้ใช้อนุมัติก่อนส่ง ไม่เปิดparallel workers/multi-chatหรือ paid retries เอง
+## 2. Approve and edit using the existing client
 
-## 2. ตัดและขยาย
+Report `requestCount`, target dimensions, model, endpoint/method and intended two outputs. Confirm the complete paid sequence once; if count/endpoint changes, confirm that delta. Preparation is not authorization for paid inference.
 
-กำหนด source dimensions W,H และ output W×scale,H×scale. ใช้ crop ที่ครอบคลุมทั้งภาพ พร้อม overlap เริ่มประมาณ25% ของ tile; ขอบที่เกิน canvas ใช้ explicit padding/crop ที่บันทึกไว้ ไม่สะท้อน/สร้างเนื้อหาเองโดยไม่บอก
+For each path in the preparation result's `specs`, run the **existing** Edit CLI:
 
-บันทึก tile ID `r00_c00`, original crop coordinates, valid-region dimensions, scale, padding และ overlap ในไฟล์งานที่ user output directory. ใช้ nearest-neighbor ขยายทุก input เป็น geometry ที่ตกลง ไม่ใช้ bilinear/Lanczos. รักษา original alpha แยกไว้; ไม่ convert เป็น RGB แล้วทิ้ง transparency
+```bash
+node "<skill-root>/scripts/image-gen.mjs" edit --spec "pixel-job/specs/r00_c00.json" --dry-run --json
+node "<skill-root>/scripts/image-gen.mjs" edit --spec "pixel-job/specs/r00_c00.json" --yes --json
+```
 
-ข้ามเฉพาะชิ้นว่างที่ตรวจได้ตรง mask/alpha ที่เลือก ไม่ตั้งสีชมพูเป็นค่าแทนพื้นหลังทุกภาพ. หากทั้งภาพเป็นวัตถุเดียวและ Edit ทั้งภาพเพียงพอ เสนอไม่ตัดเพื่อลดค่าใช้จ่าย
+These are independent image requests, not new chats. The spec supplies the input, exact output filename under `edited/`, size, count 1 and preservation prompt. Ordinary model/config/endpoint overrides still apply; never override input/output geometry casually. Specs contain no API key and cannot supply `--yes`.
 
-## 3. Edit ทีละชิ้น
+Keep the returned Task handle for each submitted tile. On `pending`, `outcome_unknown` or `save_failed`, use `resume --handle FILE` for that exact operation/result. Do not blindly rerun `edit`, switch transport or create a queue/batch API client. If the API returns JPEG/WebP despite PNG intent, saving fails rather than disguising the bytes as PNG; recover the same result before explicitly converting an approved copy if necessary.
 
-แต่ละชิ้นใช้ CLI `edit --image FILE` กับ model/profile เดิมและ exact supported output size. ใช้ independent image request ไม่พึ่งประวัติ chat ก่อนหน้า; Task/resume ใช้ client เดิม ไม่ทำ API transport/queue อีกชุด
+## 3. Check, then merge deterministically
 
-Prompt หลังแทน scale จากแผน:
+```bash
+node "<skill-root>/scripts/image-gen.mjs" techniques check --job "pixel-job/job.json" --json
+node "<skill-root>/scripts/image-gen.mjs" techniques merge --job "pixel-job/job.json" --json
+```
 
-> This is a crop of a pixel-art picture enlarged {{scale}}x. Redraw it at the same dimensions as crisp, finer pixel art. Keep every object's position, silhouette, composition, camera, colours and lighting. Do not add, remove or move objects. Preserve the specified alpha/background mask.
+Check validates snapshot hashes, canonical tile coordinates/paths, actual PNG dimensions and missing/invalid tile IDs. It reports alpha/protected-pixel changes. **`ready` means structurally ready, not visually accepted.** Dimension mismatch is not silently resized; object drift still needs vision/user review.
 
-เพิ่ม reference pixel scale หรือ mask เฉพาะที่ผู้ใช้เลือกและ profile รองรับ. เก็บผลด้วย tile ID เดิม. Prompt ไม่รับประกันว่ารูปร่างจะไม่เลื่อน ต้องตรวจจริง
+Merge restores colour with signed floating-point arithmetic:
 
-## 4. ตรวจและคืนสี
+`output = low_frequency(original_scaled) + edited - low_frequency(edited)`
 
-ตรวจขนาดเท่ากับ input tile, overlay edges/objects, missing/new objects และ alpha/mask alignment. Dimension mismatch ต้องเสนอ redraw/แก้แผน ไม่ resize ด้วย smooth interpolation เพื่อปกปิด. Shift/mask comparison เป็น diagnostics ไม่ใช่หลักฐานว่าไม่มี object drift ทุกจุด
+Low frequency uses an alpha-aware three-box Gaussian approximation, with sigma multiplied by scale. Alpha remains separate from RGB; original transparency is restored by default. The protection mask restores original pixels. Linear overlap weights blend valid regions at saved coordinates. This is not pixel dithering or a guarantee of seamless geometry.
 
-คืนสีบน original-scaled และ edited tile ที่ align แล้ว:
+Outputs are no-clobber PNGs:
 
-`output = blur(original_scaled) + (edited - blur(edited))`
+- `refined-hires.png`: original width/height multiplied by scale.
+- `refined-original-size.png`: grid-aligned nearest-neighbor downscale to original dimensions; it cannot retain every high-resolution pixel.
 
-ทำ RGB arithmetic แบบ signed/floating intermediate ก่อน clamp; alpha/mask ไม่ปนกับ RGB. Blur radiusราว2–3 original pixelsหลังคูณ scale เป็นจุดเริ่มปรับ ไม่ใช่ค่ามาตรฐานทุกภาพ. Original low-frequencyให้สี/แสง ส่วน edited high-frequencyให้รายละเอียด แต่ไม่ได้รับประกันสี/โครงสร้างเหมือนเดิม100%
+Incomplete results block normal merge. Only an explicit `--allow-partial` writes `partial-hires.png` and `partial-original-size.png`, fills missing/rejected regions from the original and returns `partial`/exit 3 with missing/invalid IDs. Never call this fully refined. Use `--output-dir NEW_DIR` for another export rather than overwrite existing results.
 
-คง maskสีที่ผู้ใช้เลือกตรงตำแหน่งเดิม และคืน alphaตามต้นฉบับ. Colour-difference scoreหรือthresholdเช่น5ขึ้นกับrepresentation/metric จึงใช้เป็นheuristicพร้อมดูภาพ ไม่เป็นautomatic accept/retry rule
+## 4. Review the result
 
-## 5. ต่อและส่งออก
+If an actual vision/image-view tool is available, inspect composition, silhouettes, alpha and seams at 100% plus the original-size view. Otherwise report only the checked files/geometry; ask the user to assess the visuals. Redraw only selected tiles after explicit additional-call approval, saving the prior result rather than overwriting it. No automatic paid redraw loop.
 
-ใช้ saved coordinatesและvalid regionsวางชิ้นกลับ, blendเฉพาะoverlapด้วยweightsที่ชัดเจน. Gaussian featherไม่เท่ากับpixel dither; ถ้าต้องคงhardpixel gridให้เลือกedge/dither strategyที่เครื่องมือรองรับจริงและตรวจรอยต่อ ไม่รับประกัน seamless จากการblendอย่างเดียว
-
-Missing/rejected tilesให้แสดงตำแหน่งและใช้nearest-upscaled originalเป็นpartial previewเท่านั้น ไม่เรียกว่าrefinedครบ. ไม่overwriteต้นฉบับ
-
-ส่งสองไฟล์:
-- `refined-hires.png` — ขนาด W×scale,H×scale ของผลต่อจริง
-- `refined-original-size.png` — ย่อกลับW,H; Pixel Art defaultใช้nearestแบบgrid-alignedและแจ้งว่าไม่เก็บรายละเอียดทุกpixelจากภาพใหญ่
-
-แสดงก่อน/หลังทั้งภาพที่ย่อและรอยต่อ100%เมื่อมีvision/image-view toolจริง. หากไม่มีไม่อ้างว่าภาพผ่านvisualacceptance. หยุดให้ผู้ใช้ดูและอนุมัติก่อนนำไปใช้; redrawเฉพาะtileที่เลือกพร้อมadditional call count ไม่มีauto-loopหรือforceผ่านwarning
-
-ผลคือรายละเอียดที่AIสังเคราะห์ตามreference ไม่ใช่การกู้ข้อมูลภาพจริงที่หายไป. ไม่uploadผลไปTelegram/storageหรือrehostใด ๆ
+The detail is synthesized, not recovery of lost ground-truth information. No Telegram storage upload, rehosting or other result-storage service is included. Job directories contain selected source/mask images, prompts and results; keep them private.

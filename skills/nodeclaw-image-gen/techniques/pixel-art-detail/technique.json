@@ -1,15 +1,19 @@
 {
   "schemaVersion": 1,
   "id": "pixel-art-detail",
-  "version": "0.1.0",
+  "version": "0.1.1",
+  "minClientVersion": "0.1.1",
+  "tool": "pixel-art-detail",
   "name": "Tiled Pixel Art detail refinement",
-  "description": "รักษาภาพต้นฉบับแล้ว Edit รายละเอียดทีละชิ้น คืนสีเดิม และต่อเป็นภาพใหญ่พร้อมสำเนาขนาดเดิม",
+  "description": "Prepare aligned tiles, refine them through the existing Edit client, restore colours and merge high-resolution and original-size PNGs.",
   "requires": ["api.image_edit", "local.raster", "human.visual_acceptance"],
   "parameters": {
     "scale": { "type": "integer", "default": 3, "minimum": 2, "maximum": 3 },
-    "overlap": { "type": "number", "default": 0.25, "minimum": 0.1, "maximum": 0.4 },
-    "backgroundMask": { "type": ["string", "null"], "default": null },
-    "preserveAlpha": { "type": "boolean", "default": true }
+    "tileSize": { "type": "string", "default": "1024x1024" },
+    "overlap": { "type": "number", "default": 0.25, "minimum": 0, "maximum": 0.4 },
+    "backgroundMask": { "type": ["string", "null"], "default": null, "description": "Protection mask passed with --mask: alpha 255 preserves source pixels; alpha 0 permits edits." },
+    "preserveAlpha": { "type": "boolean", "default": true },
+    "colorSigma": { "type": "number", "default": 2, "minimum": 0, "maximum": 32, "description": "Blur sigma in source pixels; 0 disables colour restoration." }
   },
   "workflow": "WORKFLOW.md"
 }

@@ -23,12 +23,12 @@ async function collect(relative) {
   } else throw new Error('Release accepts ordinary files only');
 }
 // Explicit package owners only: no platform files, user config, state or captures.
-for (const relative of ['package.json', 'skills', 'script', 'tests', '.claude-plugin', '.github/workflows/verify.yml']) await collect(relative);
+for (const relative of ['package.json', 'skills', 'script', 'tests', 'design', 'changelog', 'docs', 'diagram', '.claude-plugin', '.github/workflows/verify.yml']) await collect(relative);
 for (const relative of ['README.md', 'config.example.json']) {
   try { await collect(relative); } catch (error) { if (error.code !== 'ENOENT') throw error; }
 }
 const manifest = { schemaVersion: 1, package: identity.name, version: identity.version, kind: 'skill', files: [] };
-const content = { schemaVersion: 1, package: identity.name, version: identity.version, minClientVersion: '0.1.0', kind: 'content', files: [] };
+const content = { schemaVersion: 1, package: identity.name, version: identity.version, minClientVersion: '0.1.1', kind: 'content', files: [] };
 for (const [index, relative] of files.entries()) {
   const bytes = await readFile(path.join(root, relative));
   const row = { path: relative, asset: `file-${String(index).padStart(4, '0')}-${path.basename(relative)}`, bytes: bytes.length, sha256: createHash('sha256').update(bytes).digest('hex') };

@@ -7,7 +7,7 @@
       "name": "nodeclaw-image-gen",
       "source": "./",
       "description": "NodeClaw image generation/editing skill and portable Node.js CLI",
-      "version": "0.1.0"
+      "version": "0.1.1"
     }
   ]
 }

@@ -1,7 +1,7 @@
 import { readdir, mkdir, lstat, rm } from 'node:fs/promises';
 import path from 'node:path';
 import { createHash, randomUUID } from 'node:crypto';
-import { SKILL_ROOT, compareVersions, releaseSource, stageRelease } from './distribution.mjs';
+import { SKILL_ROOT, CLIENT_VERSION, compareVersions, releaseSource, stageRelease } from './distribution.mjs';
 import { inputError } from './config.mjs';
 import { readBounded } from './http.mjs';
 import { atomicJson, readJsonFile } from './output.mjs';
@@ -27,6 +27,8 @@ async function loadEntry(file, kind) {
   if (kind === 'techniques') {
     if (entry.schemaVersion !== 1 || !/^\d+\.\d+\.\d+$/.test(entry.version) || !Array.isArray(entry.requires) || entry.requires.some(v => typeof v !== 'string') || !entry.parameters || typeof entry.parameters !== 'object') throw inputError('Invalid technique contract');
     if (typeof entry.workflow !== 'string' || !/^[A-Za-z0-9_-]+\.md$/.test(entry.workflow)) throw inputError('Technique workflow must be a local Markdown filename, not executable content');
+    if (entry.minClientVersion && (!/^\d+\.\d+\.\d+$/.test(entry.minClientVersion) || compareVersions(entry.minClientVersion, CLIENT_VERSION) > 0)) throw inputError('Technique requires a newer full skill update');
+    if (entry.tool !== undefined && !['pixel-art-detail', 'preserve-composition'].includes(entry.tool)) throw inputError('Unknown shipped technique tool; content cannot install executable helpers');
     const workflow = path.join(path.dirname(file), entry.workflow);
     if (!(await lstat(workflow)).isFile()) throw inputError('Technique workflow must be an ordinary Markdown file');
     const { readFile } = await import('node:fs/promises');
@@ -102,6 +104,10 @@ export async function contentCommand(kind, action, id, context, cli) {
   if (kind === 'docs') {
     if (!['fetch', 'sync'].includes(action)) throw inputError('docs supports fetch or sync');
     return fetchDocs(context, { refresh: action === 'sync' });
+  }
+  if (kind === 'techniques' && ['prepare', 'check', 'merge'].includes(action)) {
+    const { techniqueToolCommand } = await import('./technique-tools.mjs');
+    return techniqueToolCommand(action, id, context, cli);
   }
   if (action === 'list') {
     const result = await listContent(kind, context);

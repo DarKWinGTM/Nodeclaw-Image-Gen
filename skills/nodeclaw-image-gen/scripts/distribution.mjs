@@ -10,6 +10,7 @@ export const REPOSITORY = 'DarKWinGTM/Nodeclaw-Image-Gen';
 export const SKILL_ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const PACKAGE = 'nodeclaw-image-gen';
 const versionPattern = /^\d+\.\d+\.\d+$/;
+export const CLIENT_VERSION = JSON.parse(await readFile(path.join(SKILL_ROOT, 'package.json'), 'utf8')).version;
 const digest = bytes => createHash('sha256').update(bytes).digest('hex');
 
 function safePath(value) {
@@ -20,7 +21,7 @@ function safePath(value) {
 export function validateManifest(manifest, { packageName = PACKAGE, version, kind } = {}) {
   if (manifest?.schemaVersion !== 1 || manifest.package !== packageName || !versionPattern.test(manifest.version) || !['skill', 'content'].includes(manifest.kind) || kind && manifest.kind !== kind || version && manifest.version !== version) throw inputError('Unsupported release manifest identity/version/kind');
   if (!Array.isArray(manifest.files) || !manifest.files.length || manifest.files.length > 512) throw inputError('Invalid manifest file count');
-  if (manifest.minClientVersion && (!versionPattern.test(manifest.minClientVersion) || compareVersions(manifest.minClientVersion, '0.1.0') > 0)) throw inputError('Content requires a newer client version');
+  if (manifest.minClientVersion && (!versionPattern.test(manifest.minClientVersion) || compareVersions(manifest.minClientVersion, CLIENT_VERSION) > 0)) throw inputError('Content requires a newer client version');
   const paths = new Set(); const assets = new Set(); let total = 0;
   for (const row of manifest.files) {
     safePath(row.path);
