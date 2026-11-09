@@ -1,7 +1,7 @@
 # Nodeclaw-Image-Gen: Runtime, Config and API Contract
 
-> **Current Version:** 0.1.1
-> **Status:** Implemented client source with focused/local verification; no paid/live Provider acceptance
+> **Current Version:** 0.1.2
+> **Status:** v0.1.2 private setup/installer, native option bridge and explicit Gemini source/local verified; complete package regression passed after selected style-data conversion. No paid/live Provider or actual harness acceptance
 > **Session:** 30328a2c-b111-4518-970b-7cf10fc0832a
 > **Parent Design:** [nodeclaw-image-gen.design.md](nodeclaw-image-gen.design.md)
 > **Full history:** [Design history](../changelog/nodeclaw-image-gen.changelog.md)
@@ -30,6 +30,8 @@
   "catalogUrl": null,
   "apiDocsUrl": null,
   "apiKeyEnv": "NODECLAW_API_KEY",
+  "endpointMode": "auto",
+  "apiMode": "images",
   "fallback": {
     "enabled": true,
     "onTerminalFailure": false
@@ -56,9 +58,19 @@
 }
 ```
 
+### Direct installation/setup configuration — selected extension
+
+Installer และ `setup` เดิมรับ `--api-base-url` + `--api-key` โดยตรง; ทางแนะนำคือ `--interactive` สำหรับ local terminal ที่ซ่อน key หรือ `--api-key-stdin` สำหรับ pipe จาก secret manager. Direct arguments อาจปรากฏใน shell history/process list; skill ไม่รับ key ผ่าน chat, choice tool หรือ generated spec. `setup --status` คืนเฉพาะ address, config path และ credential readiness โดยไม่ส่ง API request. Existing config ต้องใช้ explicit `--replace` สำหรับ setup หรือ `--replace-config` สำหรับ installer; code replacement ใช้ `--replace` แยกกัน. Installer preview ไม่อ่าน stdin ไม่ถาม key และไม่เขียน config.
+
+`apiKey` เป็น optional private user-config field ไม่ใช่ release/example value. เก็บ plaintext ใน selected OS user config นอก skill/cache พร้อม owner-only file mode บน POSIX; ไม่อ้าง encryption หรือ Windows ACL enforcement. Settings update รักษา key เดิมเฉพาะเมื่อ normalized base URL/proxy prefix เดิม; เปลี่ยน address ต้องให้ binding ใหม่ ไม่ย้าย key ตามไป. Config write ใช้ atomic publication/no-clobber ของ existing filesystem owner. Ordinary `context.config`, endpoint serialization, dry-run/status, handles, installed files และ release payload ไม่มี key. Runtime endpoint ถือ credential แบบ non-enumerable และ shared `http.authorization` เป็นผู้ใช้เพียง boundary เดิม; discovery/resume ใช้ binding นี้ด้วย.
+
+`endpointMode=auto|configured` แยก persistent selection จาก address fallback. Existing/default `auto` รักษา harness → configured → native; installer/setup ที่ระบุ address เลือก `configured` เพื่อใช้ address นั้นและไม่ส่งต่อไป harness/native. Explicit `--api-base-url` ยัง pin ต่อ invocation. Optional `NODECLAW_IMAGE_GEN_API_KEY` ต้องมี `NODECLAW_IMAGE_GEN_API` คู่กันและผูก exact normalized base; scoped pair นี้ override saved pair ได้แต่ไม่ตาม CLI pin ไป address อื่น. Saved pair มี priority เหนือ legacy key env; legacy `apiKeyEnv` ยังใช้เมื่อ endpoint ไม่มี private pair. ไม่มี key จาก configured endpoint ไป harness/native/CDN/catalog/docs. Model/method/ordinary settings ยังใช้ CLI/spec → env → selected config → built-ins.
+
+`apiMode=images|gemini` เป็น explicit wire selection; default `images` รักษา Task/OpenAI image behavior. Native `gemini` เป็น finite Direct-only wire ผ่าน client เดิม ไม่เลือกจากชื่อ model หรือ `google_image_generate_content`. ทั้งสอง mode ใช้ configured customer Bearer authentication; ไม่อ้างรองรับ direct Google API-key transport โดยอัตโนมัติ.
+
 `auto` ของ image spec เป็น client intent: omit หรือ resolve เป็นค่าที่ profile รองรับ ไม่ส่ง string `auto` ไปทุก provider. Count 1 เป็นค่าที่เครื่องมืออยากขอ ไม่ใช่การยืนยันทุก profile รับ `n=1`; ถ้า profile บังคับ quantity อื่นต้องแสดงผลกระทบก่อนส่ง ไม่เพิ่มจำนวนเงียบ ๆ
 
-ค่าที่สั่งครั้งเดียวผ่าน prompt/form กลายเป็น CLI arguments/spec ของ invocation เดียว ไม่ใช่ precedence authority แยกที่ script อ่านใจได้. ภายใน script ใช้ explicit CLI/spec → env → selected config → built-ins. การเลือกภาพครั้งเดียวไม่เปลี่ยน persistent defaults ยกเว้นผู้ใช้เลือกบันทึก. `--api-base-url` เป็น explicit pin; ถ้าไม่ pin ใช้ endpoint order ในหัวข้อ 5. `NODECLAW_IMAGE_GEN_API` ไม่แซง harness endpoint ใน auto mode
+ค่าที่สั่งครั้งเดียวผ่าน prompt/form กลายเป็น CLI arguments/spec ของ invocation เดียว ไม่ใช่ precedence authority แยกที่ script อ่านใจได้. ภายใน script ใช้ explicit CLI/spec → env → selected config → built-ins. การเลือกภาพครั้งเดียวไม่เปลี่ยน persistent defaults ยกเว้นผู้ใช้เลือกบันทึก. `--api-base-url` เป็น explicit pin; ถ้าไม่ pin ใช้ endpoint order ในหัวข้อ 5. `NODECLAW_IMAGE_GEN_API` ไม่แซง harness endpoint ใน auto mode; configured mode ตาม selected extension ข้างต้น pin persistent address
 
 | Env | ความหมาย |
 |---|---|
@@ -143,6 +155,12 @@ Task JSON: `{ "operation": "image_generation|image_edit", "request": { ...origin
 Direct ใช้ payload ของ operation เดิมโดยไม่สร้าง Task. เลือก finite JSON mode เมื่อ profile รองรับ; ห้ามสมมุติว่า omitted `stream` จะเป็น false. หาก Direct ตอบ SSE ต้องอ่าน Content-Type, parse complete records และใช้ operation-specific completed event เป็น terminal proof; partial event, Usage, `[DONE]` หรือ EOF ไม่ใช่ภาพสำเร็จ ไม่จำเป็นต้องแสดง progressive image UI
 
 รักษา checked encoded limits ของ NodeClaw: Generate JSON 2 MiB; Edit JSON/multipart 34 MiB; Task envelope 34 MiB + 65,536 bytes โดย nested request ยังติด operation limit เดิม. Custom provider ใช้ profile ของตน ไม่ยัด NodeClaw limits เป็นข้อเท็จจริงของทุกเจ้า
+
+### Explicit native Gemini wire
+
+User ให้ base address อย่างเดียว. `apiUrl` normalize เฉพาะ terminal `/v1` หรือ `/v1beta` แล้วต่อ selected version/route โดยรักษา proxy prefix: Task `/v1/media/tasks`, Images `/v1/images/generations|edits`, native Gemini `/v1beta/models/{encoded-exact-model}:generateContent`. Native model เป็น public ID ไม่มี slash; ไม่ใส่ body `model`/`compatibilityKey` หรือ OpenAI image controls. `--prompt` สร้าง user `contents[].parts[].text`; advanced native contents/extensions คงรูปตาม input. Local Edit source เข้า `inlineData` โดย client เดิม; native mask/reference URL ต้องให้ supported native parts เอง ไม่เดา provider control. Native JSON ส่ง `generationConfig.responseModalities=["IMAGE"]` เมื่อไม่ระบุเอง; explicit controls/contents ที่ขัดกันแจ้งก่อน dispatch ไม่ทิ้งเงียบ ๆ. NodeClaw native body cap 2 MiB. Native route เป็น Text-family Gateway transport ไม่ใช่การพิสูจน์ Direct Image operation/pricing/readiness.
+
+Native Gemini finite JSON อ่าน image-bearing `candidates[].content.parts[].inlineData` แล้วให้ existing `saveImages` ตรวจ Base64/actual format และบันทึก local files; text-only/refusal ไม่ใช่ saved image. ไม่เพิ่ม native Task, SDK หรือ HTTP client. Existing Images API ที่ใช้ `google_image_generate_content` ยังเป็น `/v1/images/*` และ Task ยังเก็บ normalized `data[]`; ไม่แปลงสอง contract นี้เป็น native candidate envelope.
 
 ## 8. Task polling, resume และผลลัพธ์
 

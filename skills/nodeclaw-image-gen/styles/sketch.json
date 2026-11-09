@@ -1,0 +1,12 @@
+{
+  "id": "sketch",
+  "name": "Sketch",
+  "description": "Start with a sketch",
+  "promptTemplate": "Create an original artwork inspired by the attached sketch. Preserve its subject, emotion, and gesture—not its exact strokes or shapes. Boldly reimagine its forms, proportions, colors, materials, and details. Never trace or retain the original lines; integrate their ideas naturally through texture, lighting, and color. For simple sketches, invent a richer interpretation. Ask me about preferred artistic style with a few options.",
+  "exampleImages": [
+    {
+      "url": "https://persistent.oaistatic.com/images-app/promptworks/2026-10-02/sketch-d7b1709f2b3a7a60e79fa8bfbe7c843c18f27f4c6a221fc5c0ecf6d18d3a1fe2.webp",
+      "alt": "Simple sketch of a flower with an orange center, green stem and leaves, and a bee."
+    }
+  ]
+}

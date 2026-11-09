@@ -1,0 +1,12 @@
+{
+  "id": "professional-interior-design",
+  "name": "Interior design",
+  "description": "Reimagine your space",
+  "promptTemplate": "Create an interior design visualization that shows how my space could look and function. Preserve the existing architecture and room proportions ; do not invent structural changes, openings, fixtures, or dimensions. \n\nAsk for a photo or description of the room, then ask clarifying questions to establish how the space is used, desired changes or constraints, items to preserve, and interior style. Present relevant interior style directions when available.",
+  "exampleImages": [
+    {
+      "url": "https://persistent.oaistatic.com/images-app/promptworks/2026-09-04/professional-interior-design-34893fbdd54c72c7d27c8d4f9ea41a344ab6ffc58986f3368b3dc465d02cec1a.webp",
+      "alt": "Isometric miniature living room with a cream sofa, green armchair, plants, and a large window on a pink background."
+    }
+  ]
+}

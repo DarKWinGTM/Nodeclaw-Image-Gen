@@ -1,7 +1,7 @@
 # Nodeclaw-Image-Gen: Design
 
-> **Current Version:** 0.1.1
-> **Status:** Runnable PNG technique tools, English guidance and AI auto install source/local verified. Publication and OS/Node results require the matching GitHub release/CI; v0.1.0 evidence remains revision-scoped
+> **Current Version:** 0.1.2
+> **Status:** v0.1.2 address/key setup, native plugin bridge, explicit Gemini and additional styles source/local verified. Git push/release selected; publication and OS/Node proof are checked separately against the matching public revision
 > **Session:** 30328a2c-b111-4518-970b-7cf10fc0832a
 > **Full history:** [../changelog/nodeclaw-image-gen.changelog.md](../changelog/nodeclaw-image-gen.changelog.md)
 > **Structure:** [../diagram/STRUCTURE.md](../diagram/STRUCTURE.md)
@@ -13,7 +13,7 @@
 
 NodeNetwork เป็น native default เสมอเมื่อไม่ได้ปรับแต่ง: provider profile `nodeclaw`, preferred model `gpt-image-2`, method `task`, gateway `https://payg.nodenetwork.ovh`. การอ่าน endpoint ของ harness มีลำดับก่อน default ตามหัวข้อ 5 ไม่ใช่การเปลี่ยน native product default เป็น provider อื่น
 
-รองรับ custom endpoint/model แบบ opt-in แม้ไม่มี model catalog โดยขอบเขตแรกคือ OpenAI-compatible Images API และ NodeClaw Task protocol ที่ประกาศรองรับ ไม่อ้างว่ารองรับ API ทุก protocol โดยอัตโนมัติ
+รองรับ custom endpoint/model แบบ opt-in แม้ไม่มี model catalog: OpenAI-compatible Images API, NodeClaw Task และ explicit native Gemini finite wire ผ่าน client เดิมตาม runtime §7. Native Gemini ใช้ configured customer Bearer endpoint ไม่อ้าง direct Google API-key transport หรือรองรับ API ทุก protocol โดยอัตโนมัติ
 
 Source authority อยู่ที่ `<platform-root>/script/Nodeclaw-Image-Gen/`. Public repo เป้าหมาย `DarKWinGTM/Nodeclaw-Image-Gen` เป็น distribution จาก source นี้ ไม่ใช่ development root อีกชุด ไม่สร้าง nested Git repository ใน NodeClaw-platform
 
@@ -93,7 +93,9 @@ OS support เป็นเป้าหมาย Windows/macOS/Linux; release ร
 
 Source/local proof ปิด implementation gate ได้เมื่อ selected checksครบ. Real paid generation/Edit, installed harness UI, GitHub publication และ production docs deployment เป็น proof/action คนละ layer; ไม่สร้าง unavailable live blockerให้ source goalและไม่เรียก fake/local pass ว่า live-verified. เฉพาะ deliverableที่ผู้ใช้เลือกในรอบพัฒนาเท่านั้นที่เป็น terminal gate
 
-Current v0.1.1เพิ่มshippedPNGtechniquetoolsตามexperience§11: realprepare→existingEditspecplanner→check/merge,colour/alpha/mask/overlap/twooutputsผ่านlocaltests. Existingclient/installregressionsรวม26casesผ่าน; syntax/JSON/packageและdownstreamFrontendtypecheckผ่าน. PublicationและOS/Nodeproofดูmatching[release](https://github.com/DarKWinGTM/Nodeclaw-Image-Gen/releases/tag/v0.1.1)/[CI](https://github.com/DarKWinGTM/Nodeclaw-Image-Gen/actions/workflows/verify.yml)ของrevisionที่เลือก ไม่ยืมv0.1.0six-cellCIมาอ้างกับnewhelper. No paid inference/visualquality/harnessinstallation/deploy claim
+Previous v0.1.1เพิ่มshippedPNGtechniquetoolsตามexperience§11: realprepare→existingEditspecplanner→check/merge,colour/alpha/mask/overlap/twooutputsผ่านlocaltests. Existingclient/installregressionsรวม26casesผ่าน; syntax/JSON/packageและdownstreamFrontendtypecheckผ่าน. PublicationและOS/Nodeproofดูmatching[release](https://github.com/DarKWinGTM/Nodeclaw-Image-Gen/releases/tag/v0.1.1)/[CI](https://github.com/DarKWinGTM/Nodeclaw-Image-Gen/actions/workflows/verify.yml)ของrevisionที่เลือก ไม่ยืมv0.1.0six-cellCIมาอ้างกับnewhelper. No paid inference/visualquality/harnessinstallation/deploy claim
+
+v0.1.2 เพิ่ม private address/key setup, direct installer parameters, native userConfig/SessionStart bridge, explicit Gemini wire และ installed-path config/update commands. Focused local proof ครอบคลุม credential binding/serialization/masking/shell literals, actual HTTP/image files และ no-replay. ผู้ใช้เลือกแปลง supplied collections เป็น 55 additional styles ตาม entry schema เดิม รวม bundled 58 presets พร้อม sample URLs; ต้นฉบับคง bytes/modes ใน `references/style-imports/` นอก active discovery และ content-sync payload ไม่มี loader ใหม่หรือผ่อน validation. Initial collection-schema failure ถูกแก้ที่ data owner หลัง user selection; full package 37/37 tests ผ่าน, syntax/JSON 41 scripts/68 JSON, package dry-run 123 files/62 content ผ่าน. Exact plugin/marketplace schemas, EN/TH/README prompt parity และ frontend typecheck ผ่าน; directory license/icon ไม่ใช่ self-hosted marketplace gate. Git push/release เป็น selected continuation แยกจาก source proof และตรวจผลจาก matching public release/CI; actual harness/keychain, paid calls, visual acceptance และ website deploy ไม่ได้ selected.
 
 ## 18. ลำดับงานหลัง review และข้อยกเว้น
 

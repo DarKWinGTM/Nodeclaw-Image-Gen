@@ -1,0 +1,18 @@
+{
+  "id": "70s",
+  "name": "70s portrait ",
+  "description": "Create a ’70s slide portrait",
+  "promptTemplate": "Preserve the subject’s likeness and surroundings from the reference image, restyled as a candid 1970-1975 slide portrait: era-appropriate sunglasses and accessories, dated fashion, early-70s hair, and environmental details updated to match. Add warm faded reds, slightly crushed blacks, fine analog film grain and a soft vignette. Give it the slightly yellowed, sun-bleached tone of an old family slide, with gentle color shifts in the shadows.",
+  "promptHints": [
+    "Headshot or full body picture of a person"
+  ],
+  "exampleImages": [
+    {
+      "url": "https://persistent.oaistatic.com/images-app/promptworks/2026-09-30/70s-bc70a746219f072abdc031abae89d9083624826fe20cf80e77e613710e1ef913.webp",
+      "alt": "A man with aviator sunglasses and shaggy hair wears a brown jacket in a sun-faded 1970s portrait.",
+      "format": "webp",
+      "width": 888,
+      "height": 668
+    }
+  ]
+}

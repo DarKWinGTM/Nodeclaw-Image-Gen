@@ -1,8 +1,34 @@
 {
   "name": "nodeclaw-image-gen",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Task-first image generation/editing with configurable providers, independent styles and extensible technique workflows",
   "author": { "name": "DarKWinGTM" },
   "repository": "https://github.com/DarKWinGTM/Nodeclaw-Image-Gen",
-  "keywords": ["images", "image-edit", "nodeclaw", "techniques"]
+  "keywords": ["images", "image-edit", "nodeclaw", "techniques"],
+  "userConfig": {
+    "api_base_url": {
+      "type": "string",
+      "title": "API base address",
+      "description": "Base address only; Task, Images and native Gemini routes are appended automatically.",
+      "default": "https://payg.nodenetwork.ovh",
+      "required": true
+    },
+    "api_key": {
+      "type": "string",
+      "title": "API key",
+      "description": "Customer API key for this address. Never paste it into chat.",
+      "sensitive": true,
+      "required": true
+    }
+  },
+  "hooks": {
+    "SessionStart": [{
+      "hooks": [{
+        "type": "command",
+        "command": "node",
+        "args": ["${CLAUDE_PLUGIN_ROOT}/skills/nodeclaw-image-gen/scripts/image-gen.mjs", "plugin-env"],
+        "timeout": 10
+      }]
+    }]
+  }
 }

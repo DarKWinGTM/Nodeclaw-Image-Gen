@@ -1,0 +1,12 @@
+{
+  "id": "professional-poster",
+  "name": "Poster",
+  "description": "Design a poster",
+  "promptTemplate": "Create a poster that expresses my idea through clear hierarchy, readable required text, and imagery/typography that work together for the intended viewing context. Preserve all supplied details exactly; do not invent names, dates, locations, sponsors, logos, or include additional copy.\n\nAsk clarifying questions to establish the poster’s message, required content, layout, and visual style. Present relevant layout and visual style directions when available.",
+  "exampleImages": [
+    {
+      "url": "https://persistent.oaistatic.com/images-app/promptworks/2026-09-04/professional-poster-cf2b8f454736ef49959494dc07b81107bc3c4278e82756104b74abaadcbbc89b.webp",
+      "alt": "Poster with a red poppy and large BLOOM lettering on a cream card against an orange background."
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "id": "bobblehead",
+  "name": "Your bobblehead ",
+  "description": "Make yourself a bobblehead",
+  "promptTemplate": "Create a studio photograph of a cheap mass-produced plastic bobblehead toy inspired by the uploaded photo. Reference the person’s identity and exact face, but make the face more youthful with a broad friendly smile and chunky molded plastic hair. The toy must look physically photographed, not CGI or a 3D render. Oversized bobblehead head, comically huge, about 12x the tiny body. Simplified molded vinyl face with painted eyes, painted brows, molded smile, visible paint boundaries, tiny paint misalignment, subtle mold seam lines, injection-molded plastic texture, small scuffs, soft specular highlights. Molded plastic hair with chunky sculpted grooves, not individual strands. Environment inspired by the photo.",
+  "promptHints": [
+    "Photo with a person as main subject"
+  ],
+  "exampleImages": [
+    {
+      "url": "https://persistent.oaistatic.com/images-app/promptworks/2026-09-30/bobblehead-7a2b94522f03cfa193d080b5daea01ec5faf1fb9fc103c8b64d063517faadba8.webp",
+      "alt": "A smiling plastic bobblehead with pink curly hair and a striped shirt stands on a black base on a city street.",
+      "format": "webp",
+      "width": 888,
+      "height": 666
+    }
+  ]
+}

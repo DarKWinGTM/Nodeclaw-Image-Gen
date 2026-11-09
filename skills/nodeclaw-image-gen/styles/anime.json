@@ -1,0 +1,17 @@
+{
+  "id": "anime",
+  "name": "Anime",
+  "description": "See yourself in anime",
+  "promptTemplate": "Create a trending anime art style image from the uploaded subject. Use confident line-work with slight variation and minimal cel shading using flat shadow shapes. Use bright, saturated colors and clean graphic lighting. The style is defined by exaggerated, cartoonish character proportions featuring highly expressive, simplistic facial features that allow for immense emotional range, with highly varied stretched anatomy. Transform the environment into a slightly warped space with playful perspective distortion and simplified objects. Composition and tone should be energetic, lively, and comedic in a fully stylized, non-realistic world.",
+  "promptHints": [
+    "Photo of a person making an expressive face or in a unique situation"
+  ],
+  "exampleImages": [
+    {
+      "url": "https://persistent.oaistatic.com/images-app/anime-sheet.webp",
+      "format": "webp",
+      "width": 512,
+      "height": 384
+    }
+  ]
+}

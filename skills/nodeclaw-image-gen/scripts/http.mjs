@@ -25,8 +25,8 @@ export async function readBounded(response, limit) {
 }
 
 export function authorization(endpoint, env = process.env, { required = true } = {}) {
-  const key = endpoint.apiKeyEnv && env[endpoint.apiKeyEnv];
-  if (!key && required) throw inputError(`Set ${endpoint.apiKeyEnv || 'the selected API key environment variable'} securely before sending a request`);
+  const key = endpoint.apiKey || (endpoint.apiKeyEnv && env[endpoint.apiKeyEnv]);
+  if (!key && required) throw inputError('API key is missing; use local setup --interactive, native plugin configuration, or the configured key environment variable');
   return key ? { Authorization: `Bearer ${key}` } : {};
 }
 

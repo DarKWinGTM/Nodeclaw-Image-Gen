@@ -1,0 +1,17 @@
+{
+  "id": "white-lines",
+  "name": "Handwritten style",
+  "description": "Add memos and lines",
+  "promptTemplate": "Add a hand drawn overlay on top of the image. Final output should be stylish, relaxed and effortlessly casual. Drawing rules: Use thin, hand-drawn lines as if drawn with a white pen. Keep it in a single-stroke style: rough and slightly uneven. Add outlines tracing around the outer edges of objects. Use arrows or dotted lines to guide the viewer’s eye. Text rules: Handwritten text. Keep it short, like a casual inner monologue. Tone: diary-like, brief, and emotion-focused. Commentary should be positive and sweet. Decorations: Add steam, sparkles, hearts, small emoticon-like faces sparingly. Avoid overdoing it; leave some “negative space”.",
+  "promptHints": [
+    "Photo of person with their friends, family, or children"
+  ],
+  "exampleImages": [
+    {
+      "url": "https://persistent.oaistatic.com/images-app/white-lines-sheet.webp",
+      "format": "webp",
+      "width": 888,
+      "height": 666
+    }
+  ]
+}

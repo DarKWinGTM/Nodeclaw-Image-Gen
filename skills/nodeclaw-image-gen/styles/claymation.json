@@ -1,0 +1,18 @@
+{
+  "id": "claymation",
+  "name": "Claymation world",
+  "description": "Create a handmade clay world",
+  "promptTemplate": "Transform the uploaded subject and environment into a handcrafted claymation stop-motion world. Preserve identity, pose, wardrobe, environment and composition in a playful sculpted execution. Give the face a clear, animated, characterful expression rather than a neutral photographic one. Model skin, hair, clothing, objects, and scenery from matte plasticine with visible fingerprints, sculpting marks, uneven edges, chunky forms, and handmade imperfections. Use miniature studio lighting and physical depth. It should look like a real photographed stop-motion set, not smooth CGI.",
+  "promptHints": [
+    "Photo with a person as the main subject, in the foreground"
+  ],
+  "exampleImages": [
+    {
+      "url": "https://persistent.oaistatic.com/images-app/promptworks/2026-09-30/claymation-8dc8d845f2b2055bbf733ac6d3198da20ce189bcd5fea80081777bf22d451a68.webp",
+      "alt": "A handmade clay figure in a gray hoodie and black vest stands on a city sidewalk at night.",
+      "format": "webp",
+      "width": 888,
+      "height": 668
+    }
+  ]
+}

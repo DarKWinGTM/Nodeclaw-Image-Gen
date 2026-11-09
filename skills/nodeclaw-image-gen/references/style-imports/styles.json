@@ -1,0 +1,1977 @@
+{
+    "styles": [
+        {
+            "id": "anime-reaction",
+            "title": "Anime reaction GIF",
+            "image_alt": "An orange-haired anime character in a blue shirt clasps their hands under their chin, with pink heart-shaped eyes, floating hearts, and sparkles.",
+            "variants": [
+                {
+                    "format": "webp",
+                    "url": "https://persistent.oaistatic.com/images-app/promptworks/2026-11-05/anime-reaction-a4d03da6dd758476ce894a37a40e3ccd06a2cab0def66b5c37207b9da150199a.webp",
+                    "width_px": 888,
+                    "height_px": 668
+                }
+            ],
+            "requires_thinking": false,
+            "is_thinking": false
+        },
+        {
+            "id": "drone-view",
+            "title": "Aerial view",
+            "image_alt": "A small tan and white dog looks up from the center of a green lawn, photographed from directly overhead.",
+            "variants": [
+                {
+                    "format": "webp",
+                    "url": "https://persistent.oaistatic.com/images-app/promptworks/2026-10-02/drone-view-ada14b68403f230a0210b2dee6ff8353f52a5632e06cfb38f55048a1990853b6.webp",
+                    "width_px": 888,
+                    "height_px": 668
+                }
+            ],
+            "requires_thinking": false,
+            "is_thinking": false
+        },
+        {
+            "id": "collectors-tin",
+            "title": "Collector’s tin",
+            "image_alt": "An open collector’s tin holds photographs, a camera, binoculars, flowers, paints, a pencil, and a small knitted figure against a pale green background.",
+            "variants": [
+                {
+                    "format": "webp",
+                    "url": "https://persistent.oaistatic.com/images-app/promptworks/2026-10-03/collectors-tin-31391d96e4f005b1bebdd4b3c266513aa8964303352764954dc583c60ce15e4e.webp",
+                    "width_px": 888,
+                    "height_px": 668
+                }
+            ],
+            "requires_thinking": false,
+            "is_thinking": false
+        },
+        {
+            "id": "80s-flashback",
+            "title": "’80s flashback",
+            "image_alt": "A smiling woman in black sunglasses, bright pink hoop earrings, a pink mesh top, and an oversized denim jacket poses in front of indoor plants. A red-orange date stamp reads “85 7 21” in the lower-right corner.",
+            "variants": [
+                {
+                    "format": "webp",
+                    "url": "https://persistent.oaistatic.com/images-app/promptworks/2026-09-08/80s-flashback-a00031b0a07c584db431969185a66fa7a682675803f4be5cda3ba17c61d405eb.webp",
+                    "width_px": 888,
+                    "height_px": 666
+                }
+            ],
+            "requires_thinking": false,
+            "is_thinking": false
+        },
+        {
+            "id": "caricature",
+            "title": "Caricature",
+            "image_alt": "A smiling illustrated woman with a headlamp carries books, a stethoscope, and paint supplies against a blue sky.",
+            "variants": [
+                {
+                    "format": "webp",
+                    "url": "https://persistent.oaistatic.com/images-app/promptworks/2026-10-02/caricature-32705045db0710f0d140c562c82cd424c0d0a4cb4cbcf546a9cd9e8b278bdee3.webp",
+                    "width_px": 888,
+                    "height_px": 668
+                }
+            ],
+            "requires_thinking": false,
+            "is_thinking": false
+        },
+        {
+            "id": "photo-booth",
+            "title": "Photo booth",
+            "image_alt": "Three overlapping black-and-white photo booth strips show a woman and a man smiling and posing.",
+            "variants": [
+                {
+                    "format": "webp",
+                    "url": "https://persistent.oaistatic.com/images-app/promptworks/2026-09-30/photo-booth-afb1f5541d9765123efa3f17cf069e4f62f635e639bd8463d1a3976a9433baa8.webp",
+                    "width_px": 888,
+                    "height_px": 666
+                }
+            ],
+            "requires_thinking": false,
+            "is_thinking": false
+        },
+        {
+            "id": "y2k",
+            "title": "Y2K digicam",
+            "image_alt": "A woman with tinted glasses, headphones, and a pink tracksuit holds a portable CD player.",
+            "variants": [
+                {
+                    "format": "webp",
+                    "url": "https://persistent.oaistatic.com/images-app/promptworks/2026-09-30/y2k-c83c217f3d66d6330f707c270ae4e4f2446f8716c94e29788606288649151db5.webp",
+                    "width_px": 888,
+                    "height_px": 668
+                }
+            ],
+            "requires_thinking": false,
+            "is_thinking": false
+        },
+        {
+            "id": "anime",
+            "title": "Anime",
+            "variants": [
+                {
+                    "format": "webp",
+                    "url": "https://persistent.oaistatic.com/images-app/anime-sheet.webp",
+                    "width_px": 512,
+                    "height_px": 384
+                }
+            ],
+            "requires_thinking": false,
+            "is_thinking": false
+        },
+        {
+            "id": "70s",
+            "title": "70s portrait ",
+            "image_alt": "A man with aviator sunglasses and shaggy hair wears a brown jacket in a sun-faded 1970s portrait.",
+            "variants": [
+                {
+                    "format": "webp",
+                    "url": "https://persistent.oaistatic.com/images-app/promptworks/2026-09-30/70s-bc70a746219f072abdc031abae89d9083624826fe20cf80e77e613710e1ef913.webp",
+                    "width_px": 888,
+                    "height_px": 668
+                }
+            ],
+            "requires_thinking": false,
+            "is_thinking": false
+        },
+        {
+            "id": "impressionism",
+            "title": "Impressionist painting",
+            "image_alt": "An impressionist painting shows a woman looking over shimmering water at sunset.",
+            "variants": [
+                {
+                    "format": "webp",
+                    "url": "https://persistent.oaistatic.com/images-app/promptworks/2026-09-30/impressionism-8a90c0c21d2cca8fe4d5c3309d39bafb03315cbb05c2750729f9229fc57cd680.webp",
+                    "width_px": 888,
+                    "height_px": 666
+                }
+            ],
+            "requires_thinking": false,
+            "is_thinking": false
+        },
+        {
+            "id": "pin-collection",
+            "title": "Pin collection",
+            "variants": [
+                {
+                    "format": "webp",
+                    "url": "https://persistent.oaistatic.com/images-app/promptworks/2026-07-10/pin-collection-34b419410824b90fed76556057d79f55a58cfd5c4734417add1c8f28954abbf3.webp",
+                    "width_px": 888,
+                    "height_px": 668
+                }
+            ],
+            "requires_thinking": false,
+            "is_thinking": false
+        },
+        {
+            "id": "underwater",
+            "title": "Underwater",
+            "variants": [
+                {
+                    "format": "webp",
+                    "url": "https://persistent.oaistatic.com/images-app/underwater-sheet.webp",
+                    "width_px": 512,
+                    "height_px": 384
+                }
+            ],
+            "requires_thinking": false,
+            "is_thinking": false
+        },
+        {
+            "id": "3d-avatar",
+            "title": "3D avatar",
+            "variants": [
+                {
+                    "format": "webp",
+                    "url": "https://persistent.oaistatic.com/images-app/3d-avatar-sheet.webp",
+                    "width_px": 512,
+                    "height_px": 384
+                }
+            ],
+            "requires_thinking": false,
+            "is_thinking": false
+        },
+        {
+            "id": "acrylic",
+            "title": "Acrylic painting ",
+            "image_alt": "A gray dog sits among orange cushions in a bright, flat acrylic painting.",
+            "variants": [
+                {
+                    "format": "webp",
+                    "url": "https://persistent.oaistatic.com/images-app/promptworks/2026-09-30/acrylic-fd94a9623f976f198b81481543db5f65a3258ce5dee1434de0cc782ad9b7f25a.webp",
+                    "width_px": 1024,
+                    "height_px": 770
+                }
+            ],
+            "requires_thinking": false,
+            "is_thinking": false
+        },
+        {
+            "id": "felt",
+            "title": "Felted miniature",
+            "image_alt": "Two needle-felted figures in white and pink headscarves sit at a table with small bowls.",
+            "variants": [
+                {
+                    "format": "webp",
+                    "url": "https://persistent.oaistatic.com/images-app/promptworks/2026-09-30/felt-2d344687da002475665d73044e8e231076f6e442bc2c3af80ea5f52637acaebb.webp",
+                    "width_px": 888,
+                    "height_px": 666
+                }
+            ],
+            "requires_thinking": false,
+            "is_thinking": false
+        },
+        {
+            "id": "tarot",
+            "title": "Tarot card",
+            "variants": [
+                {
+                    "format": "webp",
+                    "url": "https://persistent.oaistatic.com/images-app/tarot-sheet.webp",
+                    "width_px": 512,
+                    "height_px": 384
+                }
+            ],
+            "requires_thinking": false,
+            "is_thinking": false
+        },
+        {
+            "id": "statue",
+            "title": "Statue",
+            "variants": [
+                {
+                    "format": "webp",
+                    "url": "https://persistent.oaistatic.com/images-app/statue-sheet.webp",
+                    "width_px": 512,
+                    "height_px": 384
+                }
+            ],
+            "requires_thinking": false,
+            "is_thinking": false
+        },
+        {
+            "id": "claymation",
+            "title": "Claymation world",
+            "image_alt": "A handmade clay figure in a gray hoodie and black vest stands on a city sidewalk at night.",
+            "variants": [
+                {
+                    "format": "webp",
+                    "url": "https://persistent.oaistatic.com/images-app/promptworks/2026-09-30/claymation-8dc8d845f2b2055bbf733ac6d3198da20ce189bcd5fea80081777bf22d451a68.webp",
+                    "width_px": 888,
+                    "height_px": 668
+                }
+            ],
+            "requires_thinking": false,
+            "is_thinking": false
+        },
+        {
+            "id": "sprue-card",
+            "title": "Model kit",
+            "image_alt": "A green plastic model-kit sprue holds a person, city skyline, streetlamp, bicycle, and planter.",
+            "variants": [
+                {
+                    "format": "webp",
+                    "url": "https://persistent.oaistatic.com/images-app/promptworks/2026-09-30/sprue-card-5d286404f357929d1af0b7bb053bc80ddd6b3af1a40acc4854f46f2fe8216c31.webp",
+                    "width_px": 888,
+                    "height_px": 666
+                }
+            ],
+            "requires_thinking": false,
+            "is_thinking": false
+        },
+        {
+            "id": "8-bit",
+            "title": "16-bit arcade ",
+            "image_alt": "A pixel-art fighter in a red jacket and blue trousers poses on a neon-lit 16-bit arcade stage.",
+            "variants": [
+                {
+                    "format": "webp",
+                    "url": "https://persistent.oaistatic.com/images-app/promptworks/2026-09-30/8-bit-01eba4a7418ca463afb19b8160d7637be348bc2d6f9e8f55f87193121aa1cf68.webp",
+                    "width_px": 888,
+                    "height_px": 666
+                }
+            ],
+            "requires_thinking": false,
+            "is_thinking": false
+        },
+        {
+            "id": "white-lines",
+            "title": "Handwritten style",
+            "variants": [
+                {
+                    "format": "webp",
+                    "url": "https://persistent.oaistatic.com/images-app/white-lines-sheet.webp",
+                    "width_px": 888,
+                    "height_px": 666
+                }
+            ],
+            "requires_thinking": false,
+            "is_thinking": false
+        },
+        {
+            "id": "makeup-analysis",
+            "title": "Makeup guide",
+            "variants": [
+                {
+                    "format": "webp",
+                    "url": "https://persistent.oaistatic.com/images-app/makeup-analysis-sheet.webp",
+                    "width_px": 888,
+                    "height_px": 666
+                }
+            ],
+            "requires_thinking": false,
+            "is_thinking": false
+        },
+        {
+            "id": "scribble",
+            "title": "Scribble",
+            "variants": [
+                {
+                    "format": "webp",
+                    "url": "https://persistent.oaistatic.com/images-app/scribble-sheet.webp",
+                    "width_px": 888,
+                    "height_px": 666
+                }
+            ],
+            "requires_thinking": false,
+            "is_thinking": false
+        },
+        {
+            "id": "bobblehead",
+            "title": "Your bobblehead ",
+            "image_alt": "A smiling plastic bobblehead with pink curly hair and a striped shirt stands on a black base on a city street.",
+            "variants": [
+                {
+                    "format": "webp",
+                    "url": "https://persistent.oaistatic.com/images-app/promptworks/2026-09-30/bobblehead-7a2b94522f03cfa193d080b5daea01ec5faf1fb9fc103c8b64d063517faadba8.webp",
+                    "width_px": 888,
+                    "height_px": 666
+                }
+            ],
+            "requires_thinking": false,
+            "is_thinking": false
+        },
+        {
+            "id": "mini-me-global",
+            "title": "Mini me",
+            "variants": [
+                {
+                    "format": "webp",
+                    "url": "https://persistent.oaistatic.com/images-app/mini-me-global-sheet.webp",
+                    "width_px": 888,
+                    "height_px": 666
+                }
+            ],
+            "requires_thinking": false,
+            "is_thinking": false
+        },
+        {
+            "id": "cross-section",
+            "title": "Cross-section",
+            "variants": [
+                {
+                    "format": "webp",
+                    "url": "https://persistent.oaistatic.com/images-app/cross-section-sheet.webp",
+                    "width_px": 888,
+                    "height_px": 666
+                }
+            ],
+            "requires_thinking": false,
+            "is_thinking": false
+        },
+        {
+            "id": "enhance",
+            "title": "Enhance photos",
+            "variants": [
+                {
+                    "format": "webp",
+                    "url": "https://persistent.oaistatic.com/images-app/enhance-sheet.webp",
+                    "width_px": 512,
+                    "height_px": 384
+                }
+            ],
+            "requires_thinking": false,
+            "is_thinking": false
+        },
+        {
+            "id": "postcard",
+            "title": "Wanderlust",
+            "variants": [
+                {
+                    "format": "webp",
+                    "url": "https://persistent.oaistatic.com/images-app/wanderlust-postcard-sheet.webp",
+                    "width_px": 888,
+                    "height_px": 666
+                }
+            ],
+            "requires_thinking": false,
+            "is_thinking": false
+        },
+        {
+            "id": "flash",
+            "title": "Nighttime flash",
+            "variants": [
+                {
+                    "format": "webp",
+                    "url": "https://persistent.oaistatic.com/images-app/flash-sheet.webp",
+                    "width_px": 512,
+                    "height_px": 384
+                }
+            ],
+            "requires_thinking": false,
+            "is_thinking": false
+        },
+        {
+            "id": "blueprint",
+            "title": "Blueprint poster",
+            "variants": [
+                {
+                    "format": "webp",
+                    "url": "https://persistent.oaistatic.com/images-app/blueprint-sheet.webp",
+                    "width_px": 512,
+                    "height_px": 384
+                }
+            ],
+            "requires_thinking": false,
+            "is_thinking": false
+        },
+        {
+            "id": "color-analysis",
+            "title": "Color analysis",
+            "variants": [
+                {
+                    "format": "webp",
+                    "url": "https://persistent.oaistatic.com/images-app/color-analysis-new.webp",
+                    "width_px": 512,
+                    "height_px": 384
+                }
+            ],
+            "requires_thinking": false,
+            "is_thinking": false
+        },
+        {
+            "id": "comic",
+            "title": "Comic",
+            "variants": [
+                {
+                    "format": "webp",
+                    "url": "https://persistent.oaistatic.com/images-app/comic-sheet.webp",
+                    "width_px": 512,
+                    "height_px": 384
+                }
+            ],
+            "requires_thinking": false,
+            "is_thinking": false
+        },
+        {
+            "id": "anime-comic",
+            "title": "Anime comic",
+            "variants": [
+                {
+                    "format": "webp",
+                    "url": "https://persistent.oaistatic.com/images-app/anime-comic-sheet.webp",
+                    "width_px": 888,
+                    "height_px": 666
+                }
+            ],
+            "requires_thinking": false,
+            "is_thinking": false
+        },
+        {
+            "id": "fantasy-newspaper",
+            "title": "Fantasy newspaper",
+            "variants": [
+                {
+                    "format": "webp",
+                    "url": "https://persistent.oaistatic.com/images-app/fantasy-newspaper-sheet.webp",
+                    "width_px": 512,
+                    "height_px": 384
+                }
+            ],
+            "requires_thinking": false,
+            "is_thinking": false
+        },
+        {
+            "id": "film-strip",
+            "title": "Film strip",
+            "variants": [
+                {
+                    "format": "webp",
+                    "url": "https://persistent.oaistatic.com/images-app/film-strip-sheet.webp",
+                    "width_px": 512,
+                    "height_px": 384
+                }
+            ],
+            "requires_thinking": false,
+            "is_thinking": false
+        },
+        {
+            "id": "hyper-real",
+            "title": "Hyperreal wallpaper",
+            "variants": [
+                {
+                    "format": "webp",
+                    "url": "https://persistent.oaistatic.com/images-app/hyper-real-sheet.webp",
+                    "width_px": 512,
+                    "height_px": 384
+                }
+            ],
+            "requires_thinking": false,
+            "is_thinking": false
+        },
+        {
+            "id": "plushie-2",
+            "title": "Plushie",
+            "variants": [
+                {
+                    "format": "webp",
+                    "url": "https://persistent.oaistatic.com/images-app/plushie.webp",
+                    "width_px": 341,
+                    "height_px": 512
+                }
+            ],
+            "requires_thinking": false,
+            "is_thinking": false
+        },
+        {
+            "id": "palm-reading",
+            "title": "Palm reading",
+            "variants": [
+                {
+                    "format": "webp",
+                    "url": "https://persistent.oaistatic.com/images-app/palm-reading-sheet.webp",
+                    "width_px": 512,
+                    "height_px": 384
+                }
+            ],
+            "requires_thinking": false,
+            "is_thinking": false
+        }
+    ],
+    "image_suggestions": [
+        {
+            "id": "anime-reaction",
+            "title": "Anime reaction GIF",
+            "description": "Make ’90s anime reaction GIFs",
+            "prompt_text": "Create a seamless looping GIF of the uploaded subjects in 90s anime style: expressive eyes, simplified facial shapes, flat cel-shading, soft colors. Begin fully stylized, already reacting. Smoothly intensify a wildly exaggerated peak emotion, allowing expression-specific facial distortion and playful visual effects. Then soften slightly back to the starting pose, never neutral, forming a seamless loop. Ease into the peak and recovery. Keep identity, line-work, and framing consistent. No photorealism. First ask, “How do you want to react?” and offer emoji choices.",
+            "image_url": "https://persistent.oaistatic.com/images-app/promptworks/2026-11-05/anime-reaction-a4d03da6dd758476ce894a37a40e3ccd06a2cab0def66b5c37207b9da150199a.webp",
+            "image_alt": "An orange-haired anime character in a blue shirt clasps their hands under their chin, with pink heart-shaped eyes, floating hearts, and sparkles.",
+            "requires_thinking": false,
+            "system_hints": [
+                "picture_v2"
+            ],
+            "action": {
+                "input_requirements": {
+                    "who": "none",
+                    "source": "camera_or_gallery"
+                },
+                "strategy": "auto_send",
+                "user_hint": ""
+            },
+            "is_thinking": false
+        },
+        {
+            "id": "drone-view",
+            "title": "Aerial view",
+            "description": "See the scene from high above",
+            "prompt_text": "Transform this picture to a drone view angle.",
+            "prompt_hints": [
+                "Photo of a person or pet"
+            ],
+            "image_url": "https://persistent.oaistatic.com/images-app/promptworks/2026-10-02/drone-view-ada14b68403f230a0210b2dee6ff8353f52a5632e06cfb38f55048a1990853b6.webp",
+            "image_alt": "A small tan and white dog looks up from the center of a green lawn, photographed from directly overhead.",
+            "requires_thinking": false,
+            "system_hints": [
+                "picture_v2"
+            ],
+            "action": {
+                "input_requirements": {
+                    "who": "none",
+                    "source": "camera_or_gallery"
+                },
+                "strategy": "auto_send",
+                "user_hint": ""
+            },
+            "is_thinking": false
+        },
+        {
+            "id": "collectors-tin",
+            "title": "Collector’s tin",
+            "description": "Fill a tin with what you love",
+            "prompt_text": "Using a rectangular collector’s tin, fill both sides with objects that are uniquely me, based only on what you know about me, and paint it with my favorite color.",
+            "prompt_hints": [
+                "Photo of a person participating in a hobby or unique activity"
+            ],
+            "image_url": "https://persistent.oaistatic.com/images-app/promptworks/2026-10-03/collectors-tin-31391d96e4f005b1bebdd4b3c266513aa8964303352764954dc583c60ce15e4e.webp",
+            "image_alt": "An open collector’s tin holds photographs, a camera, binoculars, flowers, paints, a pencil, and a small knitted figure against a pale green background.",
+            "requires_thinking": false,
+            "system_hints": [
+                "picture_v2"
+            ],
+            "action": {
+                "input_requirements": {
+                    "who": "none",
+                    "source": "prompt_only"
+                },
+                "strategy": "auto_send",
+                "user_hint": ""
+            },
+            "is_thinking": false
+        },
+        {
+            "id": "80s-flashback",
+            "title": "’80s flashback",
+            "description": "Give your photos an ’80s look",
+            "prompt_text": "Using my uploaded photo, show me what I would have looked like around 1985. Preserve my identity, facial features, skin tone, age, and recognizable appearance.  Reimagine my hair, clothing, accessories, and surroundings with bold, unmistakably mid-1980s styling—expressive silhouettes, statement accessories, layered details, distinctive colors, and textures. Make it feel like a genuine 1985 photograph with analog grain, faded color, direct flash, and subtle softness. Add a period-accurate 1980s red-orange date stamp in the lower corner. No recognizable posters. No modern objects or text.",
+            "prompt_hints": [
+                "Photo of a person in the foreground, full body"
+            ],
+            "image_url": "https://persistent.oaistatic.com/images-app/promptworks/2026-09-08/80s-flashback-a00031b0a07c584db431969185a66fa7a682675803f4be5cda3ba17c61d405eb.webp",
+            "image_alt": "A smiling woman in black sunglasses, bright pink hoop earrings, a pink mesh top, and an oversized denim jacket poses in front of indoor plants. A red-orange date stamp reads “85 7 21” in the lower-right corner.",
+            "requires_thinking": false,
+            "system_hints": [
+                "picture_v2"
+            ],
+            "action": {
+                "input_requirements": {
+                    "who": "none",
+                    "source": "camera_or_gallery"
+                },
+                "strategy": "auto_send",
+                "user_hint": ""
+            },
+            "is_thinking": false
+        },
+        {
+            "id": "caricature",
+            "title": "Caricature",
+            "description": "Create a caricature",
+            "prompt_text": "Create a caricature of me based off what you know about me and my interests. Make it whimsical and exaggerated, with oversized facial features, bold lines, humorous expressions, a loose cartoon-like look and minimal text.",
+            "prompt_hints": [
+                "Photo of a person as the foreground"
+            ],
+            "image_url": "https://persistent.oaistatic.com/images-app/promptworks/2026-10-02/caricature-32705045db0710f0d140c562c82cd424c0d0a4cb4cbcf546a9cd9e8b278bdee3.webp",
+            "image_alt": "A smiling illustrated woman with a headlamp carries books, a stethoscope, and paint supplies against a blue sky.",
+            "requires_thinking": false,
+            "system_hints": [
+                "picture_v2"
+            ],
+            "is_thinking": false
+        },
+        {
+            "id": "sketch",
+            "title": "Sketch",
+            "description": "Start with a sketch",
+            "prompt_text": "Create an original artwork inspired by the attached sketch. Preserve its subject, emotion, and gesture—not its exact strokes or shapes. Boldly reimagine its forms, proportions, colors, materials, and details. Never trace or retain the original lines; integrate their ideas naturally through texture, lighting, and color. For simple sketches, invent a richer interpretation. Ask me about preferred artistic style with a few options.",
+            "image_url": "https://persistent.oaistatic.com/images-app/promptworks/2026-10-02/sketch-d7b1709f2b3a7a60e79fa8bfbe7c843c18f27f4c6a221fc5c0ecf6d18d3a1fe2.webp",
+            "image_alt": "Simple sketch of a flower with an orange center, green stem and leaves, and a bee.",
+            "requires_thinking": false,
+            "system_hints": [
+                "picture_v2"
+            ],
+            "action": {
+                "input_requirements": {
+                    "who": "none",
+                    "source": "sketch"
+                },
+                "strategy": "prefill_composer",
+                "user_hint": ""
+            },
+            "is_thinking": false
+        },
+        {
+            "id": "stickers",
+            "title": "Stickers",
+            "description": "Create a custom sticker pack",
+            "prompt_text": "Create a Meme sticker pack based on the images attached, remixing with 😎😛💕🚀🥳. Use exaggerated internet-reaction expressions, including crying, confusion, shock, smugness, side-eye, and deadpan disbelief, with awkward poses, low-fi cutout textures, and absurd humor.\n\nCreate a single square(1:1) transparent sticker sheet with nine distinct stickers arranged in a 3×3 grid, each showing a different expression, pose, or reaction. Separate the stickers with wide, fully transparent gaps. No background, shadows, or overlapping elements.",
+            "image_url": "https://persistent.oaistatic.com/images-app/promptworks/2026-07-29/stickers-18de392f7686bfb1d3099d5196f05a69f915a95c3078b1f3f8d618dba2a21cae.webp",
+            "image_alt": "A colorful collection of illustrated stickers.",
+            "requires_thinking": false,
+            "system_hints": [
+                "picture_v2"
+            ],
+            "template": {
+                "kind": "madlib",
+                "data": {
+                    "editor_text": "Create a ${style} sticker pack based on ${subject}, remixing with ${emojis}.",
+                    "prompt_suffix": "Create a single square(1:1) transparent sticker sheet with nine distinct stickers arranged in a 3×3 grid, each showing a different expression, pose, or reaction. Separate the stickers with wide, fully transparent gaps. No background, shadows, or overlapping elements.",
+                    "parameters": [
+                        {
+                            "parameter_id": "style",
+                            "kind": "visual_choice",
+                            "default_asset_id": "3d",
+                            "allow_custom_text": false,
+                            "options": [
+                                {
+                                    "asset_id": "3d",
+                                    "label": "3D",
+                                    "prompt_text": "Use rounded, toy-like forms, smooth polished materials, soft studio lighting, subtle ambient occlusion",
+                                    "image_url": "https://persistent.oaistatic.com/images-app/promptworks/2026-08-26/3d-6f5bb50a1034bb444f197095a61570faafac03548c45bd6c91c8f5ac0bd82835.webp"
+                                },
+                                {
+                                    "asset_id": "hand-drawn",
+                                    "label": "Hand-drawn",
+                                    "prompt_text": "Use loose imperfect outlines, varied line weight, simple hand-filled colors, and visible handmade marks.",
+                                    "image_url": "https://persistent.oaistatic.com/images-app/promptworks/2026-08-26/hand-drawn-c7041a527f84eb7f01ac75c22195dee7a3b8987d98b34ecb154474eac64c6d69.webp"
+                                },
+                                {
+                                    "asset_id": "chibi",
+                                    "label": "Chibi",
+                                    "prompt_text": "Use an oversized head, tiny body, short rounded limbs, exaggerated expressions, and crisp cel shading.",
+                                    "image_url": "https://persistent.oaistatic.com/images-app/promptworks/2026-08-26/chibi-f0022a97f3ad99dfff52e0d7a6cc2602c0b953340d357d2af6c5b2c56b540100.webp"
+                                },
+                                {
+                                    "asset_id": "meme",
+                                    "label": "Meme",
+                                    "prompt_text": "Use exaggerated internet-reaction expressions, including crying, confusion, shock, smugness, side-eye, and deadpan disbelief, with awkward poses, low-fi cutout textures, and absurd humor.",
+                                    "image_url": "https://persistent.oaistatic.com/images-app/promptworks/2026-08-26/meme-08f4af4725dab1d2272ba234f82d65e91b043decaa59bf0615d0f5a3579d7570.webp"
+                                },
+                                {
+                                    "asset_id": "holographic",
+                                    "label": "Holographic",
+                                    "prompt_text": "Use an iridescent holographic-foil treatment with controlled rainbow reflections, prismatic highlights, and crisp reflective accents while keeping the subject clearly readable.",
+                                    "image_url": "https://persistent.oaistatic.com/images-app/promptworks/2026-08-26/holographic-fd5a4357d64f9a426098ece387e1520e99ba392c7cc2d693a8a0364092cf56a2.webp"
+                                },
+                                {
+                                    "asset_id": "chrome",
+                                    "label": "Chrome",
+                                    "prompt_text": "Use rounded beveled forms, polished silver-chrome surfaces, smooth liquid-metal contours, crisp reflected highlights, and restrained Y2K styling.",
+                                    "image_url": "https://persistent.oaistatic.com/images-app/promptworks/2026-08-26/chrome-828856eff5646b15ade9de767d7dfa9178e6935baeb01295970eb13f646f3603.webp"
+                                },
+                                {
+                                    "asset_id": "comic-book",
+                                    "label": "Comic Book",
+                                    "prompt_text": "Use heavy black inks, varied line weight, dramatic contrast, limited cel-shaded colors, halftone shadows, and energetic action accents.",
+                                    "image_url": "https://persistent.oaistatic.com/images-app/promptworks/2026-08-26/comic-book-a29e846e870b0e8856f8e2f051fd43587c7ef7fac2e15107fb88921f2d2133c8.webp"
+                                },
+                                {
+                                    "asset_id": "anime",
+                                    "label": "Anime",
+                                    "prompt_text": "Use crisp linework, expressive facial features, clean cel shading, controlled highlights, and dynamic readable poses.",
+                                    "image_url": "https://persistent.oaistatic.com/images-app/promptworks/2026-08-26/anime-2e9fd4d56f68d6383f3782e46a0ad76e8e4e1f7c933e251da26bcb958fc943f9.webp"
+                                },
+                                {
+                                    "asset_id": "clay",
+                                    "label": "Clay",
+                                    "prompt_text": "Use soft sculpted forms, rounded proportions, matte clay surfaces, subtle fingerprints, handmade texture, and gentle shadows.",
+                                    "image_url": "https://persistent.oaistatic.com/images-app/promptworks/2026-08-26/clay-f455715e15da0c88a778573cc82ddc7e3e9f0bdc26f35d1a5e0b80caedd95541.webp"
+                                },
+                                {
+                                    "asset_id": "pixel-art",
+                                    "label": "Pixel Art",
+                                    "prompt_text": "Use authentic 16-bit pixel art, a limited palette, hard-edged pixel clusters, stepped shading, and no antialiasing or smooth gradients.",
+                                    "image_url": "https://persistent.oaistatic.com/images-app/promptworks/2026-08-26/pixel-art-0ab6523864805c7ef946a9d6f4d28aaa5d7cfd796c720e41fb08dab76d971e7e.webp"
+                                },
+                                {
+                                    "asset_id": "kawaii",
+                                    "label": "Kawaii",
+                                    "prompt_text": "Use soft rounded shapes, tiny facial features, rosy cheeks, simple expressions, minimal detail, and gentle pastel colors.",
+                                    "image_url": "https://persistent.oaistatic.com/images-app/promptworks/2026-08-26/kawaii-71cc991d440be09cba2556e0f0b9b4a08b0c4982f4be0a27cc42444d0e57888a.webp"
+                                },
+                                {
+                                    "asset_id": "retro",
+                                    "label": "Retro",
+                                    "prompt_text": "Use playful 1970s-inspired illustration, warm muted colors, chunky rounded shapes, bold outlines, simple geometric accents, and subtle print grain.",
+                                    "image_url": "https://persistent.oaistatic.com/images-app/promptworks/2026-08-26/retro-7ed7bfc177896a1ae71edd093494703f2b53f6ab0f7cbcdd3bf98a9e0673d410.webp"
+                                },
+                                {
+                                    "asset_id": "watercolor",
+                                    "label": "Watercolor",
+                                    "prompt_text": "Use translucent watercolor washes, soft pigment blooms, natural color variation, and subtle paper texture while maintaining a clearly defined silhouette.",
+                                    "image_url": "https://persistent.oaistatic.com/images-app/promptworks/2026-08-26/watercolor-d2c8acfa19696ed083fcc794594b34ac098dd47eff38a87618a71806c089958c.webp"
+                                },
+                                {
+                                    "asset_id": "minimal",
+                                    "label": "Minimal",
+                                    "prompt_text": "Use simple geometric forms, a tightly limited palette, consistent clean lines, generous negative space, and only essential identifying details.",
+                                    "image_url": "https://persistent.oaistatic.com/images-app/promptworks/2026-08-26/minimal-3f25fb4f1c2d98214fc7b74ea3d715679c7086f2c05f80768bd38d49d078e9af.webp"
+                                },
+                                {
+                                    "asset_id": "riso-print",
+                                    "label": "Riso Print",
+                                    "prompt_text": "Use two to four bold spot colors, visible halftone grain, flat ink coverage, intentional color overlap, and slight misregistration.",
+                                    "image_url": "https://persistent.oaistatic.com/images-app/promptworks/2026-08-26/riso-print-27319bef68f829e525c635a2537b3d2837c1842e2a335cc844ea1c5b79fef275.webp"
+                                },
+                                {
+                                    "asset_id": "paper-cut",
+                                    "label": "Paper Cut",
+                                    "prompt_text": "Use layered cut-paper shapes, simplified contours, slightly handmade edges, visible layer separation, and soft dimensional shadows.",
+                                    "image_url": "https://persistent.oaistatic.com/images-app/promptworks/2026-08-26/paper-cut-c466a58ac6ed0199070a534727d1c6da4b7ba23c40006ef70395a1b3fc78c2a1.webp"
+                                },
+                                {
+                                    "asset_id": "embroidered",
+                                    "label": "Embroidered",
+                                    "prompt_text": "Use dense layered stitching, visible thread direction, simplified color regions, tactile fabric texture, and a finished embroidered-patch edge.",
+                                    "image_url": "https://persistent.oaistatic.com/images-app/promptworks/2026-08-26/embroidered-729d76478cd7c35e88cc988ec71e3160f2b1445a8e5f820910d5bac201e7c4d1.webp"
+                                },
+                                {
+                                    "asset_id": "graffiti",
+                                    "label": "Graffiti",
+                                    "prompt_text": "Use bold spray-painted contours, saturated colors, aerosol texture, controlled splatters and drips, and energetic street-art shapes.",
+                                    "image_url": "https://persistent.oaistatic.com/images-app/promptworks/2026-08-26/graffiti-275dab3ddb4c1137370e748204f73a9d8e8f2b602b05dc3fe7a253de1b52c25b.webp"
+                                },
+                                {
+                                    "asset_id": "traditional-tattoo",
+                                    "label": "Traditional Tattoo",
+                                    "prompt_text": "Use American traditional tattoo styling with heavy black outlines, simplified iconic shapes, minimal black shading, and a classic limited color palette.",
+                                    "image_url": "https://persistent.oaistatic.com/images-app/promptworks/2026-08-26/traditional-tattoo-d898666e05b126dcf33191483e184ced244ceee3c6f980895b0fbefa00a1cc19.webp"
+                                }
+                            ]
+                        },
+                        {
+                            "parameter_id": "subject",
+                            "kind": "image_upload",
+                            "required": true,
+                            "allow_custom_text": true,
+                            "sources": [
+                                "camera",
+                                "gallery"
+                            ],
+                            "max_count": 6
+                        },
+                        {
+                            "parameter_id": "emojis",
+                            "kind": "emoji_choice",
+                            "required": true,
+                            "default_emojis": [
+                                "🤓",
+                                "🌈",
+                                "🚀",
+                                "👽"
+                            ]
+                        }
+                    ]
+                }
+            },
+            "is_thinking": false
+        },
+        {
+            "id": "photo-booth",
+            "title": "Photo booth",
+            "description": "Make analog photo strips",
+            "prompt_text": "Using my uploaded portrait as the identity reference, create a photo-booth collage: three black and white vertical strips side by side misaligned, four photos in each strip, each strip slightly tilted to overlap in a 9:16 composition. Preserve the subjects’ facial identity, outfits, and hairstyles. Poses and expressions are varied, fun, and silly. Some photos have people partially cropped, completely cropped, switching places, closer to camera. Use harsh direct flash, extreme contrast, crushed blacks, blown whites, few midtones, and lost detail. Add coarse film grain, overexposure, thick black borders, and very light wear. Analog booth print.",
+            "prompt_hints": [
+                "Photo of a few people having a good time"
+            ],
+            "image_url": "https://persistent.oaistatic.com/images-app/promptworks/2026-09-30/photo-booth-afb1f5541d9765123efa3f17cf069e4f62f635e639bd8463d1a3976a9433baa8.webp",
+            "image_alt": "Three overlapping black-and-white photo booth strips show a woman and a man smiling and posing.",
+            "requires_thinking": false,
+            "system_hints": [
+                "picture_v2"
+            ],
+            "action": {
+                "input_requirements": {
+                    "who": "none",
+                    "source": "camera_or_gallery"
+                },
+                "strategy": "auto_send",
+                "user_hint": ""
+            },
+            "is_thinking": false
+        },
+        {
+            "id": "y2k",
+            "title": "Y2K digicam",
+            "description": "Get a flash-lit Y2K photo",
+            "prompt_text": "Preserve the subject’s likeness and surroundings from the reference image, restyled as a candid early-2000s digital camera snapshot: era-appropriate sunglasses and accessories, dated fashion, exaggerated early-2000s hairstyle, and environmental details updated to match. Direct on-camera flash, uneven exposure, slightly blown-out skin highlights, hard shadows, and darker indoor backgrounds, low contrast outdoor backgrounds. Soft focus, faint digital noise in the shadows, and subtle JPEG compression. Casual, slightly awkward framing. Image only, no time or date stamps.",
+            "prompt_hints": [
+                "Photo of a person"
+            ],
+            "image_url": "https://persistent.oaistatic.com/images-app/promptworks/2026-09-30/y2k-c83c217f3d66d6330f707c270ae4e4f2446f8716c94e29788606288649151db5.webp",
+            "image_alt": "A woman with tinted glasses, headphones, and a pink tracksuit holds a portable CD player.",
+            "requires_thinking": false,
+            "system_hints": [
+                "picture_v2"
+            ],
+            "action": {
+                "input_requirements": {
+                    "who": "none",
+                    "source": "camera_or_gallery"
+                },
+                "strategy": "auto_send",
+                "user_hint": ""
+            },
+            "is_thinking": false
+        },
+        {
+            "id": "anime",
+            "title": "Anime",
+            "description": "See yourself in anime",
+            "prompt_text": "Create a trending anime art style image from the uploaded subject. Use confident line-work with slight variation and minimal cel shading using flat shadow shapes. Use bright, saturated colors and clean graphic lighting. The style is defined by exaggerated, cartoonish character proportions featuring highly expressive, simplistic facial features that allow for immense emotional range, with highly varied stretched anatomy. Transform the environment into a slightly warped space with playful perspective distortion and simplified objects. Composition and tone should be energetic, lively, and comedic in a fully stylized, non-realistic world.",
+            "prompt_hints": [
+                "Photo of a person making an expressive face or in a unique situation"
+            ],
+            "image_url": "https://persistent.oaistatic.com/images-app/anime-sheet.webp",
+            "requires_thinking": false,
+            "system_hints": [
+                "picture_v2"
+            ],
+            "action": {
+                "input_requirements": {
+                    "who": "none",
+                    "source": "camera_or_gallery"
+                },
+                "strategy": "auto_send",
+                "user_hint": ""
+            },
+            "is_thinking": false
+        },
+        {
+            "id": "70s",
+            "title": "70s portrait ",
+            "description": "Create a ’70s slide portrait",
+            "prompt_text": "Preserve the subject’s likeness and surroundings from the reference image, restyled as a candid 1970-1975 slide portrait: era-appropriate sunglasses and accessories, dated fashion, early-70s hair, and environmental details updated to match. Add warm faded reds, slightly crushed blacks, fine analog film grain and a soft vignette. Give it the slightly yellowed, sun-bleached tone of an old family slide, with gentle color shifts in the shadows.",
+            "prompt_hints": [
+                "Headshot or full body picture of a person"
+            ],
+            "image_url": "https://persistent.oaistatic.com/images-app/promptworks/2026-09-30/70s-bc70a746219f072abdc031abae89d9083624826fe20cf80e77e613710e1ef913.webp",
+            "image_alt": "A man with aviator sunglasses and shaggy hair wears a brown jacket in a sun-faded 1970s portrait.",
+            "requires_thinking": false,
+            "system_hints": [
+                "picture_v2"
+            ],
+            "action": {
+                "input_requirements": {
+                    "who": "none",
+                    "source": "camera_or_gallery"
+                },
+                "strategy": "auto_send",
+                "user_hint": ""
+            },
+            "is_thinking": false
+        },
+        {
+            "id": "impressionism",
+            "title": "Impressionist painting",
+            "description": "Create impressionist art",
+            "prompt_text": "Turn this photo into an impressionist painting.",
+            "prompt_hints": [
+                "Photo with a person in the foreground, with a scenic location as the background"
+            ],
+            "image_url": "https://persistent.oaistatic.com/images-app/promptworks/2026-09-30/impressionism-8a90c0c21d2cca8fe4d5c3309d39bafb03315cbb05c2750729f9229fc57cd680.webp",
+            "image_alt": "An impressionist painting shows a woman looking over shimmering water at sunset.",
+            "requires_thinking": false,
+            "system_hints": [
+                "picture_v2"
+            ],
+            "action": {
+                "input_requirements": {
+                    "who": "none",
+                    "source": "camera_or_gallery"
+                },
+                "strategy": "auto_send",
+                "user_hint": ""
+            },
+            "is_thinking": false
+        },
+        {
+            "id": "pin-collection",
+            "title": "Pin collection",
+            "description": "Create pins inspired by you",
+            "prompt_text": "Based on what you know about me and my interests, create a set of 8 hyper real illustrated enamel pins in a 4x5 image. 1 medium pin is a portrait of me, 1 small pin is a word that describes me, 1 small pin is my name. The style is bold, flat, bright colors, eye catching. If you don’t know enough about me yet, pull cues from the photo.",
+            "prompt_hints": [
+                "Photo of a person in the foreground with personal details in the background, or while participating in a hobby"
+            ],
+            "image_url": "https://persistent.oaistatic.com/images-app/promptworks/2026-07-10/pin-collection-34b419410824b90fed76556057d79f55a58cfd5c4734417add1c8f28954abbf3.webp",
+            "requires_thinking": false,
+            "system_hints": [
+                "picture_v2"
+            ],
+            "is_thinking": false
+        },
+        {
+            "id": "underwater",
+            "title": "Underwater",
+            "description": "See yourself underwater",
+            "prompt_text": "Create an extreme close-up underwater portrait after the subject has just jumped into a swimming pool or clear shallow water. Keep the mood calm, weightless, and ethereal, emphasizing light reflections. No struggle or urgency.",
+            "prompt_hints": [
+                "Headshot of a person"
+            ],
+            "image_url": "https://persistent.oaistatic.com/images-app/underwater-sheet.webp",
+            "requires_thinking": false,
+            "system_hints": [
+                "picture_v2"
+            ],
+            "action": {
+                "input_requirements": {
+                    "who": "none",
+                    "source": "camera_or_gallery"
+                },
+                "strategy": "auto_send",
+                "user_hint": ""
+            },
+            "is_thinking": false
+        },
+        {
+            "id": "3d-avatar",
+            "title": "3D avatar",
+            "description": "Create your 3D avatar",
+            "prompt_text": "Create a premium glossy 3D \"designer toy\" render of the subject(s) using the uploaded image as the only reference. Render one floating head per person (no duplication), cropped cleanly below the jaw with a visible neck and full head comfortably framed. Style: high-quality vinyl figure with ultra-smooth, simplified forms, rounded volumes, and strong glossy reflections across key facial areas. Hair should be sculpted, glossy, and stylized, with embedded playful accessories. Include oversized retro wraparound sunglasses with vibrant, matching frame/lens colors. Use strong studio lighting with pronounced highlights. Background: blue sky with soft clouds.",
+            "prompt_hints": [
+                "Headshot of a person"
+            ],
+            "image_url": "https://persistent.oaistatic.com/images-app/3d-avatar-sheet.webp",
+            "requires_thinking": false,
+            "system_hints": [
+                "picture_v2"
+            ],
+            "action": {
+                "input_requirements": {
+                    "who": "none",
+                    "source": "camera_or_gallery"
+                },
+                "strategy": "auto_send",
+                "user_hint": ""
+            },
+            "is_thinking": false
+        },
+        {
+            "id": "acrylic",
+            "title": "Acrylic painting ",
+            "description": "Make a bold acrylic painting",
+            "prompt_text": "Transform each image into a flattened, vibrant acrylic painting. Strip each object to solid color with simplified forms. No shading, no shadows, no gradients. Add hand-painted texture with imperfect outlines and wobbly edges. Minimal details.",
+            "prompt_hints": [
+                "Photo of a pet in the foreground"
+            ],
+            "image_url": "https://persistent.oaistatic.com/images-app/promptworks/2026-09-30/acrylic-fd94a9623f976f198b81481543db5f65a3258ce5dee1434de0cc782ad9b7f25a.webp",
+            "image_alt": "A gray dog sits among orange cushions in a bright, flat acrylic painting.",
+            "requires_thinking": false,
+            "system_hints": [
+                "picture_v2"
+            ],
+            "action": {
+                "input_requirements": {
+                    "who": "none",
+                    "source": "camera_or_gallery"
+                },
+                "strategy": "auto_send",
+                "user_hint": ""
+            },
+            "is_thinking": false
+        },
+        {
+            "id": "felt",
+            "title": "Felted miniature",
+            "description": "Create a needle-felted world",
+            "prompt_text": "Transform the uploaded photo into a Needle Felted Fiber Art. Handcrafted needle-felted wool miniature style, simplified rounded forms, minimal facial details, soft fuzzy fibers, visible wool texture, cozy handmade imperfections, plush felt dolls, miniature diorama, warm soft lighting, charming stop-motion aesthetic.",
+            "prompt_hints": [
+                "Photo of one or two friends, smiling in the foreground, having a good time"
+            ],
+            "image_url": "https://persistent.oaistatic.com/images-app/promptworks/2026-09-30/felt-2d344687da002475665d73044e8e231076f6e442bc2c3af80ea5f52637acaebb.webp",
+            "image_alt": "Two needle-felted figures in white and pink headscarves sit at a table with small bowls.",
+            "requires_thinking": false,
+            "system_hints": [
+                "picture_v2"
+            ],
+            "action": {
+                "input_requirements": {
+                    "who": "none",
+                    "source": "camera_or_gallery"
+                },
+                "strategy": "auto_send",
+                "user_hint": ""
+            },
+            "is_thinking": false
+        },
+        {
+            "id": "tarot",
+            "title": "Tarot card",
+            "description": "Get your personal tarot card",
+            "prompt_text": "Create a tarot card based off of what you know about me in the classic Rider-Waite style. Style me in a hand-drawn figure using bold but imperfect black ink linework with wobble and variation, flat colors with no shading. Layer subtle tarot visual elements around the figure. Add paper texture and print feel.",
+            "prompt_hints": [
+                "Portrait photo of a person"
+            ],
+            "image_url": "https://persistent.oaistatic.com/images-app/tarot-sheet.webp",
+            "requires_thinking": false,
+            "system_hints": [
+                "picture_v2"
+            ],
+            "action": {
+                "input_requirements": {
+                    "who": "none",
+                    "source": "camera_or_gallery"
+                },
+                "strategy": "auto_send",
+                "user_hint": ""
+            },
+            "is_thinking": false
+        },
+        {
+            "id": "statue",
+            "title": "Statue",
+            "description": "Turn into a marble statue",
+            "prompt_text": "Create a detailed neoclassical Greek white Carrara marble statue honoring the uploaded image. If the image has a person, depict the person in the statue as a powerful allegorical figure in motion, with flowing garments, a confident pose, and a serious expression. If it is not a person, do not add a person. Include elements from the photo to give the statue personality and non-generic historical artifacts based on what you know about me. Set in a museum hall. Photorealistic with medium depth of field, natural perspective, and warm museum lighting casting dramatic, realistic shadows.",
+            "prompt_hints": [
+                "Photo of a person or pet in the foreground"
+            ],
+            "image_url": "https://persistent.oaistatic.com/images-app/statue-sheet.webp",
+            "requires_thinking": false,
+            "system_hints": [
+                "picture_v2"
+            ],
+            "action": {
+                "input_requirements": {
+                    "who": "none",
+                    "source": "camera_or_gallery"
+                },
+                "strategy": "auto_send",
+                "user_hint": ""
+            },
+            "is_thinking": false
+        },
+        {
+            "id": "claymation",
+            "title": "Claymation world",
+            "description": "Create a handmade clay world",
+            "prompt_text": "Transform the uploaded subject and environment into a handcrafted claymation stop-motion world. Preserve identity, pose, wardrobe, environment and composition in a playful sculpted execution. Give the face a clear, animated, characterful expression rather than a neutral photographic one. Model skin, hair, clothing, objects, and scenery from matte plasticine with visible fingerprints, sculpting marks, uneven edges, chunky forms, and handmade imperfections. Use miniature studio lighting and physical depth. It should look like a real photographed stop-motion set, not smooth CGI.",
+            "prompt_hints": [
+                "Photo with a person as the main subject, in the foreground"
+            ],
+            "image_url": "https://persistent.oaistatic.com/images-app/promptworks/2026-09-30/claymation-8dc8d845f2b2055bbf733ac6d3198da20ce189bcd5fea80081777bf22d451a68.webp",
+            "image_alt": "A handmade clay figure in a gray hoodie and black vest stands on a city sidewalk at night.",
+            "requires_thinking": false,
+            "system_hints": [
+                "picture_v2"
+            ],
+            "action": {
+                "input_requirements": {
+                    "who": "none",
+                    "source": "camera_or_gallery"
+                },
+                "strategy": "auto_send",
+                "user_hint": ""
+            },
+            "is_thinking": false
+        },
+        {
+            "id": "sprue-card",
+            "title": "Model kit",
+            "description": "Build a one-color model kit",
+            "prompt_text": "Make a one color plastic model-kit sprue card of this scene. Pick a prominent vibrant color from the scene to use. Keep people and animals in one piece. Make the background a darker shade of the sprue card.",
+            "prompt_hints": [
+                "Detailed, full body photo of a person in the foreground, with a vibrant scene in the background"
+            ],
+            "image_url": "https://persistent.oaistatic.com/images-app/promptworks/2026-09-30/sprue-card-5d286404f357929d1af0b7bb053bc80ddd6b3af1a40acc4854f46f2fe8216c31.webp",
+            "image_alt": "A green plastic model-kit sprue holds a person, city skyline, streetlamp, bicycle, and planter.",
+            "requires_thinking": false,
+            "system_hints": [
+                "picture_v2"
+            ],
+            "action": {
+                "input_requirements": {
+                    "who": "none",
+                    "source": "camera_or_gallery"
+                },
+                "strategy": "auto_send",
+                "user_hint": ""
+            },
+            "is_thinking": false
+        },
+        {
+            "id": "8-bit",
+            "title": "16-bit arcade ",
+            "description": "Enter a 16-bit fighting game",
+            "prompt_text": "Transform the uploaded subject and environment into a Retro 16-Bit Arcade Fighting Game Pixel Art. Preserve identity while redesigning wardrobe into bold, readable arcade-character shapes. Name the character 'Player 1\" and pose the subject as a full body character with exaggerated expressions. Avoid modern vector pixel polish. Rebuild the environment as a detailed side-view fighting-game stage with layered pixel scenery, dramatic lighting, and period-appropriate arcade interface elements. ",
+            "prompt_hints": [
+                "Detailed, expressive photo with a full body view of a person in the foreground as the main subject"
+            ],
+            "image_url": "https://persistent.oaistatic.com/images-app/promptworks/2026-09-30/8-bit-01eba4a7418ca463afb19b8160d7637be348bc2d6f9e8f55f87193121aa1cf68.webp",
+            "image_alt": "A pixel-art fighter in a red jacket and blue trousers poses on a neon-lit 16-bit arcade stage.",
+            "requires_thinking": false,
+            "system_hints": [
+                "picture_v2"
+            ],
+            "action": {
+                "input_requirements": {
+                    "who": "none",
+                    "source": "camera_or_gallery"
+                },
+                "strategy": "auto_send",
+                "user_hint": ""
+            },
+            "is_thinking": false
+        },
+        {
+            "id": "white-lines",
+            "title": "Handwritten style",
+            "description": "Add memos and lines",
+            "prompt_text": "Add a hand drawn overlay on top of the image. Final output should be stylish, relaxed and effortlessly casual. Drawing rules: Use thin, hand-drawn lines as if drawn with a white pen. Keep it in a single-stroke style: rough and slightly uneven. Add outlines tracing around the outer edges of objects. Use arrows or dotted lines to guide the viewer’s eye. Text rules: Handwritten text. Keep it short, like a casual inner monologue. Tone: diary-like, brief, and emotion-focused. Commentary should be positive and sweet. Decorations: Add steam, sparkles, hearts, small emoticon-like faces sparingly. Avoid overdoing it; leave some “negative space”.",
+            "prompt_hints": [
+                "Photo of person with their friends, family, or children"
+            ],
+            "image_url": "https://persistent.oaistatic.com/images-app/white-lines-sheet.webp",
+            "requires_thinking": false,
+            "system_hints": [
+                "picture_v2"
+            ],
+            "action": {
+                "input_requirements": {
+                    "who": "none",
+                    "source": "camera_or_gallery"
+                },
+                "strategy": "auto_send",
+                "user_hint": ""
+            },
+            "is_thinking": false
+        },
+        {
+            "id": "makeup-analysis",
+            "title": "Makeup guide",
+            "description": "Explore makeup looks for you",
+            "prompt_text": "Create a high-quality “Makeup Analysis Guide” infographic based on the portrait photo I uploaded. Make it feel professional and clean, like a modern beauty-magazine feature. Use the uploaded photo as the foundation, preserving the person’s real facial features and recognizability without excessive retouching. Prioritize visuals that highlight the key points, with minimal text and no long paragraphs. Use a 9:16 aspect ratio.",
+            "prompt_hints": [
+                "Headshot of a person"
+            ],
+            "image_url": "https://persistent.oaistatic.com/images-app/makeup-analysis-sheet.webp",
+            "requires_thinking": false,
+            "system_hints": [
+                "picture_v2"
+            ],
+            "action": {
+                "input_requirements": {
+                    "who": "none",
+                    "source": "camera_or_gallery"
+                },
+                "strategy": "auto_send",
+                "user_hint": ""
+            },
+            "is_thinking": false
+        },
+        {
+            "id": "scribble",
+            "title": "Scribble",
+            "description": "Redraw as a clumsy scribble",
+            "prompt_text": "Redraw the attached image in the most clumsy, scribbly, and utterly pathetic way possible. Use a white background, and make it look like it was drawn in an old computer painting program with a mouse. It should be vaguely similar but also not really, kind of matching but also off in a confusing, awkward way, with that low-quality pixel-by-pixel feel that really emphasizes how ridiculously bad it is. Actually, you know what, whatever, just draw it however you want.",
+            "prompt_hints": [
+                "Interesting, expressive photo of people or pets"
+            ],
+            "image_url": "https://persistent.oaistatic.com/images-app/scribble-sheet.webp",
+            "requires_thinking": false,
+            "system_hints": [
+                "picture_v2"
+            ],
+            "action": {
+                "input_requirements": {
+                    "who": "none",
+                    "source": "camera_or_gallery"
+                },
+                "strategy": "auto_send",
+                "user_hint": ""
+            },
+            "is_thinking": false
+        },
+        {
+            "id": "bobblehead",
+            "title": "Your bobblehead ",
+            "description": "Make yourself a bobblehead",
+            "prompt_text": "Create a studio photograph of a cheap mass-produced plastic bobblehead toy inspired by the uploaded photo. Reference the person’s identity and exact face, but make the face more youthful with a broad friendly smile and chunky molded plastic hair. The toy must look physically photographed, not CGI or a 3D render. Oversized bobblehead head, comically huge, about 12x the tiny body. Simplified molded vinyl face with painted eyes, painted brows, molded smile, visible paint boundaries, tiny paint misalignment, subtle mold seam lines, injection-molded plastic texture, small scuffs, soft specular highlights. Molded plastic hair with chunky sculpted grooves, not individual strands. Environment inspired by the photo.",
+            "prompt_hints": [
+                "Photo with a person as main subject"
+            ],
+            "image_url": "https://persistent.oaistatic.com/images-app/promptworks/2026-09-30/bobblehead-7a2b94522f03cfa193d080b5daea01ec5faf1fb9fc103c8b64d063517faadba8.webp",
+            "image_alt": "A smiling plastic bobblehead with pink curly hair and a striped shirt stands on a black base on a city street.",
+            "requires_thinking": false,
+            "system_hints": [
+                "picture_v2"
+            ],
+            "action": {
+                "input_requirements": {
+                    "who": "none",
+                    "source": "camera_or_gallery"
+                },
+                "strategy": "prefill_composer",
+                "user_hint": ""
+            },
+            "is_thinking": false
+        },
+        {
+            "id": "mini-me-global",
+            "title": "Mini me",
+            "description": "Make tiny versions of you",
+            "prompt_text": "Turn this photo into a magical “Mini Me” world where tiny animated versions of yourself come to life around you. These cute 3D-style mini characters interact with your everyday surroundings — climbing onto your shoulders, sitting on your bag, waving, playing, and copying your poses — creating a playful yet emotional social media story-worthy scene full of personality and story. The original photo remains untouched while the tiny characters bring the image to life with depth, movement, realistic shadows, and a soft aesthetic vibe.",
+            "prompt_hints": [
+                "Photo with a person as main subject"
+            ],
+            "image_url": "https://persistent.oaistatic.com/images-app/mini-me-global-sheet.webp",
+            "requires_thinking": false,
+            "system_hints": [
+                "picture_v2"
+            ],
+            "action": {
+                "input_requirements": {
+                    "who": "none",
+                    "source": "camera_or_gallery"
+                },
+                "strategy": "auto_send",
+                "user_hint": ""
+            },
+            "is_thinking": false
+        },
+        {
+            "id": "cross-section",
+            "title": "Cross-section",
+            "description": "Create a cross-section view",
+            "prompt_text": "Transform the main subject of the uploaded image into a clean educational cutaway diagram on a white background. Keep the subject’s distinctive features from the original image, show a believable cross-section or layered interior, and add clear labeled callouts. Make it look like a textbook or museum science graphic, with clarity and accuracy prioritized over dramatic or artistic styling.",
+            "prompt_hints": [
+                "Piece of technology"
+            ],
+            "image_url": "https://persistent.oaistatic.com/images-app/cross-section-sheet.webp",
+            "requires_thinking": false,
+            "system_hints": [
+                "picture_v2"
+            ],
+            "action": {
+                "input_requirements": {
+                    "who": "none",
+                    "source": "camera_or_gallery"
+                },
+                "strategy": "auto_send",
+                "user_hint": ""
+            },
+            "is_thinking": false
+        },
+        {
+            "id": "enhance",
+            "title": "Enhance photos",
+            "description": "Improve photo quality",
+            "prompt_text": "Improve the quality of my photo and make it clearer.",
+            "prompt_hints": [
+                "Vintage photo, from decades ago, grainy, low resolution"
+            ],
+            "image_url": "https://persistent.oaistatic.com/images-app/enhance-sheet.webp",
+            "requires_thinking": false,
+            "system_hints": [
+                "picture_v2"
+            ],
+            "action": {
+                "input_requirements": {
+                    "who": "none",
+                    "source": "camera_or_gallery"
+                },
+                "strategy": "auto_send",
+                "user_hint": ""
+            },
+            "is_thinking": false
+        },
+        {
+            "id": "postcard",
+            "title": "Wanderlust",
+            "description": "Create a dream travel collage",
+            "prompt_text": "Use this image to create a travel collage by placing the main subject of the original image in a travel destination location with location appropriate styling as an instant photo with instant photo style lighting, color and quality. Include a postcard from a random less traveled destination in blue ink pen inspiring me to travel to new places. It should feel intimate, personal, and cleanly curated. Add souvenirs and small details that create a sense of a memento in a balanced layout with natural lighting.",
+            "image_url": "https://persistent.oaistatic.com/images-app/wanderlust-postcard-sheet.webp",
+            "requires_thinking": false,
+            "system_hints": [
+                "picture_v2"
+            ],
+            "action": {
+                "input_requirements": {
+                    "who": "none",
+                    "source": "camera_or_gallery"
+                },
+                "strategy": "auto_send",
+                "user_hint": ""
+            },
+            "is_thinking": false
+        },
+        {
+            "id": "flash",
+            "title": "Nighttime flash",
+            "description": "Add chic nighttime exposure",
+            "prompt_text": "Transform the photo into nighttime chic flash photography. Use harsh direct on-camera flash with strong highlights, deep shadows, and slight overexposure on the subject. Set the scene at night with a dark, moody background while keeping realistic colors and textures. Add a candid, editorial feel, slightly imperfect framing, motion energy, and spontaneous expression. Emphasize high contrast, glossy skin highlights, and subtle film grain for a raw, fashion-nightlife aesthetic.",
+            "prompt_hints": [
+                "Photo of a person",
+                "Photo of a pet"
+            ],
+            "image_url": "https://persistent.oaistatic.com/images-app/flash-sheet.webp",
+            "requires_thinking": false,
+            "system_hints": [
+                "picture_v2"
+            ],
+            "action": {
+                "input_requirements": {
+                    "who": "none",
+                    "source": "camera_or_gallery"
+                },
+                "strategy": "auto_send",
+                "user_hint": ""
+            },
+            "is_thinking": false
+        },
+        {
+            "id": "blueprint",
+            "title": "Blueprint poster",
+            "description": "Make a blueprint poster",
+            "prompt_text": "Create a single-subject blueprint poster using only the main subject from the uploaded image. Render it as a clean white technical line drawing on a deep cobalt-blue blueprint background with a subtle grid. Use flat 2D schematic linework, orthographic contours, construction lines, measurement ticks, arrows, and minimal technical labels. The composition may also include 2-3 smaller inset studies or alternate views. Keep the layout simple and balanced with no shading, no 3D, no lighting, no extra objects.",
+            "prompt_hints": [
+                "Everyday household items or foods"
+            ],
+            "image_url": "https://persistent.oaistatic.com/images-app/blueprint-sheet.webp",
+            "requires_thinking": false,
+            "system_hints": [
+                "picture_v2"
+            ],
+            "action": {
+                "input_requirements": {
+                    "who": "none",
+                    "source": "camera_or_gallery"
+                },
+                "strategy": "auto_send",
+                "user_hint": ""
+            },
+            "is_thinking": false
+        },
+        {
+            "id": "color-analysis",
+            "title": "Color analysis",
+            "description": "Find your best colors",
+            "prompt_text": "Create a personal color analysis graphic using this portrait. Show side-by-side clothing color comparisons to highlight which colors suit the subject best. Make it visual-first, with short labels only and no paragraphs.",
+            "image_url": "https://persistent.oaistatic.com/images-app/color-analysis-new.webp",
+            "requires_thinking": false,
+            "system_hints": [
+                "picture_v2"
+            ],
+            "action": {
+                "input_requirements": {
+                    "who": "none",
+                    "source": "camera_or_gallery"
+                },
+                "strategy": "auto_send",
+                "user_hint": ""
+            },
+            "is_thinking": false
+        },
+        {
+            "id": "comic",
+            "title": "Comic",
+            "description": "Create a comic strip",
+            "prompt_text": "Create a comic strip using the subject from the uploaded image. Style the comic strip in a bold Sunday funnies style with thick outlines, halftone textures, and bright 1980s colors. Pick one clear, exaggerated visual element from the photo and build the story around it, leading to a funny or unexpected payoff. Keep the dialogue short, natural, and easy to read, and make sure the joke lands clearly at a glance with no randomness or confusion.",
+            "prompt_hints": [
+                "Full body photo of a person engaged in an activity",
+                "Pet picture with a funny face"
+            ],
+            "image_url": "https://persistent.oaistatic.com/images-app/comic-sheet.webp",
+            "requires_thinking": false,
+            "system_hints": [
+                "picture_v2"
+            ],
+            "action": {
+                "input_requirements": {
+                    "who": "none",
+                    "source": "camera_or_gallery"
+                },
+                "strategy": "auto_send",
+                "user_hint": ""
+            },
+            "is_thinking": false
+        },
+        {
+            "id": "anime-comic",
+            "title": "Anime comic",
+            "description": "Make a simple anime comic",
+            "prompt_text": "Create a wholly original, simple black-and-white comic strip in a retro hand-inked manga style. Use 2-3 horizontal panels. Treat the uploaded image as the character reference; redraw the character entirely in manga form with consistent line work and shading across every panel. Interpret the person as the main character and, based on their appearance, generate an uplifting encounter with a clear “setup-reinforce-turnaround” structure: the first panel establishes context, the second develops the situation, and the third delivers a surprise twist. Keep the dialogue short, natural, and upbeat. No technology.",
+            "prompt_hints": [
+                "Full body photo of a person with a friend, pet, or at an interesting location"
+            ],
+            "image_url": "https://persistent.oaistatic.com/images-app/anime-comic-sheet.webp",
+            "requires_thinking": false,
+            "system_hints": [
+                "picture_v2"
+            ],
+            "action": {
+                "input_requirements": {
+                    "who": "none",
+                    "source": "camera_or_gallery"
+                },
+                "strategy": "auto_send",
+                "user_hint": ""
+            },
+            "is_thinking": false
+        },
+        {
+            "id": "fantasy-newspaper",
+            "title": "Fantasy newspaper",
+            "description": "Be in a fantasy newspaper",
+            "prompt_text": "Transform the person in the uploaded photo into a whimsical black-and-white vintage newspaper front page. Place them as the main portrait in the center, styled like an old engraved photograph. Surround them with bold, exaggerated headline text, narrow newspaper columns, and playful subheadings. Use high-contrast black ink on pure white background, subtle paper texture, and classic serif fonts. Add quirky, magical or humorous headlines to create a charming, slightly surreal tone. Keep the layout dense, editorial, and reminiscent of an old fantasy newspaper. Ensure the subject's face remains recognizable but stylized to match the printed newspaper aesthetic.",
+            "prompt_hints": [
+                "Full body photo of a person"
+            ],
+            "image_url": "https://persistent.oaistatic.com/images-app/fantasy-newspaper-sheet.webp",
+            "requires_thinking": false,
+            "system_hints": [
+                "picture_v2"
+            ],
+            "action": {
+                "input_requirements": {
+                    "who": "none",
+                    "source": "camera_or_gallery"
+                },
+                "strategy": "auto_send",
+                "user_hint": ""
+            },
+            "is_thinking": false
+        },
+        {
+            "id": "film-strip",
+            "title": "Film strip",
+            "description": "Create a cinematic film strip",
+            "prompt_text": "Transform the uploaded image into cinematic 3-frame sequential film stills (horizontal frames stacked vertically), full bleed edge-to-edge. Each frame should show a different moment from the same scene, with clear progression. Vary the composition, camera angle, and distances to create a sense of movement and storytelling. Use a cinematic, cooler-toned, high-contrast, deep-space blacks film with a natural color grade. Add subtle film grain, slight motion blur, and natural imperfections to emulate analog photography. Keep the composition candid and emotionally grounded, with a sense of movement and quiet storytelling. Overall aesthetic: cinematic, nostalgic, and organic, like raw film stills.",
+            "image_url": "https://persistent.oaistatic.com/images-app/film-strip-sheet.webp",
+            "requires_thinking": false,
+            "system_hints": [
+                "picture_v2"
+            ],
+            "action": {
+                "input_requirements": {
+                    "who": "none",
+                    "source": "camera_or_gallery"
+                },
+                "strategy": "auto_send",
+                "user_hint": ""
+            },
+            "is_thinking": false
+        },
+        {
+            "id": "hyper-real",
+            "title": "Hyperreal wallpaper",
+            "description": "Create hyperreal wallpaper",
+            "prompt_text": "Create a macro nature image of a scene with realistic textures, shallow depth of field with creamy bokeh, in a natural outdoor setting. The image has an analog, imperfect, wabi sabi, 35mm film-like quality—grain, natural color rendering, and a soft contrast curve. Ultra-realistic detail, macro photography, 9:16 aspect ratio. Before creating the image, ask me a follow up question giving a numbered list of a few unexpected options for subject matter and then render the image.",
+            "image_url": "https://persistent.oaistatic.com/images-app/hyper-real-sheet.webp",
+            "requires_thinking": false,
+            "system_hints": [
+                "picture_v2"
+            ],
+            "action": {
+                "input_requirements": {
+                    "who": "none",
+                    "source": "prompt_only"
+                },
+                "strategy": "auto_send",
+                "user_hint": ""
+            },
+            "is_thinking": false
+        },
+        {
+            "id": "palm-reading",
+            "title": "Palm reading",
+            "description": "See what your palm lines mean",
+            "prompt_text": "Use this image to create a complete palm reading guide infographic. Notice the lines on the palm and illustrate on the key lines, analyze the palm in detail and present the reading on an off white background in a clean, minimal, luxury editorial style. Use thin lines, rounded cards, elegant spacing, and an expensive high-end aesthetic. Keep the focus on the palm reading itself.",
+            "prompt_hints": [
+                "Photo of a hand"
+            ],
+            "image_url": "https://persistent.oaistatic.com/images-app/palm-reading-sheet.webp",
+            "requires_thinking": false,
+            "system_hints": [
+                "picture_v2"
+            ],
+            "action": {
+                "input_requirements": {
+                    "who": "none",
+                    "source": "camera_or_gallery"
+                },
+                "strategy": "auto_send",
+                "user_hint": ""
+            },
+            "is_thinking": false
+        },
+        {
+            "id": "professional-poster",
+            "title": "Poster",
+            "description": "Design a poster",
+            "prompt_text": "Create a poster that expresses my idea through clear hierarchy, readable required text, and imagery/typography that work together for the intended viewing context. Preserve all supplied details exactly; do not invent names, dates, locations, sponsors, logos, or include additional copy.\n\nAsk clarifying questions to establish the poster’s message, required content, layout, and visual style. Present relevant layout and visual style directions when available.",
+            "image_url": "https://persistent.oaistatic.com/images-app/promptworks/2026-09-04/professional-poster-cf2b8f454736ef49959494dc07b81107bc3c4278e82756104b74abaadcbbc89b.webp",
+            "image_alt": "Poster with a red poppy and large BLOOM lettering on a cream card against an orange background.",
+            "requires_thinking": false,
+            "section": "Templates",
+            "system_hints": [
+                "image_clarification"
+            ],
+            "structured_input": {
+                "flow": "image_gen_clarification"
+            },
+            "action": {
+                "input_requirements": {
+                    "who": "none",
+                    "source": "prompt_only"
+                },
+                "strategy": "auto_send",
+                "user_hint": ""
+            },
+            "is_thinking": false
+        },
+        {
+            "id": "professional-interior-design",
+            "title": "Interior design",
+            "description": "Reimagine your space",
+            "prompt_text": "Create an interior design visualization that shows how my space could look and function. Preserve the existing architecture and room proportions ; do not invent structural changes, openings, fixtures, or dimensions. \n\nAsk for a photo or description of the room, then ask clarifying questions to establish how the space is used, desired changes or constraints, items to preserve, and interior style. Present relevant interior style directions when available.",
+            "image_url": "https://persistent.oaistatic.com/images-app/promptworks/2026-09-04/professional-interior-design-34893fbdd54c72c7d27c8d4f9ea41a344ab6ffc58986f3368b3dc465d02cec1a.webp",
+            "image_alt": "Isometric miniature living room with a cream sofa, green armchair, plants, and a large window on a pink background.",
+            "requires_thinking": false,
+            "section": "Templates",
+            "system_hints": [
+                "image_clarification"
+            ],
+            "structured_input": {
+                "flow": "image_gen_clarification"
+            },
+            "action": {
+                "input_requirements": {
+                    "who": "none",
+                    "source": "prompt_only"
+                },
+                "strategy": "auto_send",
+                "user_hint": ""
+            },
+            "is_thinking": false
+        },
+        {
+            "id": "professional-logo",
+            "title": "Logo",
+            "description": "Explore logo ideas",
+            "prompt_text": "Create a small set of distinct logo options for my brand, company, or project. Make each option differ in concepts and keep them recognizable at small and large sizes. Preserve all supplied wording exactly. Do not invent brand names, taglines, or additional wording.\n\nAsk clarifying questions about the brand and purpose, required wording, intended impression, and visual style. Present relevant logo style directions when available.",
+            "image_url": "https://persistent.oaistatic.com/images-app/promptworks/2026-09-04/professional-logo-1b1be571ecf621410376aba147a70765ec67c402a23eaadddb504b3e5f09a47d.webp",
+            "image_alt": "Blue circular logo with a white line drawing of a fish on a pale blue background.",
+            "requires_thinking": false,
+            "section": "Templates",
+            "system_hints": [
+                "image_clarification"
+            ],
+            "structured_input": {
+                "flow": "image_gen_clarification"
+            },
+            "action": {
+                "input_requirements": {
+                    "who": "none",
+                    "source": "prompt_only"
+                },
+                "strategy": "auto_send",
+                "user_hint": ""
+            },
+            "is_thinking": false
+        },
+        {
+            "id": "professional-illustration",
+            "title": "Illustration",
+            "description": "Create an illustration",
+            "prompt_text": "Create an illustration that expresses my idea through a clear subject, composition, medium, and mood. Preserve supplied or reference details exactly; do not add conflicting story elements or invented copy.\n\nAsk clarifying questions to establish the subject, intent, intended use, reference details to preserve, and visual style. Present relevant illustration style directions when available.",
+            "image_url": "https://persistent.oaistatic.com/images-app/promptworks/2026-09-04/professional-illustration-6bfb502b329095214140579bb65cb298505bf741e2ac0e6de689ce0f7e20ee3c.webp",
+            "image_alt": "Illustration of a person in a yellow sweater hugging a black and white cat on a lavender background.",
+            "requires_thinking": false,
+            "section": "Templates",
+            "system_hints": [
+                "image_clarification"
+            ],
+            "structured_input": {
+                "flow": "image_gen_clarification"
+            },
+            "action": {
+                "input_requirements": {
+                    "who": "none",
+                    "source": "prompt_only"
+                },
+                "strategy": "auto_send",
+                "user_hint": ""
+            },
+            "is_thinking": false
+        },
+        {
+            "id": "professional-headshot",
+            "title": "Headshot",
+            "description": "Create a headshot",
+            "prompt_text": "Create a headshot or portrait that presents the person clearly for the intended use. Use the uploaded photo only to preserve identity, facial structure, skin tone, and defining features. Reinterpret the photo’s lighting, angle, pose, expression, clothing, background, shadows, color cast, and snapshot quality.\n\nAsk for a clear photo of the person, then ask clarifying questions to establish intended use, portrait style and lighting. Present relevant portrait style directions when available.",
+            "image_url": "https://persistent.oaistatic.com/images-app/promptworks/2026-09-04/professional-headshot-d7457abc48b60332758815bd786d6b2a499e66517a56ff0e0cad0dadb4a5413c.webp",
+            "image_alt": "Studio portrait of a person with shoulder length dark hair wearing a cream sweater against a gray background.",
+            "requires_thinking": false,
+            "section": "Templates",
+            "system_hints": [
+                "image_clarification"
+            ],
+            "structured_input": {
+                "flow": "image_gen_clarification"
+            },
+            "action": {
+                "input_requirements": {
+                    "who": "none",
+                    "source": "prompt_only"
+                },
+                "strategy": "auto_send",
+                "user_hint": ""
+            },
+            "is_thinking": false
+        },
+        {
+            "id": "professional-icon",
+            "title": "Icon",
+            "description": "Design icons",
+            "prompt_text": "Create an icon set that represents the requested idea clearly at the intended size. Keep symbols simple, legible, and consistent in shape, weight, detail, and perspective. Do not add unrelated imagery, labels, or mismatched visual styles.\n\nAsk clarifying questions to establish the icon subject, intended use, and visual style. Present relevant icon style directions when available.",
+            "image_url": "https://persistent.oaistatic.com/images-app/promptworks/2026-09-04/professional-icon-1d652dad962da64ee91a8ab44c2cfb720a78306b8751f0e032b126775f39d3ed.webp",
+            "image_alt": "Four pale blue icons showing a peace sign, shooting star, frog, and ringed planet on a dark green background.",
+            "requires_thinking": false,
+            "section": "Templates",
+            "system_hints": [
+                "image_clarification"
+            ],
+            "structured_input": {
+                "flow": "image_gen_clarification"
+            },
+            "action": {
+                "input_requirements": {
+                    "who": "none",
+                    "source": "prompt_only"
+                },
+                "strategy": "auto_send",
+                "user_hint": ""
+            },
+            "is_thinking": false
+        },
+        {
+            "id": "professional-product-photo",
+            "title": "Product photo",
+            "description": "Create a product photo",
+            "prompt_text": "Create a product photograph that presents my product faithfully and professionally for the intended use. Preserve shape, proportions, materials, colors, branding, labels, and functional details. Do not redesign the product or invent features, finishes, branding, labels, or accessories.\n\nAsk for a product image or clear description, then ask clarifying questions to establish details to preserve, setting, lighting, and photographic style. Present relevant photographic directions when available.",
+            "image_url": "https://persistent.oaistatic.com/images-app/promptworks/2026-09-04/professional-product-photo-79c95f6762e2e761e4b0525096bc160f7db861127fd79717a32cb4babd26edb8.webp",
+            "image_alt": "Lit candle in a pink glass jar on a pink surface, casting a long shadow.",
+            "requires_thinking": false,
+            "section": "Templates",
+            "system_hints": [
+                "image_clarification"
+            ],
+            "structured_input": {
+                "flow": "image_gen_clarification"
+            },
+            "action": {
+                "input_requirements": {
+                    "who": "none",
+                    "source": "prompt_only"
+                },
+                "strategy": "auto_send",
+                "user_hint": ""
+            },
+            "is_thinking": false
+        },
+        {
+            "id": "professional-merch",
+            "title": "Merch",
+            "description": "Design custom merch",
+            "prompt_text": "Create a merchandise design that applies my idea, artwork, or brand naturally to the chosen item. Fit the design to the item’s shape, scale, placement, surface, and production method. Preserve supplied wording or artwork exactly; do not add unrelated logos, graphics, placements, or product features.\n\nAsk clarifying questions to establish the item, artwork or wording, placement, intended audience, and visual style. Present relevant merchandise item options and style directions when available.",
+            "image_url": "https://persistent.oaistatic.com/images-app/promptworks/2026-09-04/professional-merch-2149b9e47134e530c8b5bb90e717d0551e5033ebdf51bca4365fc0c4f5505d1f.webp",
+            "image_alt": "White shirt printed with a green frog wearing sunglasses and headphones at turntables, hanging against a blue sky.",
+            "requires_thinking": false,
+            "section": "Templates",
+            "system_hints": [
+                "image_clarification"
+            ],
+            "structured_input": {
+                "flow": "image_gen_clarification"
+            },
+            "action": {
+                "input_requirements": {
+                    "who": "none",
+                    "source": "prompt_only"
+                },
+                "strategy": "auto_send",
+                "user_hint": ""
+            },
+            "is_thinking": false
+        },
+        {
+            "id": "professional-infographic",
+            "title": "Infographic",
+            "description": "Create an infographic",
+            "prompt_text": "Create an infographic that makes my information and main takeaway easy to understand. Organize content with clear structure, hierarchy, readable labels, and accurate facts or data. Do not invent facts, data, statistics, sources, or conclusions.\n\nAsk clarifying questions to establish the main takeaway, supplied data or content, audience, intended use, level of detail, and visual style. Present relevant infographic style directions when available.",
+            "image_url": "https://persistent.oaistatic.com/images-app/promptworks/2026-09-04/professional-infographic-067d90cc658452be4a1d303f2149af89a2f95eb93233adb125ce51fbb3c910a1.webp",
+            "image_alt": "Diagram of a rain cloud with red arrows rising through it, blue arrows curving downward, and raindrops below.",
+            "requires_thinking": false,
+            "section": "Templates",
+            "system_hints": [
+                "image_clarification"
+            ],
+            "structured_input": {
+                "flow": "image_gen_clarification"
+            },
+            "action": {
+                "input_requirements": {
+                    "who": "none",
+                    "source": "prompt_only"
+                },
+                "strategy": "auto_send",
+                "user_hint": ""
+            },
+            "is_thinking": false
+        },
+        {
+            "id": "professional-flyer",
+            "title": "Flyer",
+            "description": "Design a flyer",
+            "prompt_text": "Create a flyer that communicates my message clearly and makes essential information easy to find. Use clear hierarchy, readable required details, and an obvious next step. Preserve all supplied details exactly; do not invent names, dates, locations, prices, contact info, sponsors, offers, or additional copy.\n\nAsk clarifying questions to establish the purpose, required content, desired action, format and distribution, layout, and visual style. Present relevant layout and style directions when available.",
+            "image_url": "https://persistent.oaistatic.com/images-app/promptworks/2026-09-04/professional-flyer-ea3979eaf7b69c9abf4791ccfaf1ea90056fe949b95e72264880c950f6d7356c.webp",
+            "image_alt": "Black and white LOST FROG flyer with a frog photo and the contact text TEXT: 555-0184.",
+            "requires_thinking": false,
+            "section": "Templates",
+            "system_hints": [
+                "image_clarification"
+            ],
+            "structured_input": {
+                "flow": "image_gen_clarification"
+            },
+            "action": {
+                "input_requirements": {
+                    "who": "none",
+                    "source": "prompt_only"
+                },
+                "strategy": "auto_send",
+                "user_hint": ""
+            },
+            "is_thinking": false
+        },
+        {
+            "id": "professional-book-cover",
+            "title": "Book cover",
+            "description": "Design a book cover",
+            "prompt_text": "Create a book cover that reflects the book’s content, genre, audience, and tone. Build strong hierarchy for title, author, supporting text, and imagery, and keep it readable at full size and thumbnail size. Preserve all supplied text exactly; do not invent subtitles, quotes, awards, publisher marks, series details, or promotional copy.\n\nAsk clarifying questions to establish title and author, subject and genre, audience, must-have or avoid details, and visual style. Present relevant cover style directions when available.",
+            "image_url": "https://persistent.oaistatic.com/images-app/promptworks/2026-09-04/professional-book-cover-885e6bb0d6a80777727a172f67a2640e4c23be343e69a9fc97be508884a30c92.webp",
+            "image_alt": "Teal book titled The Sunday Drawer by NJ Forland, with a sun setting over water and an empty chair on grass.",
+            "requires_thinking": false,
+            "section": "Templates",
+            "system_hints": [
+                "image_clarification"
+            ],
+            "structured_input": {
+                "flow": "image_gen_clarification"
+            },
+            "action": {
+                "input_requirements": {
+                    "who": "none",
+                    "source": "prompt_only"
+                },
+                "strategy": "auto_send",
+                "user_hint": ""
+            },
+            "is_thinking": false
+        },
+        {
+            "id": "professional-app-mockup",
+            "title": "App mockup",
+            "description": "Create an app mockup",
+            "prompt_text": "Create an app mockup that clearly shows the intended screen and user experience. Make the screen purpose, hierarchy, primary actions, spacing, and components coherent. Preserve supplied labels and content exactly; do not invent claims, pricing, accounts, or features that conflict with the brief.\n\nAsk clarifying questions to establish app purpose, audience, target screen, key actions, required content, platform, and visual style. Present relevant interface style directions when available.",
+            "image_url": "https://persistent.oaistatic.com/images-app/promptworks/2026-09-04/professional-app-mockup-4682a32811097d760bee4df6dde54faa9d675b475abb7e6874fb726cdcf2e075.webp",
+            "image_alt": "Music player mockup with neon abstract artwork, the title Orchard Moonrise by J Jones, and playback controls.",
+            "requires_thinking": false,
+            "section": "Templates",
+            "system_hints": [
+                "image_clarification"
+            ],
+            "structured_input": {
+                "flow": "image_gen_clarification"
+            },
+            "action": {
+                "input_requirements": {
+                    "who": "none",
+                    "source": "prompt_only"
+                },
+                "strategy": "auto_send",
+                "user_hint": ""
+            },
+            "is_thinking": false
+        },
+        {
+            "id": "professional-packaging",
+            "title": "Packaging",
+            "description": "Design product packaging",
+            "prompt_text": "Create packaging that represents my product and brand clearly on the physical package. Fit the design to the package shape, scale, materials, and usable surfaces, with required information in a clear hierarchy. Preserve supplied branding and product information exactly; do not invent claims, ingredients, certifications, legal copy, quantities, or barcodes.\n\nAsk clarifying questions to establish product, required branding or content, package type, size, shape, materials, surfaces to design, and visual style. Present relevant packaging style directions when available.",
+            "image_url": "https://persistent.oaistatic.com/images-app/promptworks/2026-09-04/professional-packaging-7df5528c817280d8130cb4a86bd5cfcd11824c758f03184c562f13babdc6275c.webp",
+            "image_alt": "Cream LEAF Green Tea box decorated with green leaves and an orange circle on a peach surface.",
+            "requires_thinking": false,
+            "section": "Templates",
+            "system_hints": [
+                "image_clarification"
+            ],
+            "structured_input": {
+                "flow": "image_gen_clarification"
+            },
+            "action": {
+                "input_requirements": {
+                    "who": "none",
+                    "source": "prompt_only"
+                },
+                "strategy": "auto_send",
+                "user_hint": ""
+            },
+            "is_thinking": false
+        },
+        {
+            "id": "professional-advertisement",
+            "title": "Advertisement",
+            "description": "Create an ad",
+            "prompt_text": "Create an advertisement that communicates my offer clearly and supports the intended goal. Build clear hierarchy for the product or service, main message, supporting details, and action. Preserve all supplied text and details exactly; do not invent prices, discounts, testimonials, results, terms, endorsements, or additional copy.\n\nAsk clarifying questions to establish the offering, main message, desired action, required content, placement, audience, and visual style. Present relevant campaign style directions when available.",
+            "image_url": "https://persistent.oaistatic.com/images-app/promptworks/2026-09-04/professional-advertisement-5b058f642d6501458810a5dab5fa1261b691dfea7bb9323fc6b7e9d06f24fc41.webp",
+            "image_alt": "Framed pink advertisement with Shop now lettering and hands holding a pump bottle on a dusty pink background.",
+            "requires_thinking": false,
+            "section": "Templates",
+            "system_hints": [
+                "image_clarification"
+            ],
+            "structured_input": {
+                "flow": "image_gen_clarification"
+            },
+            "action": {
+                "input_requirements": {
+                    "who": "none",
+                    "source": "prompt_only"
+                },
+                "strategy": "auto_send",
+                "user_hint": ""
+            },
+            "is_thinking": false
+        },
+        {
+            "id": "professional-thumbnail",
+            "title": "Thumbnail",
+            "description": "Create a thumbnail",
+            "prompt_text": "Create a thumbnail that communicates my idea instantly at small size. Use one strong focal point, clear hierarchy, and brief readable text for the intended context. Preserve supplied details exactly; do not invent names, claims, labels, or additional copy.\n\nAsk for a content image the thumbnail will represent, then ask clarifying questions to required text, audience or context, and visual style. Present relevant thumbnail style directions when available.",
+            "image_url": "https://persistent.oaistatic.com/images-app/promptworks/2026-09-08/professional-thumbnail-bec878131b459709d6531854c0845349a7933aec95f17a33d7ddc7757f59922f.webp",
+            "image_alt": "Social media post mockup on a pale green background with a person in a white chef jacket taking a mirror selfie and large white text reading one day in my life.",
+            "requires_thinking": false,
+            "section": "Templates",
+            "system_hints": [
+                "image_clarification"
+            ],
+            "structured_input": {
+                "flow": "image_gen_clarification"
+            },
+            "action": {
+                "input_requirements": {
+                    "who": "none",
+                    "source": "prompt_only"
+                },
+                "strategy": "auto_send",
+                "user_hint": ""
+            },
+            "is_thinking": false
+        },
+        {
+            "id": "professional-website-mockup",
+            "title": "Website mockup",
+            "description": "Create a website mockup",
+            "prompt_text": "Create a website mockup that clearly presents the page purpose, content, and primary user action. Build strong information hierarchy, understandable navigation and actions, and a coherent interface. Preserve supplied names, copy, prices, and claims exactly; do not invent testimonials, client logos, metrics, or business details.\n\nAsk clarifying questions to establish site purpose, audience, required content, and visual style. Present relevant UI style directions when available.",
+            "image_url": "https://persistent.oaistatic.com/images-app/promptworks/2026-09-04/professional-website-mockup-ee1bb9e068c9b5998f97c526e13c416e16e6fd60c50ee798590949a8b439342c.webp",
+            "image_alt": "Red Kiln ceramics shop webpage with a large photo of two vases and a row of three product cards.",
+            "requires_thinking": false,
+            "section": "Templates",
+            "system_hints": [
+                "image_clarification"
+            ],
+            "structured_input": {
+                "flow": "image_gen_clarification"
+            },
+            "action": {
+                "input_requirements": {
+                    "who": "none",
+                    "source": "prompt_only"
+                },
+                "strategy": "auto_send",
+                "user_hint": ""
+            },
+            "is_thinking": false
+        }
+    ]
+}

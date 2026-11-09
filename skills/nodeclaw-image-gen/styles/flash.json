@@ -1,0 +1,18 @@
+{
+  "id": "flash",
+  "name": "Nighttime flash",
+  "description": "Add chic nighttime exposure",
+  "promptTemplate": "Transform the photo into nighttime chic flash photography. Use harsh direct on-camera flash with strong highlights, deep shadows, and slight overexposure on the subject. Set the scene at night with a dark, moody background while keeping realistic colors and textures. Add a candid, editorial feel, slightly imperfect framing, motion energy, and spontaneous expression. Emphasize high contrast, glossy skin highlights, and subtle film grain for a raw, fashion-nightlife aesthetic.",
+  "promptHints": [
+    "Photo of a person",
+    "Photo of a pet"
+  ],
+  "exampleImages": [
+    {
+      "url": "https://persistent.oaistatic.com/images-app/flash-sheet.webp",
+      "format": "webp",
+      "width": 512,
+      "height": 384
+    }
+  ]
+}

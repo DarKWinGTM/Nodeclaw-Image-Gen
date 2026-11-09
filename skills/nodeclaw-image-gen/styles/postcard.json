@@ -1,0 +1,14 @@
+{
+  "id": "postcard",
+  "name": "Wanderlust",
+  "description": "Create a dream travel collage",
+  "promptTemplate": "Use this image to create a travel collage by placing the main subject of the original image in a travel destination location with location appropriate styling as an instant photo with instant photo style lighting, color and quality. Include a postcard from a random less traveled destination in blue ink pen inspiring me to travel to new places. It should feel intimate, personal, and cleanly curated. Add souvenirs and small details that create a sense of a memento in a balanced layout with natural lighting.",
+  "exampleImages": [
+    {
+      "url": "https://persistent.oaistatic.com/images-app/wanderlust-postcard-sheet.webp",
+      "format": "webp",
+      "width": 888,
+      "height": 666
+    }
+  ]
+}

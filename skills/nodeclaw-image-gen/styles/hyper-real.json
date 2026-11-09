@@ -1,0 +1,14 @@
+{
+  "id": "hyper-real",
+  "name": "Hyperreal wallpaper",
+  "description": "Create hyperreal wallpaper",
+  "promptTemplate": "Create a macro nature image of a scene with realistic textures, shallow depth of field with creamy bokeh, in a natural outdoor setting. The image has an analog, imperfect, wabi sabi, 35mm film-like quality—grain, natural color rendering, and a soft contrast curve. Ultra-realistic detail, macro photography, 9:16 aspect ratio. Before creating the image, ask me a follow up question giving a numbered list of a few unexpected options for subject matter and then render the image.",
+  "exampleImages": [
+    {
+      "url": "https://persistent.oaistatic.com/images-app/hyper-real-sheet.webp",
+      "format": "webp",
+      "width": 512,
+      "height": 384
+    }
+  ]
+}

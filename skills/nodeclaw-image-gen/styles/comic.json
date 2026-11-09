@@ -1,0 +1,18 @@
+{
+  "id": "comic",
+  "name": "Comic",
+  "description": "Create a comic strip",
+  "promptTemplate": "Create a comic strip using the subject from the uploaded image. Style the comic strip in a bold Sunday funnies style with thick outlines, halftone textures, and bright 1980s colors. Pick one clear, exaggerated visual element from the photo and build the story around it, leading to a funny or unexpected payoff. Keep the dialogue short, natural, and easy to read, and make sure the joke lands clearly at a glance with no randomness or confusion.",
+  "promptHints": [
+    "Full body photo of a person engaged in an activity",
+    "Pet picture with a funny face"
+  ],
+  "exampleImages": [
+    {
+      "url": "https://persistent.oaistatic.com/images-app/comic-sheet.webp",
+      "format": "webp",
+      "width": 512,
+      "height": 384
+    }
+  ]
+}

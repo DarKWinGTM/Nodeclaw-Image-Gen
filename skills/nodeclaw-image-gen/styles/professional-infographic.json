@@ -1,0 +1,12 @@
+{
+  "id": "professional-infographic",
+  "name": "Infographic",
+  "description": "Create an infographic",
+  "promptTemplate": "Create an infographic that makes my information and main takeaway easy to understand. Organize content with clear structure, hierarchy, readable labels, and accurate facts or data. Do not invent facts, data, statistics, sources, or conclusions.\n\nAsk clarifying questions to establish the main takeaway, supplied data or content, audience, intended use, level of detail, and visual style. Present relevant infographic style directions when available.",
+  "exampleImages": [
+    {
+      "url": "https://persistent.oaistatic.com/images-app/promptworks/2026-09-04/professional-infographic-067d90cc658452be4a1d303f2149af89a2f95eb93233adb125ce51fbb3c910a1.webp",
+      "alt": "Diagram of a rain cloud with red arrows rising through it, blue arrows curving downward, and raindrops below."
+    }
+  ]
+}

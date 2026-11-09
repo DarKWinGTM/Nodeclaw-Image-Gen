@@ -1,0 +1,18 @@
+{
+  "id": "y2k",
+  "name": "Y2K digicam",
+  "description": "Get a flash-lit Y2K photo",
+  "promptTemplate": "Preserve the subject’s likeness and surroundings from the reference image, restyled as a candid early-2000s digital camera snapshot: era-appropriate sunglasses and accessories, dated fashion, exaggerated early-2000s hairstyle, and environmental details updated to match. Direct on-camera flash, uneven exposure, slightly blown-out skin highlights, hard shadows, and darker indoor backgrounds, low contrast outdoor backgrounds. Soft focus, faint digital noise in the shadows, and subtle JPEG compression. Casual, slightly awkward framing. Image only, no time or date stamps.",
+  "promptHints": [
+    "Photo of a person"
+  ],
+  "exampleImages": [
+    {
+      "url": "https://persistent.oaistatic.com/images-app/promptworks/2026-09-30/y2k-c83c217f3d66d6330f707c270ae4e4f2446f8716c94e29788606288649151db5.webp",
+      "alt": "A woman with tinted glasses, headphones, and a pink tracksuit holds a portable CD player.",
+      "format": "webp",
+      "width": 888,
+      "height": 668
+    }
+  ]
+}

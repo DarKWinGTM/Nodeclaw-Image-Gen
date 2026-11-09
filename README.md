@@ -2,9 +2,11 @@
 
 Generate and edit images from your existing AI coding assistant through NodeClaw or a custom OpenAI-compatible Images API. Includes a portable Node.js CLI, independent style presets and **runnable technique tools** for tiled Pixel Art refinement and composition-preserving edits.
 
-**Requires supported Node.js 22+ and your own API key.** No Python, ImageMagick, npm install, daemon or additional AI service. The bundled pure-JavaScript PNG codec handles local technique processing. No Telegram storage upload or result rehosting.
+**Requires supported Node.js 22+, an API base address and your own API key.** Configure them during installation or once through setup; environment variables are optional.
 
 [Download a release](https://github.com/DarKWinGTM/Nodeclaw-Image-Gen/releases) · [Repository](https://github.com/DarKWinGTM/Nodeclaw-Image-Gen) · [CI](https://github.com/DarKWinGTM/Nodeclaw-Image-Gen/actions/workflows/verify.yml)
+
+**v0.1.2** adds address/key setup, explicit Gemini wire support and 55 additional style presets with example image URLs. These features require v0.1.2 or newer; use the matching release and CI run above to check public availability and revision-specific verification.
 
 ## Quick install
 
@@ -15,7 +17,7 @@ Choose one method; do not install both standalone and marketplace copies for the
 Copy this prompt into Claude Code or Codex to have the assistant carry out installation:
 
 ```text
-Install Nodeclaw-Image-Gen for this Claude Code or Codex environment from https://github.com/DarKWinGTM/Nodeclaw-Image-Gen. Follow its README using the latest published release and supported Node.js 22+. Detect the harness; for a new install, preview the documented user-scope standalone installer, show the target, then execute with --yes. Complete installation, not just instructions. Reuse any existing install manager; ask only for missing prerequisites, required trust/permissions or replacement approval. Verify the installed CLI with --help and techniques list --json, without API calls. Do not duplicate installations, read secrets or change permissions. Report version/path, any reload step and secure NODECLAW_API_KEY setup.
+Install Nodeclaw-Image-Gen for this Claude Code or Codex environment from https://github.com/DarKWinGTM/Nodeclaw-Image-Gen. Read its README, check Node.js 22+, detect the harness and reuse an existing install manager; do not install duplicate standalone and plugin copies. For a standalone install, download and verify a published v0.1.2 or newer release and obtain the package before running its installer, preview the user-scope target, then install with --yes. If the required release is unavailable, report the blocker. A Claude Code plugin install uses the supported marketplace version instead; the Git-backed marketplace does not require a release archive. Ask only for missing prerequisites, trust/permissions or replacement approval. After standalone installation, return an exact command using the real installed path for me to run setup --interactive locally and enter the API base address and hidden key; use --replace only with my approval when updating saved config. For a plugin install, direct me to its supported native configuration form and declared sensitive key field. Never collect keys in chat, AskUserQuestion or captured tool arguments, read secret stores or print key values. Verify --help, techniques list --json and setup --status --json without API calls. Report version/path, whether credentials are configured, any restart step, and the exact commands to reconfigure and update later. Do not claim credential setup is complete before the user finishes it.
 ```
 
 The assistant needs actual filesystem/shell access and still follows the harness's trust and installation prompts.
@@ -27,36 +29,50 @@ Run **inside Claude Code**, then complete its native install/trust dialog:
 ```text
 /plugin marketplace add DarKWinGTM/Nodeclaw-Image-Gen
 /plugin install nodeclaw-image-gen@nodeclaw-image-gen
+/plugin configure nodeclaw-image-gen@nodeclaw-image-gen
 ```
 
-For a terminal instead, use `claude plugin marketplace add ...` and `claude plugin install ...` with the same arguments. This is a self-hosted marketplace, not an Anthropic-directory endorsement.
+This source declares a native configuration form for **API base address** and a masked **API key**. Reconfigure with `/plugin configure nodeclaw-image-gen@nodeclaw-image-gen`, then start a new session. The two slash commands above install the plugin; this guide does not assume slash `/plugin install` accepts terminal `--config` flags.
 
-### Manual: Claude Code or Codex
+For terminal installation with parameters (placeholders only; `--marketplace` requires Claude Code v2.1.292 or newer):
+
+```bash
+claude plugin install nodeclaw-image-gen --marketplace DarKWinGTM/Nodeclaw-Image-Gen --scope user --config api_base_url=https://payg.nodenetwork.ovh --config api_key="<your-api-key>"
+```
+
+Run real-key commands yourself in a local terminal, never through an AI tool call. Prefer the native masked form: terminal arguments can enter shell history/process listings. `api_key` is declared sensitive, so Claude Code stores it through its credential mechanism rather than ordinary settings JSON; keychain availability and credential-file fallback depend on the platform. A SessionStart hook bridges this address/key pair to the CLI using the supported session environment file, not skill text or secret-store extraction. That temporary export file is **plaintext**, and shell subprocesses in the session can access the key; it is not keychain-only isolation.
+
+The bridge targets supported Bash sessions. Windows PowerShell hooks/consumers have `CLAUDE_ENV_FILE` limitations; use the same CLI's private local `setup --interactive` when the bridge is unavailable. Native UI/keychain and Windows runtime behavior have not been accepted through a real harness install in this source task. See the [official userConfig](https://code.claude.com/docs/en/plugins/manifest-reference#user-configuration) and [session environment](https://code.claude.com/docs/en/hooks#persist-environment-variables) contracts.
+
+The Git-backed marketplace installs the plugin from its selected repository revision (`source: "./"`); it does not need a release archive. Standalone downloads, updates and content sync use the published release assets instead. To refresh an existing managed installation, run `claude plugin marketplace update nodeclaw-image-gen`, then `claude plugin update nodeclaw-image-gen@nodeclaw-image-gen` and start a new session. This is a self-hosted marketplace, not an Anthropic-directory endorsement.
+
+## Manual installation reference: Claude Code or Codex
 
 Download and extract a published release. From the extracted package root, preview, then install:
 
 ```bash
-node script/install.mjs --harness claude-code
-node script/install.mjs --harness claude-code --yes
+node script/install.mjs --harness claude-code --api-base-url https://payg.nodenetwork.ovh --interactive
+node script/install.mjs --harness claude-code --api-base-url https://payg.nodenetwork.ovh --interactive --yes
 ```
 
-Use `--harness codex` for Codex. Add `--replace` only to replace a recognized standalone installation. For project scope, run from your project root using the installer's absolute path and add `--scope project`; `--target DIR` chooses an explicit destination.
+The first command previews only; the second asks for the key locally with input hidden and saves it in private user config. Use `--harness codex` for Codex. Omit the API/configuration options to install code only. Add `--replace` only to replace a recognized standalone installation; replacing existing config separately requires `--replace-config`. For project scope, run from your project root using the installer's absolute path and add `--scope project`; `--target DIR` chooses an explicit destination.
 
 | Harness | User installation | Project installation |
 |---|---|---|
 | Claude Code | `~/.claude/skills/nodeclaw-image-gen` | `.claude/skills/nodeclaw-image-gen` |
 | Codex | `~/.agents/skills/nodeclaw-image-gen` | `.agents/skills/nodeclaw-image-gen` |
 
-The installer copies the **whole skill**, including its tools and codec. Config/state/custom packs stay outside installation. Plugin-managed copies use the native plugin manager for updates. Grok Bot import/script/native-choice integration is not yet verified; no guessed installer path is provided.
+The installer copies the **whole skill**, including its tools and codec. Its JSON result includes `commands.configure`, `commands.reconfigure`, `commands.status`, `commands.checkUpdate` and `commands.update` as argument arrays using the actual installed path. Run credential-entry commands yourself in a local terminal, quoting path arguments for your shell; no key is included in those arrays. Code-only installation can finish before credential setup, and those states are reported separately. Config/state/custom packs stay outside installation. Plugin-managed copies use the native plugin manager for updates. Grok Bot import/script/native-choice integration is not yet verified; no guessed installer path is provided.
 
 ## First image
 
-Configure `NODECLAW_API_KEY` using your system's secret/environment mechanism. Never paste a key into chat, config JSON or command arguments. The tool does not read OAuth/session stores or change permissions.
+Configure the API address and key once using native plugin configuration or the local setup below. No environment setup is required. Never paste a key into chat or a request spec. The tool does not read OAuth/session stores or change harness permissions.
 
-From the package root:
+From the package root (skip setup if credentials were already configured during installation or through the native plugin form):
 
 ```bash
-node skills/nodeclaw-image-gen/scripts/image-gen.mjs setup
+node skills/nodeclaw-image-gen/scripts/image-gen.mjs setup --interactive
+node skills/nodeclaw-image-gen/scripts/image-gen.mjs setup --status --json
 node skills/nodeclaw-image-gen/scripts/image-gen.mjs generate --prompt "A quiet riverside town at sunrise" --dry-run --json
 node skills/nodeclaw-image-gen/scripts/image-gen.mjs generate --prompt "A quiet riverside town at sunrise" --yes --json
 ```
@@ -84,7 +100,9 @@ node skills/nodeclaw-image-gen/scripts/image-gen.mjs techniques list --json
 node skills/nodeclaw-image-gen/scripts/image-gen.mjs techniques show pixel-art-detail --json
 ```
 
-Bundled styles: **Tarot ink, Pixel art, Clean product**.
+Bundled styles: **58 presets** — Tarot ink, Pixel art, Clean product and 55 additional styles such as Aerial view, Caricature, Film strip, Blueprint and Professional product photo. Additional presets and Tarot ink expose `exampleImages[]` URLs through `styles show ID --json`; the CLI does not download or send those images automatically. Preview names such as GIF do not add animation support to a still-image API.
+
+The supplied source collections are preserved unchanged under `skills/nodeclaw-image-gen/references/style-imports/`; active presets use the existing one-file-per-style schema in `styles/`. Only user-approved request context belongs in prompts, not unrelated personal memory. Example images are third-party references, not bundled media or a grant of redistribution rights.
 
 ### Tiled Pixel Art refinement
 
@@ -147,8 +165,6 @@ Task handles contain identity/endpoint/output intent, not keys/prompts/image inp
 
 Ctrl-C stops local waiting, not the remote Task. A successful image does not prove billing finality. Job directories contain selected source images, masks, prompts and results: do not publish them.
 
-**No Telegram storage upload, rehosting or result-storage service.** Sending selected source images to the Edit inference API is input processing, not storage uploading.
-
 ## Config and custom providers
 
 Config selection: `--config` → `NODECLAW_IMAGE_GEN_CONFIG` → OS user config. Value precedence: explicit CLI/spec → env → selected config → built-ins. See [config.example.json](config.example.json).
@@ -157,7 +173,7 @@ Config selection: `--config` → `NODECLAW_IMAGE_GEN_CONFIG` → OS user config.
 - macOS: `~/Library/Application Support/Nodeclaw-Image-Gen/config.json`
 - Windows: `%APPDATA%/Nodeclaw-Image-Gen/config.json`
 
-Auto endpoint order: exposed active harness → configured fallback → native `https://payg.nodenetwork.ovh`. Explicit CLI/spec `apiBaseUrl` pins an endpoint. Use `--harness-endpoint` and `--harness-api-key-env` when the effective binding is not exposed; the tool does not guess layered Codex configuration. Loopback HTTP needs explicit `--allow-local-http` or config `allowLocalHttp:true`; TLS verification stays enabled.
+API address/key supplied during installation or setup selects `endpointMode: "configured"`: that address is pinned across future calls. Existing/default `endpointMode: "auto"` preserves exposed active harness → configured fallback → native `https://payg.nodenetwork.ovh`. Explicit CLI/spec `apiBaseUrl` pins one invocation. Use `--harness-endpoint` and `--harness-api-key-env` when the effective binding is not exposed; the tool does not guess layered Codex configuration. Loopback HTTP needs explicit `--allow-local-http` or config `allowLocalHttp:true`; TLS verification stays enabled.
 
 ```bash
 node skills/nodeclaw-image-gen/scripts/image-gen.mjs generate --api-base-url "https://images.example/v1" --provider openai-compatible --api-key-env CUSTOM_IMAGE_API_KEY --model "exact-image-model" --prompt "A mountain cabin" --dry-run --json
@@ -165,7 +181,32 @@ node skills/nodeclaw-image-gen/scripts/image-gen.mjs generate --api-base-url "ht
 
 `apiBaseUrl`, `catalogUrl` and `apiDocsUrl` have separate roles. Discovery reads applicable `payg-model-data`, then `/v1/models`, merging exact IDs and provenance. No catalog is required for an exact manual model; `--skip-discovery` selects that unverified-capability path. NodeClaw `/v1/models` is a Chat projection, not proof of Image readiness.
 
-Environment overrides use the full `NODECLAW_IMAGE_GEN` prefix with `_API`, `_MODEL`, `_METHOD`, `_FALLBACK`, `_FALLBACK_TERMINAL`, `_CATALOG_URL`, `_DOCS_URL`, `_OUTPUT_DIR`, `_API_KEY_ENV`. Booleans accept `true/false/1/0`; invalid values are errors.
+### Address/key during installation or later setup
+
+For direct parameters (placeholders only):
+
+```bash
+node script/install.mjs --harness codex --api-base-url "https://payg.nodenetwork.ovh" --api-key "<your-api-key>" --yes
+node skills/nodeclaw-image-gen/scripts/image-gen.mjs setup --api-base-url "https://payg.nodenetwork.ovh" --api-key "<your-api-key>"
+```
+
+**Direct key arguments can appear in shell history and process listings.** Prefer `--interactive` in your local terminal, or pipe a key from your own secret manager using `--api-key-stdin`. Do not ask an AI assistant to run a command containing a real key. Setup does not contact the API; `setup --status --json` checks local configuration without exposing the key. Updating settings uses `setup ... --replace`; the old key is retained only for the same exact base address/proxy prefix. A changed address requires a new key binding.
+
+Standalone keys are saved as **plaintext** in the selected user config outside the installed skill. New POSIX directories/files use modes 0700/0600; this is not encryption or Windows ACL enforcement. Do not commit or share that config. The example file intentionally contains no key. Installer preview never reads stdin, asks for a key, writes config or sends an API request.
+
+Optional environment overrides use the full `NODECLAW_IMAGE_GEN` prefix with `_API`, `_MODEL`, `_METHOD`, `_FALLBACK`, `_FALLBACK_TERMINAL`, `_CATALOG_URL`, `_DOCS_URL`, `_OUTPUT_DIR`, `_API_KEY_ENV`, `_ENDPOINT_MODE`, `_API_MODE`. For a key override, supply both `NODECLAW_IMAGE_GEN_API` and `NODECLAW_IMAGE_GEN_API_KEY`; the key is bound to that exact normalized address, not forwarded to another CLI pin. The address/key pair takes precedence over the saved pair. Legacy `NODECLAW_API_KEY` or `apiKeyEnv` is used when no bound pair is available. Booleans accept `true/false/1/0`; invalid values are errors.
+
+### Automatic route composition
+
+Supply a base address, optionally ending in `/v1` or `/v1beta`; proxy prefixes are preserved and version suffixes are not duplicated.
+
+| Selected wire | Route appended by the client |
+|---|---|
+| Task, default Images mode | `/v1/media/tasks` |
+| Direct Generate / Edit, Images mode | `/v1/images/generations` / `/v1/images/edits` |
+| Explicit `--api-mode gemini`, finite Direct | `/v1beta/models/{model}:generateContent` |
+
+`images` remains the default. Its NodeClaw `google_image_generate_content` compatibility still uses Images/Task routes and normalized `data[]` results. **Gemini mode is explicit**, never inferred from a model name or that compatibility key. It builds `contents/parts`, reads inline image data from candidate parts and saves the actual returned bytes through the existing output writer. Use native `generationConfig` in `--request-json` rather than OpenAI image controls; local PNG/JPEG/WebP inputs become inline parts. Text-only or safety-completed responses are not reported as saved images. NodeClaw's native route has a 2 MiB JSON limit and belongs to its Text-family transport, not proof of Image readiness or a particular billing method. This client uses customer Bearer authentication; direct Google's `x-goog-api-key` transport is not implied.
 
 ## Task, Direct and fallback
 

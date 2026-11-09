@@ -1,0 +1,15 @@
+{
+  "id": "anime-reaction",
+  "name": "Anime reaction GIF",
+  "description": "Make ’90s anime reaction GIFs",
+  "promptTemplate": "Create a seamless looping GIF of the uploaded subjects in 90s anime style: expressive eyes, simplified facial shapes, flat cel-shading, soft colors. Begin fully stylized, already reacting. Smoothly intensify a wildly exaggerated peak emotion, allowing expression-specific facial distortion and playful visual effects. Then soften slightly back to the starting pose, never neutral, forming a seamless loop. Ease into the peak and recovery. Keep identity, line-work, and framing consistent. No photorealism. First ask, “How do you want to react?” and offer emoji choices.",
+  "exampleImages": [
+    {
+      "url": "https://persistent.oaistatic.com/images-app/promptworks/2026-11-05/anime-reaction-a4d03da6dd758476ce894a37a40e3ccd06a2cab0def66b5c37207b9da150199a.webp",
+      "alt": "An orange-haired anime character in a blue shirt clasps their hands under their chin, with pink heart-shaped eyes, floating hearts, and sparkles.",
+      "format": "webp",
+      "width": 888,
+      "height": 668
+    }
+  ]
+}

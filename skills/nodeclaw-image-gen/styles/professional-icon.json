@@ -1,0 +1,12 @@
+{
+  "id": "professional-icon",
+  "name": "Icon",
+  "description": "Design icons",
+  "promptTemplate": "Create an icon set that represents the requested idea clearly at the intended size. Keep symbols simple, legible, and consistent in shape, weight, detail, and perspective. Do not add unrelated imagery, labels, or mismatched visual styles.\n\nAsk clarifying questions to establish the icon subject, intended use, and visual style. Present relevant icon style directions when available.",
+  "exampleImages": [
+    {
+      "url": "https://persistent.oaistatic.com/images-app/promptworks/2026-09-04/professional-icon-1d652dad962da64ee91a8ab44c2cfb720a78306b8751f0e032b126775f39d3ed.webp",
+      "alt": "Four pale blue icons showing a peace sign, shooting star, frog, and ringed planet on a dark green background."
+    }
+  ]
+}

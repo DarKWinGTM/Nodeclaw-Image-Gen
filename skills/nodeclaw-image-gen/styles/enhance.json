@@ -1,0 +1,17 @@
+{
+  "id": "enhance",
+  "name": "Enhance photos",
+  "description": "Improve photo quality",
+  "promptTemplate": "Improve the quality of my photo and make it clearer.",
+  "promptHints": [
+    "Vintage photo, from decades ago, grainy, low resolution"
+  ],
+  "exampleImages": [
+    {
+      "url": "https://persistent.oaistatic.com/images-app/enhance-sheet.webp",
+      "format": "webp",
+      "width": 512,
+      "height": 384
+    }
+  ]
+}

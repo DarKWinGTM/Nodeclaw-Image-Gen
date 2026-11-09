@@ -1,0 +1,17 @@
+{
+  "id": "palm-reading",
+  "name": "Palm reading",
+  "description": "See what your palm lines mean",
+  "promptTemplate": "Use this image to create a complete palm reading guide infographic. Notice the lines on the palm and illustrate on the key lines, analyze the palm in detail and present the reading on an off white background in a clean, minimal, luxury editorial style. Use thin lines, rounded cards, elegant spacing, and an expensive high-end aesthetic. Keep the focus on the palm reading itself.",
+  "promptHints": [
+    "Photo of a hand"
+  ],
+  "exampleImages": [
+    {
+      "url": "https://persistent.oaistatic.com/images-app/palm-reading-sheet.webp",
+      "format": "webp",
+      "width": 512,
+      "height": 384
+    }
+  ]
+}

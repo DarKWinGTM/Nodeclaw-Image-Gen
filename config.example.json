@@ -8,6 +8,8 @@
   "catalogUrl": null,
   "apiDocsUrl": null,
   "apiKeyEnv": "NODECLAW_API_KEY",
+  "endpointMode": "auto",
+  "apiMode": "images",
   "fallback": { "enabled": true, "onTerminalFailure": false },
   "outputDir": "./generated-images",
   "image": { "count": 1, "size": "auto", "quality": "auto", "format": "auto" },

@@ -1,0 +1,18 @@
+{
+  "id": "impressionism",
+  "name": "Impressionist painting",
+  "description": "Create impressionist art",
+  "promptTemplate": "Turn this photo into an impressionist painting.",
+  "promptHints": [
+    "Photo with a person in the foreground, with a scenic location as the background"
+  ],
+  "exampleImages": [
+    {
+      "url": "https://persistent.oaistatic.com/images-app/promptworks/2026-09-30/impressionism-8a90c0c21d2cca8fe4d5c3309d39bafb03315cbb05c2750729f9229fc57cd680.webp",
+      "alt": "An impressionist painting shows a woman looking over shimmering water at sunset.",
+      "format": "webp",
+      "width": 888,
+      "height": 666
+    }
+  ]
+}

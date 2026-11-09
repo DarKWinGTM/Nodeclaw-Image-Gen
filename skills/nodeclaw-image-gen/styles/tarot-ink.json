@@ -5,5 +5,11 @@
   "tags": ["illustration", "tarot", "print"],
   "promptTemplate": "Create a tarot card depicting {{subject}} in the classic Rider-Waite style. Use bold imperfect black ink linework, flat colors without shading, subtle symbolic elements, paper texture and a printed feel.",
   "defaults": { "aspectRatio": "auto" },
-  "referenceImage": "optional"
+  "referenceImage": "optional",
+  "exampleImages": [
+    {
+      "url": "https://persistent.oaistatic.com/images-app/tarot-sheet.webp",
+      "alt": "Tarot card artwork example"
+    }
+  ]
 }

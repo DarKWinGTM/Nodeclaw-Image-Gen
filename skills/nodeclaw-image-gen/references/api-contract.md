@@ -20,6 +20,14 @@ Catalog discovery is sequential: applicable `data.snapshot.models[]` from payg-m
 - Task is finite: `stream=false`, `partial_images=0`. Generate JSON 2 MiB; Edit JSON/multipart 34 MiB; Task envelope 34 MiB + 65,536 bytes, with the nested operation limit still applicable. These are NodeClaw limits, not all-provider facts.
 - `--request-json FILE` preserves advanced native request members. Explicit operation controls must be valid for the selected API; image format is not the same as result delivery `response_format`.
 
+## Explicit native Gemini mode
+
+`--api-mode gemini` selects finite Direct `POST /v1beta/models/{model}:generateContent`. Supply a base URL, not a full route; terminal `/v1` or `/v1beta` is normalized without removing a proxy prefix. The exact model ID goes in the resource path, without slash or body `model`. A prompt becomes user `contents[].parts[].text`; advanced native contents/generationConfig and selected local inline-image parts remain native JSON. No OpenAI image controls or compatibilityKey are added. The default response modality is IMAGE; provider support remains unverified until a real authorized request succeeds.
+
+Only image-bearing candidate inline parts from a successful finite response are offered to the existing local output writer. Text-only/safety completion is not image success. NodeClaw native wire uses customer Bearer auth and a 2 MiB JSON body limit. This Gateway route is Text-family transport: using image parts does not turn it into Direct Image operation/pricing proof. Direct Google key-header authentication is not part of this profile.
+
+The existing `google_image_generate_content` **Images compatibility** is different: it remains `/v1/images/*` or `/v1/media/tasks` and returns normalized `data[]`. Never infer the native route from a model name or compatibility key.
+
 ## Task identity and completion
 
 A local handle stores a UUID request-signature before POST. New acceptance 202 and signed duplicate 200 identify the original Task. Conflict 409 stops. A lost reply uses `GET /v1/media/tasks` with the same signature; known ID uses `GET /v1/media/tasks/{taskId}`. GET 404/503 is not permission to POST again.

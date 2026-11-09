@@ -1,0 +1,12 @@
+{
+  "id": "professional-product-photo",
+  "name": "Product photo",
+  "description": "Create a product photo",
+  "promptTemplate": "Create a product photograph that presents my product faithfully and professionally for the intended use. Preserve shape, proportions, materials, colors, branding, labels, and functional details. Do not redesign the product or invent features, finishes, branding, labels, or accessories.\n\nAsk for a product image or clear description, then ask clarifying questions to establish details to preserve, setting, lighting, and photographic style. Present relevant photographic directions when available.",
+  "exampleImages": [
+    {
+      "url": "https://persistent.oaistatic.com/images-app/promptworks/2026-09-04/professional-product-photo-79c95f6762e2e761e4b0525096bc160f7db861127fd79717a32cb4babd26edb8.webp",
+      "alt": "Lit candle in a pink glass jar on a pink surface, casting a long shadow."
+    }
+  ]
+}

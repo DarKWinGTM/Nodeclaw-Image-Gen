@@ -1,0 +1,14 @@
+{
+  "id": "color-analysis",
+  "name": "Color analysis",
+  "description": "Find your best colors",
+  "promptTemplate": "Create a personal color analysis graphic using this portrait. Show side-by-side clothing color comparisons to highlight which colors suit the subject best. Make it visual-first, with short labels only and no paragraphs.",
+  "exampleImages": [
+    {
+      "url": "https://persistent.oaistatic.com/images-app/color-analysis-new.webp",
+      "format": "webp",
+      "width": 512,
+      "height": 384
+    }
+  ]
+}

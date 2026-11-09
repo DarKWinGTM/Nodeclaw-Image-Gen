@@ -1,0 +1,17 @@
+{
+  "id": "cross-section",
+  "name": "Cross-section",
+  "description": "Create a cross-section view",
+  "promptTemplate": "Transform the main subject of the uploaded image into a clean educational cutaway diagram on a white background. Keep the subject’s distinctive features from the original image, show a believable cross-section or layered interior, and add clear labeled callouts. Make it look like a textbook or museum science graphic, with clarity and accuracy prioritized over dramatic or artistic styling.",
+  "promptHints": [
+    "Piece of technology"
+  ],
+  "exampleImages": [
+    {
+      "url": "https://persistent.oaistatic.com/images-app/cross-section-sheet.webp",
+      "format": "webp",
+      "width": 888,
+      "height": 666
+    }
+  ]
+}

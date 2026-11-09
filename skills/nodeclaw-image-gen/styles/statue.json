@@ -1,0 +1,17 @@
+{
+  "id": "statue",
+  "name": "Statue",
+  "description": "Turn into a marble statue",
+  "promptTemplate": "Create a detailed neoclassical Greek white Carrara marble statue honoring the uploaded image. If the image has a person, depict the person in the statue as a powerful allegorical figure in motion, with flowing garments, a confident pose, and a serious expression. If it is not a person, do not add a person. Include elements from the photo to give the statue personality and non-generic historical artifacts using only the subject details explicitly provided for this request. Set in a museum hall. Photorealistic with medium depth of field, natural perspective, and warm museum lighting casting dramatic, realistic shadows.",
+  "promptHints": [
+    "Photo of a person or pet in the foreground"
+  ],
+  "exampleImages": [
+    {
+      "url": "https://persistent.oaistatic.com/images-app/statue-sheet.webp",
+      "format": "webp",
+      "width": 512,
+      "height": 384
+    }
+  ]
+}

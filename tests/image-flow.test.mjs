@@ -146,6 +146,79 @@ test('Direct SSE requires the operation completed event, not partial image or EO
   assert.equal((await executeDirect(plan)).status, 'saved');
 });
 
+test('explicit Gemini mode composes the native route, sends native parts and saves actual inline image bytes', async t => {
+  const requests = [];
+  const { context, dir } = await fixture(t, async (req, res) => {
+    requests.push({ url: req.url, auth: req.headers.authorization, payload: JSON.parse(await body(req)) });
+    json(res, { candidates: [{ finishReason: 'STOP', content: { role: 'model', parts: [{ text: 'Image follows' }, { inlineData: { mimeType: 'image/png', data: png.toString('base64') } }] } }] });
+  });
+  context.endpoints[0].baseUrl += '/proxy/v1';
+  const plan = await planImageRequest(context, { apiMode: 'gemini', model: 'exact-image-model', prompt: 'draw a house', skipDiscovery: true });
+  assert.equal(plan.method, 'direct');
+  assert.equal(plan.fallbackReason, 'profile_direct_only');
+  const result = await executeDirect(plan);
+  assert.equal(result.status, 'saved');
+  assert.deepEqual(await readFile(result.paths[0]), png);
+  assert.deepEqual(requests, [{ url: '/proxy/v1beta/models/exact-image-model:generateContent', auth: 'Bearer test-only-key',
+    payload: { contents: [{ role: 'user', parts: [{ text: 'draw a house' }] }], generationConfig: { responseModalities: ['IMAGE'] } } }]);
+  const image = path.join(dir, 'input.png'); await writeFile(image, png);
+  const editPlan = await planImageRequest(context, { apiMode: 'gemini', model: 'exact-image-model', operation: 'image_edit', image, prompt: 'preserve position', skipDiscovery: true });
+  const edited = await executeDirect(editPlan);
+  assert.equal(edited.status, 'saved');
+  assert.equal(requests.length, 2);
+  assert.deepEqual(requests[1].payload.contents[0].parts, [{ text: 'preserve position' }, { inlineData: { mimeType: 'image/png', data: png.toString('base64') } }]);
+  await assert.rejects(planImageRequest(context, { apiMode: 'gemini', model: 'models/bad-id', prompt: 'no dispatch', skipDiscovery: true }), /model/i);
+  await assert.rejects(planImageRequest(context, { apiMode: 'gemini', n: 2, prompt: 'no dispatch', skipDiscovery: true }), /native|Gemini/i);
+  assert.equal(requests.length, 2);
+});
+
+test('native Gemini text-only or safety completion is not reported as a saved image', async t => {
+  let safety = false; let calls = 0;
+  const { context, dir } = await fixture(t, async (req, res) => {
+    calls++; await body(req);
+    json(res, { candidates: [{ finishReason: safety ? 'SAFETY' : 'STOP', content: { parts: safety ? [{ inlineData: { mimeType: 'image/png', data: png.toString('base64') } }] : [{ text: 'No image' }] } }] });
+  });
+  const plan = await planImageRequest(context, { apiMode: 'gemini', prompt: 'one image', skipDiscovery: true });
+  assert.equal((await executeDirect(plan)).status, 'save_failed');
+  safety = true;
+  assert.equal((await executeDirect(plan)).status, 'save_failed');
+  assert.equal(calls, 2);
+  assert.equal((await readdir(dir)).filter(name => name.endsWith('.png')).length, 0);
+});
+
+test('Google Images compatibility keeps Images routing and configured keys never enter Task handles', async t => {
+  const requests = [];
+  const { context, dir, endpoint } = await fixture(t, async (req, res) => {
+    requests.push({ url: req.url, auth: req.headers.authorization, payload: JSON.parse(await body(req)) });
+    const image = { data: [{ b64_json: png.toString('base64') }] };
+    json(res, req.url.endsWith('media/tasks') ? { taskId, status: 'succeeded', result: image } : image, req.url.endsWith('media/tasks') ? 202 : 200);
+  });
+  const config = path.join(dir, 'private.json');
+  await writeFile(config, JSON.stringify({ apiBaseUrl: endpoint, apiKey: 'fixture-task-private-key', endpointMode: 'configured', provider: 'nodeclaw', allowLocalHttp: true, outputDir: dir }));
+  const configured = await resolveContext({ cli: { config }, env: {}, cwd: dir, homeDir: dir });
+  const spec = { request: { model: 'native-google', compatibilityKey: 'google_image_generate_content', contents: [{ parts: [{ text: 'draw' }] }] }, skipDiscovery: true };
+  const direct = await executeDirect(await planImageRequest(configured, { ...spec, method: 'direct' }), { env: {} });
+  assert.equal(direct.status, 'saved');
+  assert.equal(requests[0].url, '/v1/images/generations');
+  const task = await runTask(await planImageRequest(configured, spec), { env: {} });
+  assert.equal(task.status, 'saved');
+  assert.equal(requests[1].url, '/v1/media/tasks');
+  assert.equal(requests[1].auth, 'Bearer fixture-task-private-key');
+  const handleText = await readFile(task.handle, 'utf8');
+  assert.ok(!handleText.includes('fixture-task-private-key'));
+  assert.ok(!JSON.stringify(configured).includes('fixture-task-private-key'));
+  assert.ok(!JSON.stringify(task).includes('fixture-task-private-key'));
+  await rm(task.paths[0]);
+  let resumedAuth;
+  const resumed = await resumeTask(task.handle, configured, { env: {}, fetchImpl: async (url, options) => {
+    resumedAuth = options.headers.Authorization;
+    return Response.json({ taskId, status: 'succeeded', result: { data: [{ b64_json: png.toString('base64') }] } });
+  } });
+  assert.equal(resumed.status, 'saved');
+  assert.equal(resumedAuth, 'Bearer fixture-task-private-key');
+  assert.equal(requests.length, 2, 'resume must not create another inference');
+});
+
 test('advanced Google input preserves native content and does not invent OpenAI quantity', async t => {
   const { context } = await fixture(t, async () => {});
   const plan = await planImageRequest(context, { request: { model: 'native-google', compatibilityKey: 'google_image_generate_content', contents: [{ parts: [{ text: 'draw' }] }] }, skipDiscovery: true });

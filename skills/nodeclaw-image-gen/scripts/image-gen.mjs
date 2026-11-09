@@ -1,13 +1,14 @@
 #!/usr/bin/env node
 import { parseArgs } from 'node:util';
-import { readFile, mkdir, writeFile } from 'node:fs/promises';
+import { readFile } from 'node:fs/promises';
 import path from 'node:path';
 import { pathToFileURL } from 'node:url';
-import { DEFAULTS, resolveContext, inputError } from './config.mjs';
+import { resolveContext, inputError, readSetupInput, saveConfiguration, writePluginEnvironment } from './config.mjs';
+import { authorization } from './http.mjs';
 import { discoverModels } from './models.mjs';
 
-const stringOptions = ['config', 'provider', 'model', 'method', 'api-base-url', 'catalog-url', 'api-docs-url', 'api-key-env', 'output-dir', 'output', 'harness', 'harness-endpoint', 'harness-api-key-env', 'harness-provider', 'fallback', 'fallback-terminal', 'request-ms', 'wait-ms', 'poll-interval-ms', 'max-response-bytes', 'prompt', 'mask', 'reference-url', 'compatibility-key', 'size', 'quality', 'format', 'response-format', 'n', 'spec', 'request-json', 'handle', 'target', 'version', 'manifest', 'assets-dir', 'repository', 'release', 'work-dir', 'job', 'scale', 'tile-size', 'overlap', 'color-sigma', 'preserve-alpha', 'change', 'preserve'];
-const booleanOptions = ['json', 'yes', 'dry-run', 'allow-local-http', 'skip-discovery', 'help', 'replace', 'allow-partial'];
+const stringOptions = ['config', 'provider', 'model', 'method', 'api-base-url', 'catalog-url', 'api-docs-url', 'api-key-env', 'api-key', 'endpoint-mode', 'api-mode', 'output-dir', 'output', 'harness', 'harness-endpoint', 'harness-api-key-env', 'harness-provider', 'fallback', 'fallback-terminal', 'request-ms', 'wait-ms', 'poll-interval-ms', 'max-response-bytes', 'prompt', 'mask', 'reference-url', 'compatibility-key', 'size', 'quality', 'format', 'response-format', 'n', 'spec', 'request-json', 'handle', 'target', 'version', 'manifest', 'assets-dir', 'repository', 'release', 'work-dir', 'job', 'scale', 'tile-size', 'overlap', 'color-sigma', 'preserve-alpha', 'change', 'preserve'];
+const booleanOptions = ['json', 'yes', 'dry-run', 'allow-local-http', 'skip-discovery', 'help', 'replace', 'allow-partial', 'interactive', 'api-key-stdin', 'status'];
 const camel = value => value.replace(/-([a-z])/g, (_, c) => c.toUpperCase());
 
 export async function main(argv = process.argv.slice(2)) {
@@ -19,13 +20,19 @@ export async function main(argv = process.argv.slice(2)) {
   const [command = 'help', subcommand, id] = parsed.positionals;
   cli.command = command;
   if (cli.help || command === 'help') {
-    console.log(`Nodeclaw-Image-Gen\n\nCommands: setup, models, generate, edit, resume, styles, techniques, docs, update\n\n  setup [--config FILE]\n  models [--api-base-url URL] [--json]\n  generate --prompt TEXT [--dry-run | --yes] [--method task|direct]\n  edit --prompt TEXT --image FILE [--image FILE] [--mask FILE] [--dry-run | --yes]\n  resume --handle FILE [--json]\n  styles|techniques list|show|sync [ID] [--manifest FILE --assets-dir DIR --yes]\n  techniques prepare pixel-art-detail --image PNG --work-dir NEW_DIR [--scale 3 --tile-size 1024x1024 --overlap 0.25]\n  techniques prepare preserve-composition --image PNG --work-dir NEW_DIR --change TEXT [--preserve TEXT]\n  techniques check|merge --job FILE [--output-dir DIR] [--allow-partial]\n  docs fetch|sync\n  update check|apply [--manifest FILE --assets-dir DIR --target DIR --yes]\n\nCommon: --config FILE --model ID --api-base-url URL --provider nodeclaw|openai-compatible\n        --api-key-env ENV_NAME --output-dir DIR --output FILE --fallback true|false\n        --spec FILE --request-json FILE --size WxH --quality VALUE --format png|jpeg|webp\n        --json (stdout result only; progress stderr), --allow-local-http (loopback only)\n\nCredentials: set NODECLAW_API_KEY or the configured environment variable securely.\nTask-first by default. --yes explicitly authorizes the selected request; dry-run never generates.\nTechnique tools run locally: --mask uses alpha 255 to protect, 0 to edit.\nPixel tools: --color-sigma 0..32 (source pixels; 0 disables restoration), --preserve-alpha true|false.\nShipped helpers are executable skill code; downloaded workflow content is never executed.`);
+    console.log(`Nodeclaw-Image-Gen\n\nCommands: setup, models, generate, edit, resume, styles, techniques, docs, update\n\n  setup [--config FILE] [--api-base-url URL] [--interactive | --api-key-stdin | --api-key KEY] [--replace]\n  setup --status [--json]\n  models [--api-base-url URL] [--json]\n  generate --prompt TEXT [--dry-run | --yes] [--method task|direct]\n  edit --prompt TEXT --image FILE [--image FILE] [--mask FILE] [--dry-run | --yes]\n  resume --handle FILE [--json]\n  styles|techniques list|show|sync [ID] [--manifest FILE --assets-dir DIR --yes]\n  techniques prepare pixel-art-detail --image PNG --work-dir NEW_DIR [--scale 3 --tile-size 1024x1024 --overlap 0.25]\n  techniques prepare preserve-composition --image PNG --work-dir NEW_DIR --change TEXT [--preserve TEXT]\n  techniques check|merge --job FILE [--output-dir DIR] [--allow-partial]\n  docs fetch|sync\n  update check|apply [--manifest FILE --assets-dir DIR --target DIR --yes]\n\nCommon: --config FILE --model ID --api-base-url URL --provider nodeclaw|openai-compatible\n        --api-key-env ENV_NAME --output-dir DIR --output FILE --fallback true|false\n        --spec FILE --request-json FILE --size WxH --quality VALUE --format png|jpeg|webp\n        --json (stdout result only; progress stderr), --allow-local-http (loopback only)\n\nCredentials: local setup --interactive hides key entry; --api-key-stdin accepts a secure pipe.\nDirect --api-key arguments may appear in shell history/process listings; never paste keys into chat.\nKeys are stored in private plaintext user config, outside the skill installation. ENV overrides remain optional.\nAPI selection: --api-mode images|gemini; --endpoint-mode auto|configured (saved endpoint pin).\nTask-first by default. --yes explicitly authorizes the selected request; dry-run never generates.\nTechnique tools run locally: --mask uses alpha 255 to protect, 0 to edit.\nPixel tools: --color-sigma 0..32 (source pixels; 0 disables restoration), --preserve-alpha true|false.\nShipped helpers are executable skill code; downloaded workflow content is never executed.`);
     return;
   }
   if (Number(process.versions.node.split('.')[0]) < 22) throw inputError('Node.js 22 or newer is required');
+  if (command === 'plugin-env') {
+    await writePluginEnvironment();
+    return;
+  }
   const specInput = cli.spec ? await readJsonInput(cli.spec) : {};
   cli = { ...specInput, ...cli, yes: parsed.values.yes === true };
-  const context = await resolveContext({ cli });
+  if (specInput.apiKey !== undefined) throw inputError('Do not put API keys in request specs; use local setup or native plugin configuration');
+  if (command !== 'setup' && (cli.interactive || cli.apiKeyStdin)) throw inputError('Credential input is setup-only');
+  let context = await resolveContext({ cli });
   const controller = new AbortController();
   const onInterrupt = () => controller.abort();
   process.once('SIGINT', onInterrupt);
@@ -33,10 +40,16 @@ export async function main(argv = process.argv.slice(2)) {
   let result;
   try {
   if (command === 'setup') {
-    await mkdir(path.dirname(context.configPath), { recursive: true, mode: 0o700 });
-    const selected = { ...context.config, outputDir: cli.outputDir || DEFAULTS.outputDir };
-    await writeFile(context.configPath, `${JSON.stringify(selected, null, 2)}\n`, { flag: 'wx', mode: 0o600 });
-    result = { status: 'configured', configPath: context.configPath, apiKeyEnv: DEFAULTS.apiKeyEnv };
+    if (cli.status) {
+      result = { status: context.configExists ? 'configured' : 'not_configured', configPath: context.configPath,
+        apiBaseUrl: context.endpoints[0].baseUrl, endpointMode: context.config.endpointMode, apiMode: context.config.apiMode,
+        credentialConfigured: Boolean(authorization(context.endpoints[0], process.env, { required: false }).Authorization) };
+    } else {
+      if (context.configExists && !cli.replace) throw inputError('Existing config requires explicit --replace confirmation');
+      cli = await readSetupInput(cli.interactive ? { ...cli, apiBaseUrl: cli.apiBaseUrl || context.config.apiBaseUrl } : cli);
+      context = await resolveContext({ cli });
+      result = await saveConfiguration(context, cli);
+    }
   } else if (command === 'models') {
     const views = [];
     for (const endpoint of context.endpoints) views.push(await discoverModels(endpoint));
@@ -88,7 +101,8 @@ async function readJsonInput(file) {
 if (process.argv[1] && import.meta.url === pathToFileURL(path.resolve(process.argv[1])).href) {
   main().catch(error => {
     const known = error.exitCode || error.code;
-    console.log(JSON.stringify({ status: 'failed', error: { code: error.code || 'client_error', message: known && !['EACCES', 'ENOENT', 'EEXIST'].includes(error.code) ? error.message : 'Client operation failed; check input, permissions and existing target files' } }));
+    if (process.argv[2] === 'plugin-env') console.error('Nodeclaw-Image-Gen native configuration bridge unavailable; check plugin configuration and restart a supported Bash session, or use local setup --interactive. No credential was printed.');
+    else console.log(JSON.stringify({ status: 'failed', error: { code: error.code || 'client_error', message: known && !['EACCES', 'ENOENT', 'EEXIST'].includes(error.code) ? error.message : 'Client operation failed; check input, permissions and existing target files' } }));
     process.exitCode = error.exitCode || 1;
   });
 }

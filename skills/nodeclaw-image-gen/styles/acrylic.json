@@ -1,0 +1,18 @@
+{
+  "id": "acrylic",
+  "name": "Acrylic painting ",
+  "description": "Make a bold acrylic painting",
+  "promptTemplate": "Transform each image into a flattened, vibrant acrylic painting. Strip each object to solid color with simplified forms. No shading, no shadows, no gradients. Add hand-painted texture with imperfect outlines and wobbly edges. Minimal details.",
+  "promptHints": [
+    "Photo of a pet in the foreground"
+  ],
+  "exampleImages": [
+    {
+      "url": "https://persistent.oaistatic.com/images-app/promptworks/2026-09-30/acrylic-fd94a9623f976f198b81481543db5f65a3258ce5dee1434de0cc782ad9b7f25a.webp",
+      "alt": "A gray dog sits among orange cushions in a bright, flat acrylic painting.",
+      "format": "webp",
+      "width": 1024,
+      "height": 770
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "id": "professional-illustration",
+  "name": "Illustration",
+  "description": "Create an illustration",
+  "promptTemplate": "Create an illustration that expresses my idea through a clear subject, composition, medium, and mood. Preserve supplied or reference details exactly; do not add conflicting story elements or invented copy.\n\nAsk clarifying questions to establish the subject, intent, intended use, reference details to preserve, and visual style. Present relevant illustration style directions when available.",
+  "exampleImages": [
+    {
+      "url": "https://persistent.oaistatic.com/images-app/promptworks/2026-09-04/professional-illustration-6bfb502b329095214140579bb65cb298505bf741e2ac0e6de689ce0f7e20ee3c.webp",
+      "alt": "Illustration of a person in a yellow sweater hugging a black and white cat on a lavender background."
+    }
+  ]
+}

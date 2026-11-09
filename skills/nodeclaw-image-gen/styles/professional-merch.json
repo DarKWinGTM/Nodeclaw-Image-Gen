@@ -1,0 +1,12 @@
+{
+  "id": "professional-merch",
+  "name": "Merch",
+  "description": "Design custom merch",
+  "promptTemplate": "Create a merchandise design that applies my idea, artwork, or brand naturally to the chosen item. Fit the design to the item’s shape, scale, placement, surface, and production method. Preserve supplied wording or artwork exactly; do not add unrelated logos, graphics, placements, or product features.\n\nAsk clarifying questions to establish the item, artwork or wording, placement, intended audience, and visual style. Present relevant merchandise item options and style directions when available.",
+  "exampleImages": [
+    {
+      "url": "https://persistent.oaistatic.com/images-app/promptworks/2026-09-04/professional-merch-2149b9e47134e530c8b5bb90e717d0551e5033ebdf51bca4365fc0c4f5505d1f.webp",
+      "alt": "White shirt printed with a green frog wearing sunglasses and headphones at turntables, hanging against a blue sky."
+    }
+  ]
+}

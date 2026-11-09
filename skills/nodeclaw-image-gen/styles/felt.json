@@ -1,0 +1,18 @@
+{
+  "id": "felt",
+  "name": "Felted miniature",
+  "description": "Create a needle-felted world",
+  "promptTemplate": "Transform the uploaded photo into a Needle Felted Fiber Art. Handcrafted needle-felted wool miniature style, simplified rounded forms, minimal facial details, soft fuzzy fibers, visible wool texture, cozy handmade imperfections, plush felt dolls, miniature diorama, warm soft lighting, charming stop-motion aesthetic.",
+  "promptHints": [
+    "Photo of one or two friends, smiling in the foreground, having a good time"
+  ],
+  "exampleImages": [
+    {
+      "url": "https://persistent.oaistatic.com/images-app/promptworks/2026-09-30/felt-2d344687da002475665d73044e8e231076f6e442bc2c3af80ea5f52637acaebb.webp",
+      "alt": "Two needle-felted figures in white and pink headscarves sit at a table with small bowls.",
+      "format": "webp",
+      "width": 888,
+      "height": 666
+    }
+  ]
+}

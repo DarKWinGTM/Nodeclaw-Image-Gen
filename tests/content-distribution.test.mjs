@@ -39,6 +39,39 @@ test('bundled techniques load independently of style presets and reject executab
   await assert.rejects(loadTechnique('custom:bad', context), /shipped technique tool/i);
 });
 
+test('additional style imports expose one canonical preset per prompt with preview URLs', async t => {
+  const { context } = await workspace(t);
+  const { items } = await listContent('styles', context);
+  assert.equal(items.length, 58);
+  assert.equal(new Set(items.map(item => item.id)).size, items.length);
+  const aerial = items.find(item => item.id === 'drone-view');
+  assert.equal(aerial.name, 'Aerial view');
+  assert.equal(aerial.description, 'See the scene from high above');
+  assert.equal(aerial.promptTemplate, 'Transform this picture to a drone view angle.');
+  assert.ok(aerial.exampleImages.some(image => image.url === 'https://persistent.oaistatic.com/images-app/promptworks/2026-10-02/drone-view-ada14b68403f230a0210b2dee6ff8353f52a5632e06cfb38f55048a1990853b6.webp'));
+  for (const item of items.filter(item => !['clean-product', 'pixel-art', 'tarot-ink'].includes(item.id))) {
+    assert.ok(item.promptTemplate.length > 0);
+    assert.ok(item.exampleImages.length > 0);
+    assert.ok(item.exampleImages.every(image => new URL(image.url).protocol === 'https:'));
+    assert.equal(item.action, undefined);
+    assert.equal(item.system_hints, undefined);
+    assert.doesNotMatch(item.promptTemplate, /what you know about me/i);
+  }
+  const tarot = items.find(item => item.id === 'tarot-ink');
+  assert.ok(tarot.exampleImages.some(image => image.url === 'https://persistent.oaistatic.com/images-app/tarot-sheet.webp'));
+  assert.match(tarot.promptTemplate, /\{\{subject\}\}/);
+  assert.ok(items.find(item => item.id === 'professional-website-mockup'));
+  assert.ok(items.find(item => item.id === 'film-strip'));
+});
+
+test('invalid custom styles remain rejected instead of silently disappearing', async t => {
+  const { context } = await workspace(t);
+  const directory = path.join(context.dataDir, 'custom', 'styles');
+  await mkdir(directory, { recursive: true });
+  await writeFile(path.join(directory, 'invalid.json'), JSON.stringify({ styles: [] }));
+  await assert.rejects(listContent('styles', context), /metadata/i);
+});
+
 test('manifest validation blocks traversal, collisions and executable content packs', () => {
   const row = { path: 'techniques/example/WORKFLOW.md', asset: 'file-0', bytes: 2, sha256: hash('ok') };
   const manifest = { schemaVersion: 1, package: 'nodeclaw-image-gen', version: '0.1.0', kind: 'content', files: [row] };
@@ -85,6 +118,37 @@ test('standalone install is complete, no-clobber by default and preserves extern
   assert.equal(await readFile(userFile, 'utf8'), 'user config');
   const linkSource = path.join(dir, 'linked'); await mkdir(linkSource); await symlink(userFile, path.join(linkSource, 'outside.json'));
   await assert.rejects(installSkill({ sourceDir: linkSource, targetDir: path.join(dir, 'unsafe') }));
+});
+
+test('installer previews configuration without secrets, saves it outside payload, and separates replacement approvals', async t => {
+  const { dir } = await workspace(t);
+  const target = path.join(dir, 'skills', 'configured-image');
+  const config = path.join(dir, 'settings', 'config.json');
+  const installer = path.join(root, 'script/install.mjs');
+  const env = { PATH: process.env.PATH, HOME: dir, USERPROFILE: dir, APPDATA: dir };
+  const args = [installer, '--harness', 'codex', '--target', target, '--config', config,
+    '--api-base-url', 'https://api.example/proxy', '--api-key', 'fixture-install-key'];
+  const run = extra => spawnSync(process.execPath, [...args, ...extra], { env, cwd: dir, encoding: 'utf8', timeout: 10000 });
+  const preview = run([]);
+  assert.equal(preview.status, 0, preview.stderr);
+  assert.ok(!(preview.stdout + preview.stderr).includes('fixture-install-key'));
+  assert.equal(JSON.parse(preview.stdout).configuration.configPath, config);
+  await assert.rejects(readFile(config), { code: 'ENOENT' });
+  const installed = run(['--yes']);
+  assert.equal(installed.status, 0, installed.stderr);
+  assert.ok(!(installed.stdout + installed.stderr).includes('fixture-install-key'));
+  const commands = JSON.parse(installed.stdout).commands;
+  assert.deepEqual(commands?.configure, ['node', path.join(target, 'scripts/image-gen.mjs'), 'setup', '--config', config, '--interactive']);
+  assert.deepEqual(commands?.reconfigure, [...commands.configure, '--replace']);
+  assert.deepEqual(commands?.update, ['node', path.join(target, 'scripts/image-gen.mjs'), 'update', 'apply', '--target', target, '--yes']);
+  assert.equal(JSON.parse(await readFile(config, 'utf8')).apiKey, 'fixture-install-key');
+  const status = spawnSync(process.execPath, [path.join(target, 'scripts/image-gen.mjs'), 'setup', '--config', config, '--status', '--json'], { env, cwd: dir, encoding: 'utf8' });
+  assert.equal(status.status, 0, status.stdout);
+  assert.equal(JSON.parse(status.stdout).credentialConfigured, true);
+  assert.ok(!status.stdout.includes('fixture-install-key'));
+  assert.equal(run(['--yes', '--replace']).status, 2);
+  assert.equal(run(['--yes', '--replace', '--replace-config']).status, 0);
+  assert.equal(JSON.parse(await readFile(config, 'utf8')).apiKey, 'fixture-install-key');
 });
 
 test('optional docs failure remains a reference limit, not an image request gate', async t => {

@@ -1,7 +1,7 @@
 # Nodeclaw-Image-Gen Implementation Plan
 
 > **Execution:** Main แก้ source และทำ integration เอง ใช้ `superpowers:executing-plans` เมื่อเริ่ม execution หลังแผนผ่าน review; ไม่ใช้ subagent-driven implementation หรือ reviewer ประจำทุก task. ผู้ช่วยใช้ได้เฉพาะวิเคราะห์/ค้นหา/ทดสอบ/debug/review แบบ read-only เมื่อมีคำถามที่เปลี่ยนการตัดสินใจจริง
-> **Status:** Original v0.1.0 route implemented and published; checkbox steps below are retained planning history, not the live task board. Current v0.1.1 continuation ships deterministic technique tools and English/AI auto install; source/local verified. Public distribution/OS results require the matching GitHub release/CI. Current results/limits: [changelog](../../../changelog/nodeclaw-image-gen.changelog.md)
+> **Status:** Original v0.1.0/v0.1.1 routes are historical, not the live board. v0.1.2 configuration, native bridge, additional styles and prompt-first Docs source/local gates passed; user selected git push/release. Public distribution/OS results require the matching release/CI. Current results/limits: [changelog](../../../changelog/nodeclaw-image-gen.changelog.md)
 > **Session:** 30328a2c-b111-4518-970b-7cf10fc0832a
 
 **Goal:** สร้าง skill + CLI ขนาดเล็กที่ Generate/Edit ผ่าน NodeClaw แบบ Task-first และ Direct ได้อย่างปลอดภัย เพิ่มเทคนิคผ่าน GitHub sync ได้ และติดตั้ง/อัปเดตเป็นแพ็กเกจแยกได้
@@ -12,7 +12,13 @@
 
 **Spec:** [Parent design](../../../design/nodeclaw-image-gen.design.md) → [Runtime/API](../../../design/nodeclaw-image-gen-runtime.design.md), [Experience/distribution](../../../design/nodeclaw-image-gen-experience.design.md)
 
-## Current continuation route: 0.1.1
+## Current continuation: 0.1.2 source and selected publication
+
+Task #10 follows runtime §4–7 and experience §11/15–16: existing setup/install/auth owners accept private address/key, preserve endpoint binding and no-secret output, bridge native sensitive options into a supported session, add explicit native Gemini wire and return installed-path config/update commands. Docs keeps AI auto install plus Claude marketplace/native form; no API key through chat/AskUserQuestion. User selected normalization of supplied collections into 55 additional style entries with sample URLs; raw originals retained outside active discovery, existing loader unchanged. Full package 37/37 tests, syntax/JSON, package dry-run, exact plugin/marketplace schemas, frontend types and locale/prompt parity passed.
+
+Task #11 is the separately user-approved git push/release gate: export only the checked canonical package to public distribution, verify matching revision CI, publish v0.1.2 assets and verify public payload integrity. Do not push platform/unrelated state or overwrite prior published releases. Actual harness install/keychain, real credentials, paid calls, visual acceptance and website deployment remain outside this selected route.
+
+## Historical continuation route: 0.1.1
 
 User correction selects techniques as real processing tools, not context that makes the model write scripts. Existing experience design §11 owns shipped `technique-tools.mjs`/`raster.mjs`, pinned bundled pngjs7 and prepare/check/merge through the same CLI; Image Edit/Task/auth owners stay unchanged. English skill/workflows/README and compact Quick install are selected alongside public design/changelog/docs/diagram inclusion. Local PNG/core/install checks and frontend types pass; selected public distribution is checked separately against the matching GitHub release/CI. Paid calls, native harness install, visual acceptance and website deploy are separate and not selected here. The original route below preserves the former recipe-only scope as history, not current guidance.
 

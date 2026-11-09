@@ -1,0 +1,12 @@
+{
+  "id": "professional-flyer",
+  "name": "Flyer",
+  "description": "Design a flyer",
+  "promptTemplate": "Create a flyer that communicates my message clearly and makes essential information easy to find. Use clear hierarchy, readable required details, and an obvious next step. Preserve all supplied details exactly; do not invent names, dates, locations, prices, contact info, sponsors, offers, or additional copy.\n\nAsk clarifying questions to establish the purpose, required content, desired action, format and distribution, layout, and visual style. Present relevant layout and style directions when available.",
+  "exampleImages": [
+    {
+      "url": "https://persistent.oaistatic.com/images-app/promptworks/2026-09-04/professional-flyer-ea3979eaf7b69c9abf4791ccfaf1ea90056fe949b95e72264880c950f6d7356c.webp",
+      "alt": "Black and white LOST FROG flyer with a frog photo and the contact text TEXT: 555-0184."
+    }
+  ]
+}

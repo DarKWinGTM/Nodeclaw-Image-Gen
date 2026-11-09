@@ -1,0 +1,18 @@
+{
+  "id": "8-bit",
+  "name": "16-bit arcade ",
+  "description": "Enter a 16-bit fighting game",
+  "promptTemplate": "Transform the uploaded subject and environment into a Retro 16-Bit Arcade Fighting Game Pixel Art. Preserve identity while redesigning wardrobe into bold, readable arcade-character shapes. Name the character 'Player 1\" and pose the subject as a full body character with exaggerated expressions. Avoid modern vector pixel polish. Rebuild the environment as a detailed side-view fighting-game stage with layered pixel scenery, dramatic lighting, and period-appropriate arcade interface elements. ",
+  "promptHints": [
+    "Detailed, expressive photo with a full body view of a person in the foreground as the main subject"
+  ],
+  "exampleImages": [
+    {
+      "url": "https://persistent.oaistatic.com/images-app/promptworks/2026-09-30/8-bit-01eba4a7418ca463afb19b8160d7637be348bc2d6f9e8f55f87193121aa1cf68.webp",
+      "alt": "A pixel-art fighter in a red jacket and blue trousers poses on a neon-lit 16-bit arcade stage.",
+      "format": "webp",
+      "width": 888,
+      "height": 666
+    }
+  ]
+}

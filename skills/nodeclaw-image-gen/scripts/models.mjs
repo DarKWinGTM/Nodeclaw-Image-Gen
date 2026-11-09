@@ -1,5 +1,5 @@
 import { apiUrl } from './config.mjs';
-import { requestJson } from './http.mjs';
+import { authorization, requestJson } from './http.mjs';
 
 export async function discoverModels(endpoint, { signal, env = process.env, fetchImpl = fetch, timeoutMs = 15000 } = {}) {
   const merged = new Map(); const issues = []; let usable = 0;
@@ -23,7 +23,7 @@ export async function discoverModels(endpoint, { signal, env = process.env, fetc
     } catch (error) { issues.push({ source: 'catalog', code: error.code || 'catalog_unavailable' }); }
   }
   try {
-    const { data } = await requestJson(apiUrl(endpoint, 'models'), { endpoint, env, signal, fetchImpl, timeoutMs, limit: 4194304, authenticated: Boolean(endpoint.apiKeyEnv && env[endpoint.apiKeyEnv]) });
+    const { data } = await requestJson(apiUrl(endpoint, 'models'), { endpoint, env, signal, fetchImpl, timeoutMs, limit: 4194304, authenticated: Boolean(authorization(endpoint, env, { required: false }).Authorization) });
     if (!Array.isArray(data?.data)) throw new Error('Models schema unavailable');
     usable++;
     for (const model of data.data) accept(model.id, 'models');

@@ -1,0 +1,12 @@
+{
+  "id": "professional-website-mockup",
+  "name": "Website mockup",
+  "description": "Create a website mockup",
+  "promptTemplate": "Create a website mockup that clearly presents the page purpose, content, and primary user action. Build strong information hierarchy, understandable navigation and actions, and a coherent interface. Preserve supplied names, copy, prices, and claims exactly; do not invent testimonials, client logos, metrics, or business details.\n\nAsk clarifying questions to establish site purpose, audience, required content, and visual style. Present relevant UI style directions when available.",
+  "exampleImages": [
+    {
+      "url": "https://persistent.oaistatic.com/images-app/promptworks/2026-09-04/professional-website-mockup-ee1bb9e068c9b5998f97c526e13c416e16e6fd60c50ee798590949a8b439342c.webp",
+      "alt": "Red Kiln ceramics shop webpage with a large photo of two vases and a row of three product cards."
+    }
+  ]
+}

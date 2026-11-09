@@ -1,0 +1,18 @@
+{
+  "id": "drone-view",
+  "name": "Aerial view",
+  "description": "See the scene from high above",
+  "promptTemplate": "Transform this picture to a drone view angle.",
+  "promptHints": [
+    "Photo of a person or pet"
+  ],
+  "exampleImages": [
+    {
+      "url": "https://persistent.oaistatic.com/images-app/promptworks/2026-10-02/drone-view-ada14b68403f230a0210b2dee6ff8353f52a5632e06cfb38f55048a1990853b6.webp",
+      "alt": "A small tan and white dog looks up from the center of a green lawn, photographed from directly overhead.",
+      "format": "webp",
+      "width": 888,
+      "height": 668
+    }
+  ]
+}

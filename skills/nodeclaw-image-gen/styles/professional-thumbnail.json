@@ -1,0 +1,12 @@
+{
+  "id": "professional-thumbnail",
+  "name": "Thumbnail",
+  "description": "Create a thumbnail",
+  "promptTemplate": "Create a thumbnail that communicates my idea instantly at small size. Use one strong focal point, clear hierarchy, and brief readable text for the intended context. Preserve supplied details exactly; do not invent names, claims, labels, or additional copy.\n\nAsk for a content image the thumbnail will represent, then ask clarifying questions to required text, audience or context, and visual style. Present relevant thumbnail style directions when available.",
+  "exampleImages": [
+    {
+      "url": "https://persistent.oaistatic.com/images-app/promptworks/2026-09-08/professional-thumbnail-bec878131b459709d6531854c0845349a7933aec95f17a33d7ddc7757f59922f.webp",
+      "alt": "Social media post mockup on a pale green background with a person in a white chef jacket taking a mirror selfie and large white text reading one day in my life."
+    }
+  ]
+}

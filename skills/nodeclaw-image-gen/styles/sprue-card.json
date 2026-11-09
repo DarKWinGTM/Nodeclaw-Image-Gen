@@ -1,0 +1,18 @@
+{
+  "id": "sprue-card",
+  "name": "Model kit",
+  "description": "Build a one-color model kit",
+  "promptTemplate": "Make a one color plastic model-kit sprue card of this scene. Pick a prominent vibrant color from the scene to use. Keep people and animals in one piece. Make the background a darker shade of the sprue card.",
+  "promptHints": [
+    "Detailed, full body photo of a person in the foreground, with a vibrant scene in the background"
+  ],
+  "exampleImages": [
+    {
+      "url": "https://persistent.oaistatic.com/images-app/promptworks/2026-09-30/sprue-card-5d286404f357929d1af0b7bb053bc80ddd6b3af1a40acc4854f46f2fe8216c31.webp",
+      "alt": "A green plastic model-kit sprue holds a person, city skyline, streetlamp, bicycle, and planter.",
+      "format": "webp",
+      "width": 888,
+      "height": 666
+    }
+  ]
+}

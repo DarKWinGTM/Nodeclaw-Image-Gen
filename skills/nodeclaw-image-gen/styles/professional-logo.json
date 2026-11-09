@@ -1,0 +1,12 @@
+{
+  "id": "professional-logo",
+  "name": "Logo",
+  "description": "Explore logo ideas",
+  "promptTemplate": "Create a small set of distinct logo options for my brand, company, or project. Make each option differ in concepts and keep them recognizable at small and large sizes. Preserve all supplied wording exactly. Do not invent brand names, taglines, or additional wording.\n\nAsk clarifying questions about the brand and purpose, required wording, intended impression, and visual style. Present relevant logo style directions when available.",
+  "exampleImages": [
+    {
+      "url": "https://persistent.oaistatic.com/images-app/promptworks/2026-09-04/professional-logo-1b1be571ecf621410376aba147a70765ec67c402a23eaadddb504b3e5f09a47d.webp",
+      "alt": "Blue circular logo with a white line drawing of a fish on a pale blue background."
+    }
+  ]
+}

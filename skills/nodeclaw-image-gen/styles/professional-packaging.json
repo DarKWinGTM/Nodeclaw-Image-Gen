@@ -1,0 +1,12 @@
+{
+  "id": "professional-packaging",
+  "name": "Packaging",
+  "description": "Design product packaging",
+  "promptTemplate": "Create packaging that represents my product and brand clearly on the physical package. Fit the design to the package shape, scale, materials, and usable surfaces, with required information in a clear hierarchy. Preserve supplied branding and product information exactly; do not invent claims, ingredients, certifications, legal copy, quantities, or barcodes.\n\nAsk clarifying questions to establish product, required branding or content, package type, size, shape, materials, surfaces to design, and visual style. Present relevant packaging style directions when available.",
+  "exampleImages": [
+    {
+      "url": "https://persistent.oaistatic.com/images-app/promptworks/2026-09-04/professional-packaging-7df5528c817280d8130cb4a86bd5cfcd11824c758f03184c562f13babdc6275c.webp",
+      "alt": "Cream LEAF Green Tea box decorated with green leaves and an orange circle on a peach surface."
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "id": "pin-collection",
+  "name": "Pin collection",
+  "description": "Create pins inspired by you",
+  "promptTemplate": "Using only the subject and interests explicitly provided for this request, create a set of 8 hyper real illustrated enamel pins in a 4x5 image. 1 medium pin is a portrait of me, 1 small pin is a word that describes me, 1 small pin is my name. The style is bold, flat, bright colors, eye catching. If you don’t know enough about me yet, pull cues from the photo.",
+  "promptHints": [
+    "Photo of a person in the foreground with personal details in the background, or while participating in a hobby"
+  ],
+  "exampleImages": [
+    {
+      "url": "https://persistent.oaistatic.com/images-app/promptworks/2026-07-10/pin-collection-34b419410824b90fed76556057d79f55a58cfd5c4734417add1c8f28954abbf3.webp",
+      "format": "webp",
+      "width": 888,
+      "height": 668
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "id": "photo-booth",
+  "name": "Photo booth",
+  "description": "Make analog photo strips",
+  "promptTemplate": "Using my uploaded portrait as the identity reference, create a photo-booth collage: three black and white vertical strips side by side misaligned, four photos in each strip, each strip slightly tilted to overlap in a 9:16 composition. Preserve the subjects’ facial identity, outfits, and hairstyles. Poses and expressions are varied, fun, and silly. Some photos have people partially cropped, completely cropped, switching places, closer to camera. Use harsh direct flash, extreme contrast, crushed blacks, blown whites, few midtones, and lost detail. Add coarse film grain, overexposure, thick black borders, and very light wear. Analog booth print.",
+  "promptHints": [
+    "Photo of a few people having a good time"
+  ],
+  "exampleImages": [
+    {
+      "url": "https://persistent.oaistatic.com/images-app/promptworks/2026-09-30/photo-booth-afb1f5541d9765123efa3f17cf069e4f62f635e639bd8463d1a3976a9433baa8.webp",
+      "alt": "Three overlapping black-and-white photo booth strips show a woman and a man smiling and posing.",
+      "format": "webp",
+      "width": 888,
+      "height": 666
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "id": "professional-headshot",
+  "name": "Headshot",
+  "description": "Create a headshot",
+  "promptTemplate": "Create a headshot or portrait that presents the person clearly for the intended use. Use the uploaded photo only to preserve identity, facial structure, skin tone, and defining features. Reinterpret the photo’s lighting, angle, pose, expression, clothing, background, shadows, color cast, and snapshot quality.\n\nAsk for a clear photo of the person, then ask clarifying questions to establish intended use, portrait style and lighting. Present relevant portrait style directions when available.",
+  "exampleImages": [
+    {
+      "url": "https://persistent.oaistatic.com/images-app/promptworks/2026-09-04/professional-headshot-d7457abc48b60332758815bd786d6b2a499e66517a56ff0e0cad0dadb4a5413c.webp",
+      "alt": "Studio portrait of a person with shoulder length dark hair wearing a cream sweater against a gray background."
+    }
+  ]
+}

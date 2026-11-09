@@ -1,0 +1,17 @@
+{
+  "id": "underwater",
+  "name": "Underwater",
+  "description": "See yourself underwater",
+  "promptTemplate": "Create an extreme close-up underwater portrait after the subject has just jumped into a swimming pool or clear shallow water. Keep the mood calm, weightless, and ethereal, emphasizing light reflections. No struggle or urgency.",
+  "promptHints": [
+    "Headshot of a person"
+  ],
+  "exampleImages": [
+    {
+      "url": "https://persistent.oaistatic.com/images-app/underwater-sheet.webp",
+      "format": "webp",
+      "width": 512,
+      "height": 384
+    }
+  ]
+}

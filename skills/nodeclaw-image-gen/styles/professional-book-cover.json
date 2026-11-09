@@ -1,0 +1,12 @@
+{
+  "id": "professional-book-cover",
+  "name": "Book cover",
+  "description": "Design a book cover",
+  "promptTemplate": "Create a book cover that reflects the book’s content, genre, audience, and tone. Build strong hierarchy for title, author, supporting text, and imagery, and keep it readable at full size and thumbnail size. Preserve all supplied text exactly; do not invent subtitles, quotes, awards, publisher marks, series details, or promotional copy.\n\nAsk clarifying questions to establish title and author, subject and genre, audience, must-have or avoid details, and visual style. Present relevant cover style directions when available.",
+  "exampleImages": [
+    {
+      "url": "https://persistent.oaistatic.com/images-app/promptworks/2026-09-04/professional-book-cover-885e6bb0d6a80777727a172f67a2640e4c23be343e69a9fc97be508884a30c92.webp",
+      "alt": "Teal book titled The Sunday Drawer by NJ Forland, with a sun setting over water and an empty chair on grass."
+    }
+  ]
+}

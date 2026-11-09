@@ -1,0 +1,18 @@
+{
+  "id": "caricature",
+  "name": "Caricature",
+  "description": "Create a caricature",
+  "promptTemplate": "Create a caricature of me using only the subject and interests explicitly provided for this request. Make it whimsical and exaggerated, with oversized facial features, bold lines, humorous expressions, a loose cartoon-like look and minimal text.",
+  "promptHints": [
+    "Photo of a person as the foreground"
+  ],
+  "exampleImages": [
+    {
+      "url": "https://persistent.oaistatic.com/images-app/promptworks/2026-10-02/caricature-32705045db0710f0d140c562c82cd424c0d0a4cb4cbcf546a9cd9e8b278bdee3.webp",
+      "alt": "A smiling illustrated woman with a headlamp carries books, a stethoscope, and paint supplies against a blue sky.",
+      "format": "webp",
+      "width": 888,
+      "height": 668
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "id": "mini-me-global",
+  "name": "Mini me",
+  "description": "Make tiny versions of you",
+  "promptTemplate": "Turn this photo into a magical “Mini Me” world where tiny animated versions of yourself come to life around you. These cute 3D-style mini characters interact with your everyday surroundings — climbing onto your shoulders, sitting on your bag, waving, playing, and copying your poses — creating a playful yet emotional social media story-worthy scene full of personality and story. The original photo remains untouched while the tiny characters bring the image to life with depth, movement, realistic shadows, and a soft aesthetic vibe.",
+  "promptHints": [
+    "Photo with a person as main subject"
+  ],
+  "exampleImages": [
+    {
+      "url": "https://persistent.oaistatic.com/images-app/mini-me-global-sheet.webp",
+      "format": "webp",
+      "width": 888,
+      "height": 666
+    }
+  ]
+}

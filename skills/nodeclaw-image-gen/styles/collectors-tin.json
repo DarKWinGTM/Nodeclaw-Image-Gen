@@ -1,0 +1,18 @@
+{
+  "id": "collectors-tin",
+  "name": "Collector’s tin",
+  "description": "Fill a tin with what you love",
+  "promptTemplate": "Using a rectangular collector’s tin, fill both sides with objects that are uniquely me, using only the subject details explicitly provided for this request, and paint it with my favorite color.",
+  "promptHints": [
+    "Photo of a person participating in a hobby or unique activity"
+  ],
+  "exampleImages": [
+    {
+      "url": "https://persistent.oaistatic.com/images-app/promptworks/2026-10-03/collectors-tin-31391d96e4f005b1bebdd4b3c266513aa8964303352764954dc583c60ce15e4e.webp",
+      "alt": "An open collector’s tin holds photographs, a camera, binoculars, flowers, paints, a pencil, and a small knitted figure against a pale green background.",
+      "format": "webp",
+      "width": 888,
+      "height": 668
+    }
+  ]
+}

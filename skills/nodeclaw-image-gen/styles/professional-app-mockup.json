@@ -1,0 +1,12 @@
+{
+  "id": "professional-app-mockup",
+  "name": "App mockup",
+  "description": "Create an app mockup",
+  "promptTemplate": "Create an app mockup that clearly shows the intended screen and user experience. Make the screen purpose, hierarchy, primary actions, spacing, and components coherent. Preserve supplied labels and content exactly; do not invent claims, pricing, accounts, or features that conflict with the brief.\n\nAsk clarifying questions to establish app purpose, audience, target screen, key actions, required content, platform, and visual style. Present relevant interface style directions when available.",
+  "exampleImages": [
+    {
+      "url": "https://persistent.oaistatic.com/images-app/promptworks/2026-09-04/professional-app-mockup-4682a32811097d760bee4df6dde54faa9d675b475abb7e6874fb726cdcf2e075.webp",
+      "alt": "Music player mockup with neon abstract artwork, the title Orchard Moonrise by J Jones, and playback controls."
+    }
+  ]
+}

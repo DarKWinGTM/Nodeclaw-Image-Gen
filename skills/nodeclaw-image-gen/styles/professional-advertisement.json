@@ -1,0 +1,12 @@
+{
+  "id": "professional-advertisement",
+  "name": "Advertisement",
+  "description": "Create an ad",
+  "promptTemplate": "Create an advertisement that communicates my offer clearly and supports the intended goal. Build clear hierarchy for the product or service, main message, supporting details, and action. Preserve all supplied text and details exactly; do not invent prices, discounts, testimonials, results, terms, endorsements, or additional copy.\n\nAsk clarifying questions to establish the offering, main message, desired action, required content, placement, audience, and visual style. Present relevant campaign style directions when available.",
+  "exampleImages": [
+    {
+      "url": "https://persistent.oaistatic.com/images-app/promptworks/2026-09-04/professional-advertisement-5b058f642d6501458810a5dab5fa1261b691dfea7bb9323fc6b7e9d06f24fc41.webp",
+      "alt": "Framed pink advertisement with Shop now lettering and hands holding a pump bottle on a dusty pink background."
+    }
+  ]
+}
